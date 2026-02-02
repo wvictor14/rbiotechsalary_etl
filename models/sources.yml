@@ -1,0 +1,7 @@
+version: 2
+sources:
+  - name: survey_results
+    tables:
+      - name: responses
+        config:
+          external_location: "data/r_biotech salary and company survey - 2025.csv"
