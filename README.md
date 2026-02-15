@@ -20,4 +20,11 @@ Try running the following commands:
 1. run `sanitize_headers.py` 
 2. upload `sanitizied.csv` to databricks under rbiotechsalary.sources named as `src_responses`
 3. Run `dbt run-operation generate_base_model --args '{"source_name": "survey_results", "table_name": "src_responses"}'` to generate base model, goes in `_stg_responses.sql`
-4. 
+
+
+# Primary Keys
+
+- Company ID: uses `dbt_utils.generate_surrogate_key` macro on company name to create a unique id
+- response_id: uses `dbt_utils.generate_surrogate_key` on timestamp column
+- location_id: uses `dbt_utils.generate_surrogate_key` on City, Country
+- 
