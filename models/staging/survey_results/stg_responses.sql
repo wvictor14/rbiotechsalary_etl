@@ -11,7 +11,8 @@ with
             which_us_state_do_you_work_in,
             which_canadian_province_do_you_work_in,
             company_or_institution_name as company_name,
-            which_of_the_following_best_describes_your_company as company_type,
+            which_of_the_following_best_describes_your_company
+            as company_is_private_or_public,
             biotech_sub_industry as sector,
             company_detail_approximate_company_size as company_size,
             provide_a_review_and_rate_your_companyinstitution_and_experience,
