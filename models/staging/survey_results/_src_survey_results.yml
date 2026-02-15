@@ -3,6 +3,8 @@ sources:
   - name: survey_results
 
     # override profiles.yml to point to project wide sources folder
+    # (because dev points to dev_vyuan and prod points to main)
+    # (but sources will be shared between dev/prod)
     catalog: rbiotechsalary 
     schema: sources        
     tables:
