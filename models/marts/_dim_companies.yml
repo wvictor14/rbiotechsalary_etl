@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: dim_companies
+    description: "Companies"
+    columns:
+      - name: company_name
+        data_type: string
+        description: ""
+
+      - name: company_size
+        data_type: string
+        description: ""
+
+      - name: sector
+        data_type: string
+        description: ""
+
+      - name: company_is_private_or_public
+        data_type: string
+        description: ""
