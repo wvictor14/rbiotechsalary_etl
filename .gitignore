@@ -5,3 +5,4 @@ logs/
 
 # ignore db
 *.duckdb
+dbt_internal_packages/
