@@ -2,7 +2,10 @@ version: 2
 
 models:
   - name: int_companies_harmonized_names
-    description: 'Runs distinct on companies, and then harmonizes the names using explicit seed'
+    description: >
+      Step 1. Harmonizes company names using name-mapping seed.
+
+      See {{ doc('companies') }} for companies modelling strategy.
     columns:
       - name: company_name
         data_type: string
@@ -25,8 +28,12 @@ models:
         description: ""
 
   - name: int_companies_consolidated
-    description: |
-      One row per company, takes the most frequent of size, sector, and public/private
+    description: >
+      
+      Step 2. One row per company, takes the most frequent of size, sector, and 
+      public/private
+
+      See {{ doc('companies') }} for companies modelling strategy.
     columns:
       - name: company_name
         data_type: string
