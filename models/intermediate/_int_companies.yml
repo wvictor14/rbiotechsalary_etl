@@ -1,13 +1,13 @@
 version: 2
 
 models:
-  - name: dim_companies
-    description: "Companies"
+  - name: int_companies
+    description: '{{ doc("int_companies") }}'
     columns:
       - name: company_id
         data_type: string
         description: "primary key, hash of company_name, company_size, sector, and company_is_private_or_public"
-        
+
       - name: company_name
         data_type: string
         description: ""
