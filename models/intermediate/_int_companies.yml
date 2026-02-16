@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: int_companies
-    description: '{{ doc("int_companies") }}'
+  - name: int_companies_harmonized_names
+    description: 'Runs distinct on companies, and then harmonizes the names using explicit seed'
     columns:
       - name: company_id
         data_type: string
@@ -23,3 +23,8 @@ models:
       - name: company_is_private_or_public
         data_type: string
         description: ""
+    
+  - name: int_companies_consolidated
+    description: |
+      Handles when a company has multiple entries for size, sector, and 
+      public/private
