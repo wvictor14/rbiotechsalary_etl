@@ -1,4 +1,6 @@
 {
     "dbt.dbtIntegration": "core",
-    "dbt.enableNewLineagePanel": true
+    "dbt.enableNewLineagePanel": true,
+    "dbt.lineage.defaultExpansion": 2,
+    "dbt.perspectiveTheme": "Vintage"
 }
