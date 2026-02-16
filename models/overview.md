@@ -1,4 +1,4 @@
-{% docs modelling_strategy_overview %}
+{% docs __overview__ %}
 
 ## Overview
 
@@ -42,22 +42,18 @@ source/raw -> staging -> intermediate -> marts
 - `fact_*`: event-based or transactional data
 - Star-schema aligned where possible
 
-### Grains
-
-- `fact_orders`: one survey response
-
 ---
 
 ## Final Tables
 
 ### Fact Tables
 
-`fact_submissions`
+`fct_responses`
 
 One row per submitted survey response.
 
 Key fields:
-- `submission_id`
+- `response_id`
 - `timestamp`
 - `salary_amount`
 - `years_experience`
@@ -65,13 +61,21 @@ Key fields:
 - `location_id`
 - `job_id`
 
+### Grains 
+
+- **`fact_submissions`**: One row per survey response
+- **`dim_companies`**: One row per unique company
+- **`dim_locations`**: One row per unique location
+- **`dim_jobs`**: One row per unique job profile
+
 ---
 
 ### Dimension Tables
 
 #### `dim_companies`
+
 Descriptive attributes for companies.  
-See [{{ doc('companies') }}](models/companies.md) for detailed company modeling and consolidation logic.
+See `models/companies.md` for detailed company modeling and consolidation logic.
 
 Key fields:
 - `company_id`
