@@ -26,7 +26,11 @@ Original,Harmonized,
 "BioMarin Pharmaceutical ","BioMarin"
 ```
 
-If unknown or unidentifiable, company_name is set to "Unknown". However, "Unknown" responses may still contain relevant company_size, sector, etc. information that respondent was willing to share. This information is stored.
+### No response or Unidentifiable
+
+Some survey respondents don't provide a company name but still share useful information like company size, sector, or whether it's public/private.
+
+If company name is unknown or unidentifiable, company_name is set to "Unknown". And then `fct_submissions` will take the response data directly for `company_size` `sector` and other relevant company information.
 
 ### Size, sector, public/private
 

@@ -35,6 +35,11 @@ models:
 
       See {{ doc('companies') }} for companies modelling strategy.
     columns:
+      - name: company_id
+        data_type: string
+        description: >
+          Generated using company name. Does not include "unknown" companies
+          
       - name: company_name
         data_type: string
         description: ""

@@ -32,7 +32,12 @@ with
         select company_name, var_name, var_value from counted where rank = 1
     ),
     pivoted as (
-        select company_name, company_size, sector, company_is_private_or_public
+        select
+            {{ dbt_utils.generate_surrogate_key(['company_name']) }} as company_id,
+            company_name,
+            company_size,
+            sector,
+            company_is_private_or_public
         from
             top_ranked pivot (
                 max(var_value)  -- just take the only value
