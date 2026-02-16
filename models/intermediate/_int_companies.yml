@@ -4,10 +4,30 @@ models:
   - name: int_companies_harmonized_names
     description: 'Runs distinct on companies, and then harmonizes the names using explicit seed'
     columns:
-      - name: company_id
+      - name: company_name
         data_type: string
-        description: "primary key, hash of company_name, company_size, sector, and company_is_private_or_public"
+        description: ""
 
+      - name: company_name_original
+        data_type: string
+        description: ""
+
+      - name: company_size
+        data_type: string
+        description: ""
+
+      - name: sector
+        data_type: string
+        description: ""
+
+      - name: company_is_private_or_public
+        data_type: string
+        description: ""
+
+  - name: int_companies_consolidated
+    description: |
+      One row per company, takes the most frequent of size, sector, and public/private
+    columns:
       - name: company_name
         data_type: string
         description: ""
@@ -23,8 +43,3 @@ models:
       - name: company_is_private_or_public
         data_type: string
         description: ""
-    
-  - name: int_companies_consolidated
-    description: |
-      Handles when a company has multiple entries for size, sector, and 
-      public/private
