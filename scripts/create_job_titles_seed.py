@@ -1,9 +1,12 @@
 import polars as pl
 from pathlib import Path
+import re
 
 # Your complete raw job titles (lowercase)
 raw_titles = """4
 5
+-
+
 account manager
 active ingredient technician
 ad clinical
@@ -486,155 +489,167 @@ vp
 vp medical affairs
 vp r&d
 vp technical development & manufacturing
-vp, transformation""".strip().split('\n')
-import polars as pl
-from pathlib import Path
-import re
+vp, transformation""".strip().split("\n")
 
-# Your complete raw job titles (lowercase) - keep as is
-
-# Define standardization rules
-standardization_map = {
-    # Garbage/unknowns
-    '4': 'Unknown',
-    '5': 'Unknown',
-    'hourly': 'Unknown',
-    'salaried': 'Unknown',
-    'co-op': 'Unknown',
-    'functional resourcing': 'Unknown',
-    'onsite support': 'Unknown',
-    'prospecting, petroglyphs, ancient symbols,': 'Unknown',
-    'talent aquisition': 'Unknown',
-    
-    # Typos - fix misspellings
-    'associte director qa': 'Associate Director QA',
-    'senior scietist': 'Senior Scientist',
-    'senior applocations scientist': 'Senior Applications Scientist',
-    'fermentation sr. reseach associate': 'Fermentation Senior Research Associate',
-    'principle scientist': 'Principal Scientist',
-    'director, study quality & compliance leas': 'Director, Study Quality & Compliance Lead',
-    'qc engineer l': 'QC Engineer I',
-    'scientist ll': 'Scientist II',
-    
-    # Standardize abbreviations to full titles
-    'cra': 'Clinical Research Associate',
-    'cso': 'Chief Scientific Officer',
-    'cto': 'Chief Technology Officer',
-    'bd manager': 'Business Development Manager',
-    
-    # Expand common abbreviations in titles
-    'sr. associate scientist': 'Senior Associate Scientist',
-    'sr. cell culture technician': 'Senior Cell Culture Technician',
-    'sr. data scientist': 'Senior Data Scientist',
-    'sr. director of antibody engineering': 'Senior Director of Antibody Engineering',
-    'sr. manager tsms': 'Senior Manager TSMS',
-    'sr. manager, ms&t': 'Senior Manager, Manufacturing Science & Technology',
-    'sr. manufacturing associate': 'Senior Manufacturing Associate',
-    'sr. medical science liaison': 'Senior Medical Science Liaison',
-    'sr. principal scientist': 'Senior Principal Scientist',
-    'sr. product marketing manager': 'Senior Product Marketing Manager',
-    'sr. qa specialist ops': 'Senior QA Specialist Ops',
-    'sr. research associate': 'Senior Research Associate',
-    'sr. scientist': 'Senior Scientist',
-    'sr. specialist': 'Senior Specialist',
-    'sr. supply chain specialist': 'Senior Supply Chain Specialist',
-    'sr analyst': 'Senior Analyst',
-    'sr analytical engineer': 'Senior Analytical Engineer',
-    'sr cheminformatics scientist': 'Senior Cheminformatics Scientist',
-    'sr clinical scientist': 'Senior Clinical Scientist',
-    'sr manager raw supply chain': 'Senior Manager Raw Supply Chain',
-    'sr msl': 'Senior Medical Science Liaison',
-    'sr program manager': 'Senior Program Manager',
-    'sr qa associate ii': 'Senior QA Associate II',
-    'sr quantitative pharmacologist': 'Senior Quantitative Pharmacologist',
-    'sr scientist': 'Senior Scientist',
-    'sr scientist i': 'Senior Scientist I',
-    'sr staff s&op manager': 'Senior Staff S&OP Manager',
-    
-    # Standardize common abbreviation patterns
-    'assoc analytical development specialist': 'Associate Analytical Development Specialist',
-    
-    # Handle case inconsistencies and variants
-    'ad clinical': 'Associate Director Clinical',
+# Garbage values that map to null
+GARBAGE_VALUES = {
+    "4",
+    "5",
+    "-",
+    "",
+    "hourly",
+    "salaried",
+    "co-op",
+    "functional resourcing",
+    "onsite support",
+    "prospecting, petroglyphs, ancient symbols,",
+    "talent aquisition",
 }
 
+# Typos to fix
+TYPOS = {
+    "associte director qa": "Associate Director QA",
+    "senior scietist": "Senior Scientist",
+    "senior applocations scientist": "Senior Applications Scientist",
+    "fermentation sr. reseach associate": "Fermentation Senior Research Associate",
+    "principle scientist": "Principal Scientist",
+    "director, study quality & compliance leas": "Director, Study Quality & Compliance Lead",
+    "qc engineer l": "QC Engineer I",
+    "scientist ll": "Scientist II",
+    "ad clinical": "Associate Director Clinical",
+    "assoc analytical development specialist": "Associate Analytical Development Specialist",
+}
+
+# Full-word abbreviations to expand
+ABBREVIATIONS = {
+    "cra": "Clinical Research Associate",
+    "cso": "Chief Scientific Officer",
+    "cto": "Chief Technology Officer",
+    "bd manager": "Business Development Manager",
+    "sr. associate scientist": "Senior Associate Scientist",
+    "sr. cell culture technician": "Senior Cell Culture Technician",
+    "sr. data scientist": "Senior Data Scientist",
+    "sr. director of antibody engineering": "Senior Director Of Antibody Engineering",
+    "sr. manager tsms": "Senior Manager TSMS",
+    "sr. manager, ms&t": "Senior Manager, Manufacturing Science & Technology",
+    "sr. manufacturing associate": "Senior Manufacturing Associate",
+    "sr. medical science liaison": "Senior Medical Science Liaison",
+    "sr. principal scientist": "Senior Principal Scientist",
+    "sr. product marketing manager": "Senior Product Marketing Manager",
+    "sr. qa specialist ops": "Senior QA Specialist Ops",
+    "sr. research associate": "Senior Research Associate",
+    "sr. scientist": "Senior Scientist",
+    "sr. specialist": "Senior Specialist",
+    "sr. supply chain specialist": "Senior Supply Chain Specialist",
+    "sr analyst": "Senior Analyst",
+    "sr analytical engineer": "Senior Analytical Engineer",
+    "sr cheminformatics scientist": "Senior Cheminformatics Scientist",
+    "sr clinical scientist": "Senior Clinical Scientist",
+    "sr manager raw supply chain": "Senior Manager Raw Supply Chain",
+    "sr msl": "Senior Medical Science Liaison",
+    "sr program manager": "Senior Program Manager",
+    "sr qa associate ii": "Senior QA Associate II",
+    "sr quantitative pharmacologist": "Senior Quantitative Pharmacologist",
+    "sr scientist": "Senior Scientist",
+    "sr scientist i": "Senior Scientist I",
+    "sr staff s&op manager": "Senior Staff S&OP Manager",
+}
+
+# Abbreviations to capitalize in title case
+CAPS_ABBR = {
+    "Vp": "VP",
+    "Qa": "QA",
+    "Qc": "QC",
+    "R&d": "R&D",
+    "Cra": "CRA",
+    "Cso": "CSO",
+    "Cto": "CTO",
+    "Ms&t": "MS&T",
+    "Msat": "MSAT",
+    "Fp&a": "FP&A",
+    "Pdrp": "PDRP",
+    "Cadd": "CADD",
+    "Lims": "LIMS",
+    "Hpc": "HPC",
+    "It": "IT",
+    "Pv": "PV",
+    "S&op": "S&OP",
+    "Tsms": "TSMS",
+    "Elt": "ELT",
+    "Phd": "PhD",
+    "Csv": "CSV",
+    "Cmc": "CMC",
+    "Sma": "SMA",
+}
+
+# Numbered scientist patterns
+NUMBERED_PATTERNS = [
+    (r"\bScientist 1\b", "Scientist I"),
+    (r"\bScientist 2\b", "Scientist II"),
+    (r"\bScientist 3\b", "Scientist III"),
+    (r"\bAssociate Scientist 2\b", "Associate Scientist II"),
+    (r"\bSenior Scientist 1\b", "Senior Scientist I"),
+    (r"\bSenior Bioinformatics Scientist 2\b", "Senior Bioinformatics Scientist II"),
+    (r"\bResearch Associate 2\b", "Research Associate II"),
+    (r"\bSenior Research Associate 2\b", "Senior Research Associate II"),
+    (r"\bFood Laboratory Specialist 1\b", "Food Laboratory Specialist I"),
+    (r"\bSupport Manufacturing Associate 1\b", "Support Manufacturing Associate I"),
+]
+
+
 def format_job_title(title):
-    """
-    Standardize job title:
-    1. Apply mapping rules
-    2. Title case the result
-    3. Fix roman numerals (i->I, ii->II, iii->III, iv->IV)
-    4. Capitalize specific abbreviations (vp->VP, qa->QA, r&d->R&D, etc.)
-    5. Fix spacing after commas
-    6. Convert numbered scientists (scientist 1 -> Scientist I, scientist 2 -> Scientist II, etc.)
-    """
-    # Apply initial mapping
-    title = standardization_map.get(title, title)
-    
+    """Standardize job title with proper casing, roman numerals, and abbreviations."""
+    # Handle null/None
+    if title is None or title == "":
+        return None
+
+    # Strip and lowercase
+    title = str(title).strip().lower()
+
+    # Return None for garbage values
+    if title in GARBAGE_VALUES:
+        return None
+
+    # Apply typo fixes and abbreviation expansions
+    title = TYPOS.get(title, ABBREVIATIONS.get(title, title))
+
     # Title case
     title = title.title()
-    
-    # Fix roman numerals (must be after title case)
-    title = re.sub(r'\bI\b(?![\w&])', 'I', title)  # single I
-    title = re.sub(r'\bIi\b', 'II', title)  # ii -> II
-    title = re.sub(r'\bIii\b', 'III', title)  # iii -> III
-    title = re.sub(r'\bIv\b', 'IV', title)  # iv -> IV
-    
-    # Fix specific abbreviations
-    abbreviations = {
-        'Vp': 'VP',
-        'Qa': 'QA',
-        'Qc': 'QC',
-        'R&d': 'R&D',
-        'Cra': 'CRA',
-        'Cso': 'CSO',
-        'Cto': 'CTO',
-        'Ms&t': 'MS&T',
-        'Msat': 'MSAT',
-        'Fp&a': 'FP&A',
-        'Pdrp': 'PDRP',
-        'Cadd': 'CADD',
-        'Lims': 'LIMS',
-        'Hpc': 'HPC',
-        'It': 'IT',
-        'Pv': 'PV',
-        'S&op': 'S&OP',
-        'Tsms': 'TSMS',
-        'Elt': 'ELT',
-        'Phd': 'PhD',
-    }
-    
-    for wrong, correct in abbreviations.items():
-        title = re.sub(rf'\b{wrong}\b', correct, title)
-    
+
+    # Fix roman numerals
+    title = re.sub(r"\bI\b(?![\w&])", "I", title)
+    title = re.sub(r"\bIi\b", "II", title)
+    title = re.sub(r"\bIii\b", "III", title)
+    title = re.sub(r"\bIv\b", "IV", title)
+
+    # Capitalize abbreviations
+    for wrong, correct in CAPS_ABBR.items():
+        title = re.sub(rf"\b{wrong}\b", correct, title)
+
     # Fix spacing after commas
-    title = re.sub(r',(\S)', r', \1', title)
-    
-    # Convert numbered scientists (scientist 1 -> Scientist I, etc.)
-    title = re.sub(r'\bScientist 1\b', 'Scientist I', title)
-    title = re.sub(r'\bScientist 2\b', 'Scientist II', title)
-    title = re.sub(r'\bScientist 3\b', 'Scientist III', title)
-    title = re.sub(r'\bAssociate Scientist 2\b', 'Associate Scientist II', title)
-    title = re.sub(r'\bSenior Scientist 1\b', 'Senior Scientist I', title)
-    title = re.sub(r'\bSenior Bioinformatics Scientist 2\b', 'Senior Bioinformatics Scientist II', title)
-    title = re.sub(r'\bResearch Associate 2\b', 'Research Associate II', title)
-    title = re.sub(r'\bSenior Research Associate 2\b', 'Senior Research Associate II', title)
-    title = re.sub(r'\bSma I\b', 'SMA I', title)
-    
+    title = re.sub(r",(\S)", r", \1", title)
+
+    # Apply numbered pattern replacements
+    for pattern, replacement in NUMBERED_PATTERNS:
+        title = re.sub(pattern, replacement, title)
+
     return title
 
-# Create DataFrame from raw titles
-df_raw = pl.DataFrame({'raw_job_title': raw_titles}).unique()
 
-# Apply formatting
-df_standardized = df_raw.with_columns(
-    pl.col('raw_job_title')
-    .map_elements(format_job_title, return_dtype=pl.Utf8)
-    .alias('standardized_job_title')
-).select(['raw_job_title', 'standardized_job_title']).sort('standardized_job_title')
-
+# Create and process DataFrame
+df = (
+    pl.DataFrame({"raw_job_title": raw_titles})
+    .unique()
+    .with_columns(
+        pl.col("raw_job_title")
+        .map_elements(format_job_title, return_dtype=pl.Utf8)
+        .alias("standardized_job_title")
+    )
+    .select(["raw_job_title", "standardized_job_title"])
+    .sort("standardized_job_title")
+)
 # Write to seed file
-output_path = Path('seeds') / 'job_titles.csv'
-df_standardized.write_csv(output_path)
+output_path = Path("seeds") / "job_titles.csv"
+df.write_csv(output_path)
 
-df_standardized
+df

@@ -1,4 +1,15 @@
 raw_job_title,standardized_job_title
+5,
+hourly,
+"",
+co-op,
+salaried,
+-,
+functional resourcing,
+talent aquisition,
+"prospecting, petroglyphs, ancient symbols,",
+4,
+onsite support,
 account manager,Account Manager
 active ingredient technician,Active Ingredient Technician
 analyst,Analyst
@@ -26,14 +37,14 @@ associate director validation,Associate Director Validation
 "associate director, computational biology","Associate Director, Computational Biology"
 "associate director, engineering","Associate Director, Engineering"
 "associate director, field medical affairs","Associate Director, Field Medical Affairs"
-"associate director, fp&a","Associate Director, FP&A"
+"associate director, fp&a","Associate Director, Fp&A"
 "associate director, lab operations","Associate Director, Lab Operations"
 "associate director, lab operations and facilities","Associate Director, Lab Operations And Facilities"
 "associate director, program management","Associate Director, Program Management"
 "associate director, quality","Associate Director, Quality"
 associate engineer,Associate Engineer
 associate manager,Associate Manager
-associate manager ms&t,Associate Manager MS&T
+associate manager ms&t,Associate Manager Ms&T
 associate manager precision medicine,Associate Manager Precision Medicine
 associate principal scientist,Associate Principal Scientist
 associate program manager iii,Associate Program Manager III
@@ -68,8 +79,8 @@ biotechnologist associate,Biotechnologist Associate
 business analysis manager,Business Analysis Manager
 business development associate,Business Development Associate
 bd manager,Business Development Manager
-car-t operations associate,CAR-T Operations Associate
-car-t operator,CAR-T Operator
+car-t operations associate,Car-T Operations Associate
+car-t operator,Car-T Operator
 case analyst,Case Analyst
 category manager,Category Manager
 change qa specialist,Change QA Specialist
@@ -148,7 +159,7 @@ field reimbursement manager,Field Reimbursement Manager
 field service,Field Service
 field service engineer,Field Service Engineer
 finance lead,Finance Lead
-food laboratory specialist 1,Food Laboratory Specialist 1
+food laboratory specialist 1,Food Laboratory Specialist I
 founding scientist,Founding Scientist
 general counsel,General Counsel
 global product manager,Global Product Manager
@@ -233,8 +244,8 @@ principal product manager,Principal Product Manager
 principal research associate,Principal Research Associate
 principal research scientist,Principal Research Scientist
 principal research scientist i,Principal Research Scientist I
-principal scientist,Principal Scientist
 principle scientist,Principal Scientist
+principal scientist,Principal Scientist
 principal scientist (translational science lead),Principal Scientist (Translational Science Lead)
 principal scientist process chemistry,Principal Scientist Process Chemistry
 principal software engineer,Principal Software Engineer
@@ -313,11 +324,11 @@ sample management (contractor),Sample Management (Contractor)
 scientific lead,Scientific Lead
 scientific marketing officer,Scientific Marketing Officer
 scientist,Scientist
-scientist 1,Scientist I
 scientist i,Scientist I
-scientist ii,Scientist II
-scientist ll,Scientist II
+scientist 1,Scientist I
 scientist 2,Scientist II
+scientist ll,Scientist II
+scientist ii,Scientist II
 "scientist ii, lead","Scientist II, Lead"
 scientist 3,Scientist III
 scientist iii,Scientist III
@@ -331,26 +342,26 @@ sr analytical engineer,Senior Analytical Engineer
 senior applocations scientist,Senior Applications Scientist
 senior applied research scientist,Senior Applied Research Scientist
 senior associate,Senior Associate
-sr. associate scientist,Senior Associate Scientist
 senior associate scientist,Senior Associate Scientist
+sr. associate scientist,Senior Associate Scientist
 senior associate scientist ii,Senior Associate Scientist II
 "senior associate, qc","Senior Associate, QC"
 senior bioinformatician,Senior Bioinformatician
 senior bioinformatics engineer,Senior Bioinformatics Engineer
 senior bioinformatics scientist,Senior Bioinformatics Scientist
 senior bioinformatics scientist 2,Senior Bioinformatics Scientist II
+senior cmc project manager,Senior CMC Project Manager
+senior csv engineer,Senior CSV Engineer
 sr. cell culture technician,Senior Cell Culture Technician
 sr cheminformatics scientist,Senior Cheminformatics Scientist
 senior chemist,Senior Chemist
 senior clinical laboratory scientist,Senior Clinical Laboratory Scientist
 senior clinical project manager,Senior Clinical Project Manager
-senior clinical scientist,Senior Clinical Scientist
 sr clinical scientist,Senior Clinical Scientist
-senior cmc project manager,Senior Cmc Project Manager
+senior clinical scientist,Senior Clinical Scientist
 senior computational associate,Senior Computational Associate
 senior computational biologist,Senior Computational Biologist
 senior consultant,Senior Consultant
-senior csv engineer,Senior Csv Engineer
 senior data scientist,Senior Data Scientist
 sr. data scientist,Senior Data Scientist
 senior director,Senior Director
@@ -381,16 +392,16 @@ sr. manager tsms,Senior Manager TSMS
 "sr. manager, ms&t","Senior Manager, Manufacturing Science & Technology"
 "senior manager, operations","Senior Manager, Operations"
 "senior manager, quality systems","Senior Manager, Quality Systems"
-senior manufacturing associate,Senior Manufacturing Associate
 sr. manufacturing associate,Senior Manufacturing Associate
+senior manufacturing associate,Senior Manufacturing Associate
 senior manufacturing scientist,Senior Manufacturing Scientist
 senior manufacturing technology engineer,Senior Manufacturing Technology Engineer
 senior medical director,Senior Medical Director
-sr. medical science liaison,Senior Medical Science Liaison
 sr msl,Senior Medical Science Liaison
+sr. medical science liaison,Senior Medical Science Liaison
 senior oncology specialist,Senior Oncology Specialist
-sr. principal scientist,Senior Principal Scientist
 senior principal scientist,Senior Principal Scientist
+sr. principal scientist,Senior Principal Scientist
 senior principal scientist - msat,Senior Principal Scientist - MSAT
 senior process chemist,Senior Process Chemist
 senior process development associate,Senior Process Development Associate
@@ -415,14 +426,14 @@ senior research associate 2,Senior Research Associate II
 senior research scientist,Senior Research Scientist
 senior research support associate,Senior Research Support Associate
 senior scientific project manager,Senior Scientific Project Manager
-sr. scientist,Senior Scientist
-senior scientist,Senior Scientist
 senior scietist,Senior Scientist
+sr. scientist,Senior Scientist
 sr scientist,Senior Scientist
+senior scientist,Senior Scientist
 senior scientist and team lead,Senior Scientist And Team Lead
+senior scientist 1,Senior Scientist I
 sr scientist i,Senior Scientist I
 senior scientist i,Senior Scientist I
-senior scientist 1,Senior Scientist I
 "senior scientist i, medicinal chemistry","Senior Scientist I, Medicinal Chemistry"
 senior scientist ii,Senior Scientist II
 senior scientist ii process development,Senior Scientist II Process Development
@@ -432,8 +443,8 @@ senior scientist in computational biology,Senior Scientist In Computational Biol
 "senior scientist, r&d","Senior Scientist, R&D"
 senior scientist- packaging,Senior Scientist- Packaging
 senior software developer,Senior Software Developer
-sr. specialist,Senior Specialist
 senior specialist,Senior Specialist
+sr. specialist,Senior Specialist
 "senior specialist, engineering","Senior Specialist, Engineering"
 senior staff bioinformatics engineer,Senior Staff Bioinformatics Engineer
 sr staff s&op manager,Senior Staff S&Op Manager
@@ -459,22 +470,13 @@ study physician,Study Physician
 study technician iii,Study Technician III
 "supervisor, manufacturing sciences and technology","Supervisor, Manufacturing Sciences And Technology"
 supply chain manager,Supply Chain Manager
-support manufacturing associate 1,Support Manufacturing Associate 1
+support manufacturing associate 1,Support Manufacturing Associate I
 systems engineer iii,Systems Engineer III
 team leader,Team Leader
 technical applications scientist 2,Technical Applications Scientist II
 territory account manager,Territory Account Manager
 therapeutic specialist,Therapeutic Specialist
 toxicologist,Toxicologist
-onsite support,Unknown
-talent aquisition,Unknown
-salaried,Unknown
-co-op,Unknown
-4,Unknown
-functional resourcing,Unknown
-5,Unknown
-"prospecting, petroglyphs, ancient symbols,",Unknown
-hourly,Unknown
 vp,VP
 vp medical affairs,VP Medical Affairs
 vp r&d,VP R&D
