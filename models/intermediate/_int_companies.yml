@@ -9,7 +9,8 @@ models:
     columns:
       - name: company_name
         data_type: string
-        description: "{{ doc('company_name') }}"
+        description: >
+          Trims whitespace. See {{ doc('company_name') }} for overall strategy
 
       - name: company_name_original
         data_type: string
