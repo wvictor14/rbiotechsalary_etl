@@ -48,3 +48,11 @@ Exceptions:
 1. *(not implemented yet)* Public / private should be weighted more highly towards more recently reported "public"  (private companies will beecome public, but not vice versa)
 
 {% enddocs %}
+
+{% docs company_name %}
+
+Company name source is free-form response. Gets harmonized early with an LLM.
+
+
+
+{% enddocs %}

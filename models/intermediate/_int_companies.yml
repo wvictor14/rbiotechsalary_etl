@@ -10,10 +10,14 @@ models:
       - name: company_name
         data_type: string
         description: ""
+        tests:
+          - not_null
 
       - name: company_name_original
         data_type: string
         description: ""
+        tests:
+          - not_null
 
       - name: company_size
         data_type: string
@@ -28,21 +32,26 @@ models:
         description: ""
 
   - name: int_companies_consolidated
+    tests:
+      - dbt_utils.expression_is_true:
+        expression: "company_name != 'Unknown'" # should be filtered out
     description: >
       
       Step 2. One row per company, takes the most frequent of size, sector, and 
-      public/private
+      public/private.
+
+      For those responses that did not provide a company name, we remove these 
+      here. We treat "unknown" company names as a degenerate dimension.
 
       See {{ doc('companies') }} for companies modelling strategy.
     columns:
-      - name: company_id
-        data_type: string
-        description: >
-          Generated using company name. Does not include "unknown" companies
           
       - name: company_name
         data_type: string
-        description: ""
+        description: {{ doc('company_name') }}
+        tests:
+          - not_null
+          - unique
 
       - name: company_size
         data_type: string
