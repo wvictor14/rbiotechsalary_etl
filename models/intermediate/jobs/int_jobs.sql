@@ -17,7 +17,7 @@ with
     filtered_out_nulls as (
         select *
         from joined
-        where job_title_original is not null
+        where job_title_original is not null and job_title != '-'
         order by job_title, job_group
     )
 
