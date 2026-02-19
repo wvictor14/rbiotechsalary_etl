@@ -3,17 +3,20 @@ version: 2
 models:
   - name: int_jobs
     description: >
-      Intermediate jobs table. One Row per job title and job_group
-      {{ doc('jobs') }}
+      {{ doc('jobs_hierarchy') }}
+
+
+      See {{ doc('jobs') }} for overall jobs modelling strategy.
     columns:
-      - name: job_title_original
-        data_type: string
-        description: "Source job title"
-
-      - name: job_title
-        data_type: string
-        description: "Harmonized job title using seed to map og title"
-
-      - name: job_group
-        data_type: string
-        description: ""
+      - name: raw_title
+        description: "The original, uncleaned job title from the source system."
+      - name: title
+        description: "The harmonized title after joining with the job_titles reference table."
+      - name: standardized_title
+        description: "The official title assigned based on the highest-priority keyword match."
+      - name: hierarchy
+        description: "The categorical level (e.g., C-Suite, Senior Management, Scientific Professional)."
+      - name: priority
+        description: "The ranking value from the seed file used to resolve overlapping matches."
+      - name: department
+        description: "The functional area or job group associated with the response."
