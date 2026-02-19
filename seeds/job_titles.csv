@@ -1,15 +1,4 @@
-raw_job_title,standardized_job_title
-5,
-hourly,
-"",
-co-op,
-salaried,
--,
-functional resourcing,
-talent aquisition,
-"prospecting, petroglyphs, ancient symbols,",
-4,
-onsite support,
+raw_job_title,clean_job_title
 account manager,Account Manager
 active ingredient technician,Active Ingredient Technician
 analyst,Analyst
@@ -226,11 +215,10 @@ molecular technologist,Molecular Technologist
 necropsy team leader,Necropsy Team Leader
 phd student,PhD Student
 pharmacokineticist,Pharmacokineticist
-post master,Post Master
-post-doctoral research associate,Post-Doctoral Research Associate
-postdoc,Postdoc
-postdoctoral associate,Postdoctoral Associate
-postdoctoral fellow,Postdoctoral Fellow
+post-doctoral research associate,Postdoctoral Researcher
+postdoc,Postdoctoral Researcher
+postdoctoral associate,Postdoctoral Researcher
+postdoctoral fellow,Postdoctoral Researcher
 principal associate scientist,Principal Associate Scientist
 principal clinical imaging scientist,Principal Clinical Imaging Scientist
 principal computational biologist,Principal Computational Biologist

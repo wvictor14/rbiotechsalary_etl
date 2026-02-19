@@ -1,0 +1,24 @@
+keyword,standardized_title,hierarchy,priority
+chief scientific officer,Chief Scientific Officer,C-Suite/Executive,1
+chief technology officer,Chief Technology Officer,C-Suite/Executive,1
+chief medical officer,Chief Medical Officer,C-Suite/Executive,1
+executive director,Executive Director,C-Suite/Executive,2
+senior director,Senior Director,Senior Management,3
+sr. director,Senior Director,Senior Management,3
+associate director,Associate Director,Senior Management,4
+assoc. director,Associate Director,Senior Management,4
+director,Director,Senior Management,5
+vp,Vice President,C-Suite/Executive,6
+vice president,Vice President,C-Suite/Executive,6
+cso,Chief Scientific Officer,C-Suite/Executive,7
+cto,Chief Technology Officer,C-Suite/Executive,7
+cmo,Chief Medical Officer,C-Suite/Executive,7
+senior manager,Senior Manager,Middle Management,10
+sr. manager,Senior Manager,Middle Management,10
+manager,Manager,Middle Management,11
+principal scientist,Principal Scientist,Senior Individual Contributor,15
+staff scientist,Staff Scientist,Senior Individual Contributor,16
+senior scientist,Senior Scientist,Scientific Professional,17
+sr. scientist,Senior Scientist,Scientific Professional,17
+scientist,Scientist,Scientific Professional,18
+research associate,Research Associate,Associate/Assistant,20
