@@ -1,24 +1,46 @@
 keyword,standardized_title,hierarchy,priority
-chief scientific officer,Chief Scientific Officer,C-Suite/Executive,1
-chief technology officer,Chief Technology Officer,C-Suite/Executive,1
-chief medical officer,Chief Medical Officer,C-Suite/Executive,1
-executive director,Executive Director,C-Suite/Executive,2
-senior director,Senior Director,Senior Management,3
-sr. director,Senior Director,Senior Management,3
-associate director,Associate Director,Senior Management,4
-assoc. director,Associate Director,Senior Management,4
-director,Director,Senior Management,5
-vp,Vice President,C-Suite/Executive,6
-vice president,Vice President,C-Suite/Executive,6
-cso,Chief Scientific Officer,C-Suite/Executive,7
-cto,Chief Technology Officer,C-Suite/Executive,7
-cmo,Chief Medical Officer,C-Suite/Executive,7
+cso,Chief Scientific Officer,C-Suite/Executive,1
+cto,Chief Technology Officer,C-Suite/Executive,1
+cmo,Chief Medical Officer,C-Suite/Executive,1
+avp,Associate VP,C-Suite/Executive,2
+associate vp,Associate VP,C-Suite/Executive,2
+executive director,Executive Director,C-Suite/Executive,3
+vp,Vice President,C-Suite/Executive,4
+vice president,Vice President,C-Suite/Executive,4
+senior director,Senior Director,Senior Management,5
+sr. director,Senior Director,Senior Management,5
+associate director,Associate Director,Senior Management,6
+director,Director,Senior Management,7
+head of,Department Head,Senior Management,7
+team leader,Team Lead,Middle Management,10
+team lead,Team Lead,Middle Management,10
 senior manager,Senior Manager,Middle Management,10
 sr. manager,Senior Manager,Middle Management,10
 manager,Manager,Middle Management,11
-principal scientist,Principal Scientist,Senior Individual Contributor,15
-staff scientist,Staff Scientist,Senior Individual Contributor,16
-senior scientist,Senior Scientist,Scientific Professional,17
-sr. scientist,Senior Scientist,Scientific Professional,17
+msl,Medical Science Liaison,Scientific Professional,17
+medical science liaison,Medical Science Liaison,Scientific Professional,17
+principal,Principal Professional,Senior Individual Contributor,15
 scientist,Scientist,Scientific Professional,18
+engineer,Engineer,Scientific Professional,18
+analyst,Analyst,Professional,18
+specialist,Specialist,Professional,18
+biostatistician,Biostatistician,Scientific Professional,18
+# Capture all bioinformatics variations
+bioinformatician,Bioinformatician,Scientific Professional,18
+bioinformatics,Bioinformatician,Scientific Professional,18
+computational biologist,Computational Biologist,Scientific Professional,18
+# captures "Archivist", "Biochemist", "Pharmacokineticist", "Toxicologist"
+ist,Specialist,Professional,18
+manufacturing associate,Manufacturing Associate,Associate/Assistant,20
 research associate,Research Associate,Associate/Assistant,20
+research assistant,Research Assistant,Associate/Assistant,20
+senior technician,Senior Technician,Associate/Assistant,20
+associate,Associate,Associate/Assistant,21
+technician,Technician,Associate/Assistant,21
+tech,Technician,Associate/Assistant,21
+postdoctoral,Postdoc,Entry Level/Training,25
+postdoc,Postdoc,Entry Level/Training,25
+phd student,Graduate Student,Entry Level/Training,25
+doctoral researcher,Graduate Student,Entry Level/Training,25
+graduate,Graduate Student,Entry Level/Training,25
+intern,Intern,Entry Level/Training,26
