@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: int_jobs
+    description: >
+      Intermediate jobs table. One Row per job title and job_group
+      {{ doc('jobs') }}
+    columns:
+      - name: job_title_original
+        data_type: string
+        description: "Source job title"
+
+      - name: job_title
+        data_type: string
+        description: "Harmonized job title using seed to map og title"
+
+      - name: job_group
+        data_type: string
+        description: ""
