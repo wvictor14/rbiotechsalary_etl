@@ -1,477 +1,488 @@
-raw_job_title,standardized_job_title,job_level,job_hierarchy
-account manager,Account Manager,,Middle Management
-active ingredient technician,Active Ingredient Technician,,Other
-analyst,Analyst,,Other
-analytical development scientist i,Analytical Development Scientist I,I,Scientific/Technical Professional
-analytical operations manager,Analytical Operations Manager,,Middle Management
-application specialist,Application Specialist,,Associate/Assistant
-archivist,Archivist,,Other
-assistant scientist,Assistant Scientist,,Associate/Assistant
-assoc analytical development specialist,Associate Analytical Development Specialist,,Associate/Assistant
-associate chemist,Associate Chemist,,Associate/Assistant
-associate director,Associate Director,,C-Suite/Executive
-associate director - tech modernization,Associate Director - Tech Modernization,,C-Suite/Executive
-associate director biostatistics,Associate Director Biostatistics,,C-Suite/Executive
-ad clinical,Associate Director Clinical,,C-Suite/Executive
-associate director commercial,Associate Director Commercial,,C-Suite/Executive
-associate director data engineering,Associate Director Data Engineering,,C-Suite/Executive
-associate director of bioinformatics,Associate Director Of Bioinformatics,,C-Suite/Executive
-associate director of data science,Associate Director Of Data Science,,C-Suite/Executive
-associate director of marketing,Associate Director Of Marketing,,C-Suite/Executive
-associate director program management hematology,Associate Director Program Management Hematology,,C-Suite/Executive
-associte director qa,Associate Director QA,,C-Suite/Executive
-associate director safety lead,Associate Director Safety Lead,,C-Suite/Executive
-associate director validation,Associate Director Validation,,C-Suite/Executive
-"associate director, clinical supplies","Associate Director, Clinical Supplies",,C-Suite/Executive
-"associate director, computational biology","Associate Director, Computational Biology",,C-Suite/Executive
-"associate director, engineering","Associate Director, Engineering",,C-Suite/Executive
-"associate director, field medical affairs","Associate Director, Field Medical Affairs",,C-Suite/Executive
-"associate director, fp&a","Associate Director, Fp&A",,C-Suite/Executive
-"associate director, lab operations","Associate Director, Lab Operations",,C-Suite/Executive
-"associate director, lab operations and facilities","Associate Director, Lab Operations And Facilities",,C-Suite/Executive
-"associate director, program management","Associate Director, Program Management",,C-Suite/Executive
-"associate director, quality","Associate Director, Quality",,C-Suite/Executive
-associate engineer,Associate Engineer,,Associate/Assistant
-associate manager,Associate Manager,,Middle Management
-associate manager ms&t,Associate Manager Ms&T,,Middle Management
-associate manager precision medicine,Associate Manager Precision Medicine,,Middle Management
-associate principal scientist,Associate Principal Scientist,,Senior Individual Contributor
-associate program manager iii,Associate Program Manager III,III,Middle Management
-associate research assistant,Associate Research Assistant,,Associate/Assistant
-associate research scientist,Associate Research Scientist,,Associate/Assistant
-associate scientist,Associate Scientist,,Associate/Assistant
-associate scientist i,Associate Scientist I,I,Associate/Assistant
-associate scientist 2,Associate Scientist II,II,Associate/Assistant
-associate scientist ii,Associate Scientist II,II,Associate/Assistant
-"associate scientist, bio-analytics","Associate Scientist, Bio-Analytics",,Associate/Assistant
-"associate scientist, qc microbiology","Associate Scientist, QC Microbiology",,Associate/Assistant
-associate specialist,Associate Specialist,,Associate/Assistant
-"associate vp, research compliance","Associate VP, Research Compliance",,C-Suite/Executive
-automation engineer,Automation Engineer,,Scientific/Technical Professional
-automation engineer i,Automation Engineer I,I,Scientific/Technical Professional
-automation engineer ii,Automation Engineer II,II,Scientific/Technical Professional
-automation engineer iii,Automation Engineer III,III,Scientific/Technical Professional
-biochemist,Biochemist,,Other
-bioinformatic scientist,Bioinformatic Scientist,,Scientific/Technical Professional
-bioinformatician,Bioinformatician,,Other
-bioinformatics analyst ii,Bioinformatics Analyst II,II,Other
-bioinformatics consultant,Bioinformatics Consultant,,Specialized Role
-bioinformatics engineer,Bioinformatics Engineer,,Scientific/Technical Professional
-bioinformatics engineer i,Bioinformatics Engineer I,I,Scientific/Technical Professional
-bioinformatics intern,Bioinformatics Intern,,Entry Level/Training
-bioinformatics scientist,Bioinformatics Scientist,,Scientific/Technical Professional
-bioinformatics scientist customer support,Bioinformatics Scientist Customer Support,,Scientific/Technical Professional
-bioinformatics senior associate,Bioinformatics Senior Associate,,Associate/Assistant
-bioprocess engineer,Bioprocess Engineer,,Scientific/Technical Professional
-biostatistician,Biostatistician,,Other
-biotechnologist associate,Biotechnologist Associate,,Associate/Assistant
-business analysis manager,Business Analysis Manager,,Middle Management
-business development associate,Business Development Associate,,Associate/Assistant
-bd manager,Business Development Manager,,Middle Management
-car-t operations associate,Car-T Operations Associate,,Associate/Assistant
-car-t operator,Car-T Operator,,Other
-case analyst,Case Analyst,,Other
-category manager,Category Manager,,Middle Management
-change qa specialist,Change QA Specialist,,Associate/Assistant
-cso,Chief Scientific Officer,,C-Suite/Executive
-cto,Chief Technology Officer,,C-Suite/Executive
-clinical data manager,Clinical Data Manager,,Middle Management
-clinical data manager i,Clinical Data Manager I,I,Middle Management
-clinical laboratory scientist ii,Clinical Laboratory Scientist II,II,Scientific/Technical Professional
-clinical project manager,Clinical Project Manager,,Middle Management
-clinical research assistant ii,Clinical Research Assistant II,II,Associate/Assistant
-cra,Clinical Research Associate,,Associate/Assistant
-clinical science director,Clinical Science Director,,C-Suite/Executive
-clinical scientist,Clinical Scientist,,Scientific/Technical Professional
-clinical supply chain manager,Clinical Supply Chain Manager,,Middle Management
-clinical supply chain specialist,Clinical Supply Chain Specialist,,Associate/Assistant
-community lead,Community Lead,,Other
-computational biologist,Computational Biologist,,Other
-core facility manager,Core Facility Manager,,Middle Management
-corporate counsel,Corporate Counsel,,Other
-data integrity manager,Data Integrity Manager,,Middle Management
-data scientist ii,Data Scientist II,II,Scientific/Technical Professional
-data specialist,Data Specialist,,Associate/Assistant
-development rotational associate,Development Rotational Associate,,Associate/Assistant
-development scientist,Development Scientist,,Scientific/Technical Professional
-development scientist ii,Development Scientist II,II,Scientific/Technical Professional
-digital biomarker scientist / specialist,Digital Biomarker Scientist / Specialist,,Scientific/Technical Professional
-director,Director,,C-Suite/Executive
-director biology,Director Biology,,C-Suite/Executive
-director consulting,Director Consulting,,C-Suite/Executive
-director marketing,Director Marketing,,C-Suite/Executive
-director of bioinformatics,Director Of Bioinformatics,,C-Suite/Executive
-director of bioprocess,Director Of Bioprocess,,C-Suite/Executive
-director of business development,Director Of Business Development,,C-Suite/Executive
-director of commercialization analytics,Director Of Commercialization Analytics,,C-Suite/Executive
-director of drug development,Director Of Drug Development,,C-Suite/Executive
-director of epidemiology,Director Of Epidemiology,,C-Suite/Executive
-director of medical affairs,Director Of Medical Affairs,,C-Suite/Executive
-director of molecular and cellular pharmacology,Director Of Molecular And Cellular Pharmacology,,C-Suite/Executive
-director of operational excellence,Director Of Operational Excellence,,C-Suite/Executive
-director of operations,Director Of Operations,,C-Suite/Executive
-director of research,Director Of Research,,C-Suite/Executive
-director of research and development,Director Of Research And Development,,C-Suite/Executive
-director regulatory,Director Regulatory,,C-Suite/Executive
-"director, business development","Director, Business Development",,C-Suite/Executive
-"director, clinical pharmacology","Director, Clinical Pharmacology",,C-Suite/Executive
-"director, clinical science","Director, Clinical Science",,C-Suite/Executive
-"director, commercial operations","Director, Commercial Operations",,C-Suite/Executive
-"director, data management","Director, Data Management",,C-Suite/Executive
-"director, global qa","Director, Global QA",,C-Suite/Executive
-"director, head of department","Director, Head Of Department",,C-Suite/Executive
-"director, it solutions & governance","Director, IT Solutions & Governance",,C-Suite/Executive
-"director, investor relations","Director, Investor Relations",,C-Suite/Executive
-"director, pv","Director, PV",,C-Suite/Executive
-"director,program project management","Director, Program Project Management",,C-Suite/Executive
-"director, r&d it","Director, R&D IT",,C-Suite/Executive
-"director, regulatory clinical science","Director, Regulatory Clinical Science",,C-Suite/Executive
-"director, study quality & compliance leas","Director, Study Quality & Compliance Lead",,C-Suite/Executive
-"director, translational science","Director, Translational Science",,C-Suite/Executive
-discovery sourcing operations specialist,Discovery Sourcing Operations Specialist,,Associate/Assistant
-doctoral researcher,Doctoral Researcher,,C-Suite/Executive
-downstream manufacturing associate i,Downstream Manufacturing Associate I,I,Associate/Assistant
-engineer ii,Engineer II,II,Scientific/Technical Professional
-engineering manager,Engineering Manager,,Middle Management
-entry-level-trainee (elt),Entry-Level-Trainee (ELT),,Entry Level/Training
-ep mapping specialist,Ep Mapping Specialist,,Associate/Assistant
-executive director,Executive Director,,C-Suite/Executive
-executive director clinical development,Executive Director Clinical Development,,C-Suite/Executive
-"executive director, biometrics","Executive Director, Biometrics",,C-Suite/Executive
-"executive director, computational biology","Executive Director, Computational Biology",,C-Suite/Executive
-"executive director, global regulatory operations","Executive Director, Global Regulatory Operations",,C-Suite/Executive
-executive institutional specialist,Executive Institutional Specialist,,Associate/Assistant
-fermentation sr. reseach associate,Fermentation Senior Research Associate,,Associate/Assistant
-field application scientist,Field Application Scientist,,Scientific/Technical Professional
-field application specialist,Field Application Specialist,,Associate/Assistant
-field reimbursement manager,Field Reimbursement Manager,,Middle Management
-field service,Field Service,,Other
-field service engineer,Field Service Engineer,,Scientific/Technical Professional
-finance lead,Finance Lead,,Other
-food laboratory specialist 1,Food Laboratory Specialist I,I,Associate/Assistant
-founding scientist,Founding Scientist,,Scientific/Technical Professional
-general counsel,General Counsel,,C-Suite/Executive
-global product manager,Global Product Manager,,Middle Management
-global program leader,Global Program Leader,,Other
-graduate,Graduate,,Entry Level/Training
-graduate intern,Graduate Intern,,Entry Level/Training
-graduate intern (phd),Graduate Intern (PhD),,Entry Level/Training
-graduate scientist,Graduate Scientist,,Scientific/Technical Professional
-graduate student - biochemistry,Graduate Student - Biochemistry,,Entry Level/Training
-group head patient safety and risk management,Group Head Patient Safety And Risk Management,,Other
-"group lead, principal scientist","Group Lead, Principal Scientist",,Senior Individual Contributor
-hpc engineer,HPC Engineer,,Scientific/Technical Professional
-hardware verification specialist,Hardware Verification Specialist,,Associate/Assistant
-head of r&d operations,Head Of R&D Operations,,Other
-health science administrator,Health Science Administrator,,Other
-human resources manager,Human Resources Manager,,Middle Management
-industry career advisor,Industry Career Advisor,,Other
-infectious disease co-op,Infectious Disease Co-Op,,Other
-instruments engineer,Instruments Engineer,,Scientific/Technical Professional
-intern,Intern,,Entry Level/Training
-junior trainee,Junior Trainee,,Entry Level/Training
-lims manager,LIMS Manager,,Middle Management
-lab analyst,Lab Analyst,,Other
-lab automation engineer,Lab Automation Engineer,,Scientific/Technical Professional
-lab manager,Lab Manager,,Middle Management
-lab specialist,Lab Specialist,,Associate/Assistant
-lab specialist intermediate,Lab Specialist Intermediate,,Associate/Assistant
-lab tech,Lab Tech,,Other
-lab technician,Lab Technician,,Associate/Assistant
-lab technician ii,Lab Technician II,II,Associate/Assistant
-laboratory engineer ii,Laboratory Engineer II,II,Scientific/Technical Professional
-laboratory operations manager,Laboratory Operations Manager,,Middle Management
-laboratory technician ii,Laboratory Technician II,II,Other
-lead engineer,Lead Engineer,,Scientific/Technical Professional
-lead ops tech,Lead Ops Tech,,Other
-life science consultant,Life Science Consultant,,Specialized Role
-msat engineer ii,MSAT Engineer II,II,Scientific/Technical Professional
-machine learning lead,Machine Learning Lead,,Other
-machine learning scientist,Machine Learning Scientist,,Scientific/Technical Professional
-machine learning scientist and engineer,Machine Learning Scientist And Engineer,,Scientific/Technical Professional
-"machine learning scientist, head of bioinformatics","Machine Learning Scientist, Head Of Bioinformatics",,Scientific/Technical Professional
-manager,Manager,,Middle Management
-manager / principal scientist equivalent,Manager / Principal Scientist Equivalent,,Middle Management
-manager biostatistics,Manager Biostatistics,,Middle Management
-manager it pmo,Manager IT Pmo,,Middle Management
-manager of regulatory ad promo,Manager Of Regulatory Ad Promo,,Middle Management
-"manager, clinical qa","Manager, Clinical QA",,Middle Management
-"manager, clinical systems","Manager, Clinical Systems",,Middle Management
-"manager, operations","Manager, Operations",,Middle Management
-"manager, qa","Manager, QA",,Middle Management
-"manager, quality assurance","Manager, Quality Assurance",,Middle Management
-manufacturing associate,Manufacturing Associate,,Associate/Assistant
-manufacturing associate ii,Manufacturing Associate II,II,Associate/Assistant
-manufacturing manager ii,Manufacturing Manager II,II,Middle Management
-manufacturing senior lead investigator,Manufacturing Senior Lead Investigator,,Other
-marketing manager,Marketing Manager,,Middle Management
-medical affairs and communications lead,Medical Affairs And Communications Lead,,Other
-medical affairs trainee,Medical Affairs Trainee,,Entry Level/Training
-"medical director, clinical development","Medical Director, Clinical Development",,C-Suite/Executive
-medical science liaison,Medical Science Liaison,,Specialized Role
-method validation specialist,Method Validation Specialist,,Associate/Assistant
-molecular genetics technologist,Molecular Genetics Technologist,,Other
-molecular technologist,Molecular Technologist,,Other
-necropsy team leader,Necropsy Team Leader,,Middle Management
-phd student,PhD Student,,Other
-pharmacokineticist,Pharmacokineticist,,Other
-post master,Post Master,,Other
-post-doctoral research associate,Post-Doctoral Research Associate,,C-Suite/Executive
-postdoc,Postdoc,,Entry Level/Training
-postdoctoral associate,Postdoctoral Associate,,C-Suite/Executive
-postdoctoral fellow,Postdoctoral Fellow,,C-Suite/Executive
-principal associate scientist,Principal Associate Scientist,,Senior Individual Contributor
-principal clinical imaging scientist,Principal Clinical Imaging Scientist,,Senior Individual Contributor
-principal computational biologist,Principal Computational Biologist,,Senior Individual Contributor
-principal data scientist,Principal Data Scientist,,Senior Individual Contributor
-principal engineer,Principal Engineer,,Senior Individual Contributor
-principal health economist,Principal Health Economist,,Senior Individual Contributor
-principal machine learning scientist,Principal Machine Learning Scientist,,Senior Individual Contributor
-principal process development engineer,Principal Process Development Engineer,,Senior Individual Contributor
-principal process engineer,Principal Process Engineer,,Senior Individual Contributor
-principal product manager,Principal Product Manager,,Middle Management
-principal research associate,Principal Research Associate,,Senior Individual Contributor
-principal research scientist,Principal Research Scientist,,Senior Individual Contributor
-principal research scientist i,Principal Research Scientist I,I,Senior Individual Contributor
-principle scientist,Principal Scientist,,Senior Individual Contributor
-principal scientist,Principal Scientist,,Senior Individual Contributor
-principal scientist (translational science lead),Principal Scientist (Translational Science Lead),,Senior Individual Contributor
-principal scientist process chemistry,Principal Scientist Process Chemistry,,Senior Individual Contributor
-principal software engineer,Principal Software Engineer,,Senior Individual Contributor
-process development associate scientist,Process Development Associate Scientist,,Associate/Assistant
-process development engineer ii,Process Development Engineer II,II,Scientific/Technical Professional
-process development engineer iii,Process Development Engineer III,III,Scientific/Technical Professional
-process development rotation program (pdrp) associate,Process Development Rotation Program (PDRP) Associate,,Associate/Assistant
-process development scientist,Process Development Scientist,,Scientific/Technical Professional
-process development senior scientist,Process Development Senior Scientist,,Scientific/Technical Professional
-process development sr. associate,Process Development Sr. Associate,,Associate/Assistant
-process engineer ii,Process Engineer II,II,Scientific/Technical Professional
-"process engineer ii, msat","Process Engineer II, MSAT",,Scientific/Technical Professional
-procurement director,Procurement Director,,C-Suite/Executive
-product applications specialist,Product Applications Specialist,,Associate/Assistant
-product launch specialist,Product Launch Specialist,,Associate/Assistant
-product manager,Product Manager,,Middle Management
-product scientist,Product Scientist,,Scientific/Technical Professional
-product support manager,Product Support Manager,,Middle Management
-production associate,Production Associate,,Associate/Assistant
-production planning manager- clinical manufacturing,Production Planning Manager- Clinical Manufacturing,,Middle Management
-production specialist,Production Specialist,,Associate/Assistant
-production supervisor,Production Supervisor,,Middle Management
-professor,Professor,,Other
-program management and alliance manager,Program Management And Alliance Manager,,Middle Management
-program management director,Program Management Director,,C-Suite/Executive
-program manager,Program Manager,,Middle Management
-project leader,Project Leader,,Other
-project management intern,Project Management Intern,,Entry Level/Training
-project manager,Project Manager,,Middle Management
-project manager ii,Project Manager II,II,Middle Management
-proposal manager,Proposal Manager,,Middle Management
-qa engineer,QA Engineer,,Scientific/Technical Professional
-qa manager,QA Manager,,Middle Management
-qc analyst ii,QC Analyst II,II,Other
-qc development scientist i,QC Development Scientist I,I,Scientific/Technical Professional
-qc engineer l,QC Engineer I,I,Scientific/Technical Professional
-qc scientist,QC Scientist,,Scientific/Technical Professional
-quality assurance manager,Quality Assurance Manager,,Middle Management
-quality assurance senior technician,Quality Assurance Senior Technician,,Other
-quality assurance specialist,Quality Assurance Specialist,,Associate/Assistant
-quality control manager,Quality Control Manager,,Middle Management
-quality control microbiology lead specialist,Quality Control Microbiology Lead Specialist,,Associate/Assistant
-quality control supervisor,Quality Control Supervisor,,Middle Management
-quality engineering manager,Quality Engineering Manager,,Middle Management
-quality regulatory compliance specialist,Quality Regulatory Compliance Specialist,,Associate/Assistant
-quality systems lead,Quality Systems Lead,,Other
-quality validation manager,Quality Validation Manager,,Middle Management
-r&d specialist,R&D Specialist,,Associate/Assistant
-r&d strategic projects operations lead,R&D Strategic Projects Operations Lead,,Other
-regulatory affairs manager,Regulatory Affairs Manager,,Middle Management
-research assistant,Research Assistant,,Associate/Assistant
-research assistant (bioinformatician),Research Assistant (Bioinformatician),,Associate/Assistant
-research assistant i,Research Assistant I,I,Associate/Assistant
-research assistant iii,Research Assistant III,III,Associate/Assistant
-research associate,Research Associate,,Associate/Assistant
-research associate (engineer),Research Associate (Engineer),,Associate/Assistant
-research associate i,Research Associate I,I,Associate/Assistant
-research associate 2,Research Associate II,II,Associate/Assistant
-research associate ii,Research Associate II,II,Associate/Assistant
-research associate iii,Research Associate III,III,Associate/Assistant
-research lab manager,Research Lab Manager,,Middle Management
-research officer,Research Officer,,Other
-research professional,Research Professional,,Other
-research professional iii,Research Professional III,III,Other
-research scientist,Research Scientist,,Scientific/Technical Professional
-research scientist i,Research Scientist I,I,Scientific/Technical Professional
-research scientist ii,Research Scientist II,II,Scientific/Technical Professional
-research scientists i,Research Scientists I,I,Scientific/Technical Professional
-research support specialist,Research Support Specialist,,Associate/Assistant
-research technician,Research Technician,,Other
-researcher,Researcher,,Other
-researcher iv,Researcher IV,IV,Other
-sma i,SMA I,I,Other
-safety manager,Safety Manager,,Middle Management
-sample management (contractor),Sample Management (Contractor),,C-Suite/Executive
-scientific lead,Scientific Lead,,Other
-scientific marketing officer,Scientific Marketing Officer,,Other
-scientist,Scientist,,Scientific/Technical Professional
-scientist i,Scientist I,I,Scientific/Technical Professional
-scientist 1,Scientist I,I,Scientific/Technical Professional
-scientist 2,Scientist II,II,Scientific/Technical Professional
-scientist ll,Scientist II,II,Scientific/Technical Professional
-scientist ii,Scientist II,II,Scientific/Technical Professional
-"scientist ii, lead","Scientist II, Lead",,Scientific/Technical Professional
-scientist 3,Scientist III,III,Scientific/Technical Professional
-scientist iii,Scientist III,III,Scientific/Technical Professional
-"scientist iii, molecular biology","Scientist III, Molecular Biology",,Scientific/Technical Professional
-"scientist, engineering","Scientist, Engineering",,Scientific/Technical Professional
-"scientist, molecular biology","Scientist, Molecular Biology",,Scientific/Technical Professional
-scientists technical support,Scientists Technical Support,,Scientific/Technical Professional
-senior accounting manager,Senior Accounting Manager,,Other
-sr analyst,Senior Analyst,,Other
-sr analytical engineer,Senior Analytical Engineer,,Scientific/Technical Professional
-senior applocations scientist,Senior Applications Scientist,,Scientific/Technical Professional
-senior applied research scientist,Senior Applied Research Scientist,,Scientific/Technical Professional
-senior associate,Senior Associate,,Associate/Assistant
-senior associate scientist,Senior Associate Scientist,,Associate/Assistant
-sr. associate scientist,Senior Associate Scientist,,Associate/Assistant
-senior associate scientist ii,Senior Associate Scientist II,II,Associate/Assistant
-"senior associate, qc","Senior Associate, QC",,Associate/Assistant
-senior bioinformatician,Senior Bioinformatician,,Other
-senior bioinformatics engineer,Senior Bioinformatics Engineer,,Scientific/Technical Professional
-senior bioinformatics scientist,Senior Bioinformatics Scientist,,Scientific/Technical Professional
-senior bioinformatics scientist 2,Senior Bioinformatics Scientist II,II,Scientific/Technical Professional
-senior cmc project manager,Senior CMC Project Manager,,Other
-senior csv engineer,Senior CSV Engineer,,Scientific/Technical Professional
-sr. cell culture technician,Senior Cell Culture Technician,,Other
-sr cheminformatics scientist,Senior Cheminformatics Scientist,,Scientific/Technical Professional
-senior chemist,Senior Chemist,,Other
-senior clinical laboratory scientist,Senior Clinical Laboratory Scientist,,Scientific/Technical Professional
-senior clinical project manager,Senior Clinical Project Manager,,Other
-sr clinical scientist,Senior Clinical Scientist,,Scientific/Technical Professional
-senior clinical scientist,Senior Clinical Scientist,,Scientific/Technical Professional
-senior computational associate,Senior Computational Associate,,Associate/Assistant
-senior computational biologist,Senior Computational Biologist,,Other
-senior consultant,Senior Consultant,,Specialized Role
-senior data scientist,Senior Data Scientist,,Scientific/Technical Professional
-sr. data scientist,Senior Data Scientist,,Scientific/Technical Professional
-senior director,Senior Director,,C-Suite/Executive
-senior director global market access,Senior Director Global Market Access,,C-Suite/Executive
-sr. director of antibody engineering,Senior Director Of Antibody Engineering,,C-Suite/Executive
-senior director of bioinformatics,Senior Director Of Bioinformatics,,C-Suite/Executive
-senior director program management,Senior Director Program Management,,C-Suite/Executive
-"senior director, clinical data management","Senior Director, Clinical Data Management",,C-Suite/Executive
-"senior director, program management","Senior Director, Program Management",,C-Suite/Executive
-senior downstream process technician,Senior Downstream Process Technician,,Other
-senior engineer,Senior Engineer,,Scientific/Technical Professional
-senior engineer ii,Senior Engineer II,II,Scientific/Technical Professional
-senior engineering manager,Senior Engineering Manager,,Scientific/Technical Professional
-senior field applications scientist,Senior Field Applications Scientist,,Scientific/Technical Professional
-senior human resources generalist,Senior Human Resources Generalist,,Other
-senior laboratory analyst,Senior Laboratory Analyst,,Other
-senior laboratory technician,Senior Laboratory Technician,,Other
-senior manager,Senior Manager,,Middle Management
-senior manager drug safety & pharmacovigilance operations,Senior Manager Drug Safety & Pharmacovigilance Operations,,Middle Management
-senior manager engineering,Senior Manager Engineering,,Middle Management
-senior manager medical writing,Senior Manager Medical Writing,,Middle Management
-senior manager quality systems,Senior Manager Quality Systems,,Middle Management
-sr manager raw supply chain,Senior Manager Raw Supply Chain,,Middle Management
-sr. manager tsms,Senior Manager TSMS,,Middle Management
-"senior manager, business analytics","Senior Manager, Business Analytics",,Middle Management
-"senior manager, clinical data management","Senior Manager, Clinical Data Management",,Middle Management
-"senior manager, cold chain logistics","Senior Manager, Cold Chain Logistics",,Middle Management
-"sr. manager, ms&t","Senior Manager, Manufacturing Science & Technology",,Middle Management
-"senior manager, operations","Senior Manager, Operations",,Middle Management
-"senior manager, quality systems","Senior Manager, Quality Systems",,Middle Management
-sr. manufacturing associate,Senior Manufacturing Associate,,Associate/Assistant
-senior manufacturing associate,Senior Manufacturing Associate,,Associate/Assistant
-senior manufacturing scientist,Senior Manufacturing Scientist,,Scientific/Technical Professional
-senior manufacturing technology engineer,Senior Manufacturing Technology Engineer,,Scientific/Technical Professional
-senior medical director,Senior Medical Director,,C-Suite/Executive
-sr msl,Senior Medical Science Liaison,,Specialized Role
-sr. medical science liaison,Senior Medical Science Liaison,,Specialized Role
-senior oncology specialist,Senior Oncology Specialist,,Associate/Assistant
-senior principal scientist,Senior Principal Scientist,,Senior Individual Contributor
-sr. principal scientist,Senior Principal Scientist,,Senior Individual Contributor
-senior principal scientist - msat,Senior Principal Scientist - MSAT,,Senior Individual Contributor
-senior process chemist,Senior Process Chemist,,Other
-senior process development associate,Senior Process Development Associate,,Associate/Assistant
-senior process engineer,Senior Process Engineer,,Scientific/Technical Professional
-senior process engineer iii,Senior Process Engineer III,III,Scientific/Technical Professional
-senior process maintenance,Senior Process Maintenance,,Other
-senior product engineer,Senior Product Engineer,,Scientific/Technical Professional
-sr. product marketing manager,Senior Product Marketing Manager,,Other
-senior program and alliance manager,Senior Program And Alliance Manager,,Other
-sr program manager,Senior Program Manager,,Other
-sr qa associate ii,Senior QA Associate II,II,Associate/Assistant
-sr. qa specialist ops,Senior QA Specialist Ops,,Associate/Assistant
-senior quality engineer,Senior Quality Engineer,,Scientific/Technical Professional
-sr quantitative pharmacologist,Senior Quantitative Pharmacologist,,Other
-senior regulatory affairs associate,Senior Regulatory Affairs Associate,,Associate/Assistant
-sr. research associate,Senior Research Associate,,Associate/Assistant
-senior research associate,Senior Research Associate,,Associate/Assistant
-senior research associate i,Senior Research Associate I,I,Associate/Assistant
-senior research associate 2,Senior Research Associate II,II,Associate/Assistant
-"senior research associate, analytical development","Senior Research Associate, Analytical Development",,Associate/Assistant
-"senior research associate, platform development","Senior Research Associate, Platform Development",,Associate/Assistant
-senior research scientist,Senior Research Scientist,,Scientific/Technical Professional
-senior research support associate,Senior Research Support Associate,,Associate/Assistant
-senior scientific project manager,Senior Scientific Project Manager,,Other
-senior scietist,Senior Scientist,,Scientific/Technical Professional
-sr. scientist,Senior Scientist,,Scientific/Technical Professional
-sr scientist,Senior Scientist,,Scientific/Technical Professional
-senior scientist,Senior Scientist,,Scientific/Technical Professional
-senior scientist and team lead,Senior Scientist And Team Lead,,Middle Management
-senior scientist 1,Senior Scientist I,I,Scientific/Technical Professional
-sr scientist i,Senior Scientist I,I,Scientific/Technical Professional
-senior scientist i,Senior Scientist I,I,Scientific/Technical Professional
-"senior scientist i, medicinal chemistry","Senior Scientist I, Medicinal Chemistry",,Scientific/Technical Professional
-senior scientist ii,Senior Scientist II,II,Scientific/Technical Professional
-senior scientist ii process development,Senior Scientist II Process Development,II,Scientific/Technical Professional
-senior scientist in computational biology,Senior Scientist In Computational Biology,,Scientific/Technical Professional
-"senior scientist, cadd","Senior Scientist, CADD",,Scientific/Technical Professional
-"senior scientist, computational biology","Senior Scientist, Computational Biology",,Scientific/Technical Professional
-"senior scientist, r&d","Senior Scientist, R&D",,Scientific/Technical Professional
-senior scientist- packaging,Senior Scientist- Packaging,,Scientific/Technical Professional
-senior software developer,Senior Software Developer,,Other
-senior specialist,Senior Specialist,,Associate/Assistant
-sr. specialist,Senior Specialist,,Associate/Assistant
-"senior specialist, engineering","Senior Specialist, Engineering",,Scientific/Technical Professional
-senior staff bioinformatics engineer,Senior Staff Bioinformatics Engineer,,Senior Individual Contributor
-sr staff s&op manager,Senior Staff S&Op Manager,,Senior Individual Contributor
-sr. supply chain specialist,Senior Supply Chain Specialist,,Associate/Assistant
-senior technician,Senior Technician,,Other
-senior toxicologist,Senior Toxicologist,,Other
-site specialist,Site Specialist,,Associate/Assistant
-software engineer,Software Engineer,,Scientific/Technical Professional
-software engineer 3,Software Engineer 3,III,Scientific/Technical Professional
-specialist engineering,Specialist Engineering,,Scientific/Technical Professional
-specialist iii,Specialist III,III,Associate/Assistant
-"specialist, it security","Specialist, IT Security",,Associate/Assistant
-staff clinical research scientist,Staff Clinical Research Scientist,,Senior Individual Contributor
-staff data scientist,Staff Data Scientist,,Senior Individual Contributor
-staff engineer,Staff Engineer,,Senior Individual Contributor
-"staff engineer, msat","Staff Engineer, MSAT",,Senior Individual Contributor
-staff process engineer,Staff Process Engineer,,Senior Individual Contributor
-staff scientist,Staff Scientist,,Senior Individual Contributor
-"staff scientist, bioinformatics","Staff Scientist, Bioinformatics",,Senior Individual Contributor
-student lab assistant,Student Lab Assistant,,Associate/Assistant
-study manager,Study Manager,,Middle Management
-study physician,Study Physician,,Other
-study technician iii,Study Technician III,III,Other
-"supervisor, manufacturing sciences and technology","Supervisor, Manufacturing Sciences And Technology",,Middle Management
-supply chain manager,Supply Chain Manager,,Middle Management
-support manufacturing associate 1,Support Manufacturing Associate I,I,Associate/Assistant
-systems engineer iii,Systems Engineer III,III,Scientific/Technical Professional
-team leader,Team Leader,,Middle Management
-technical applications scientist 2,Technical Applications Scientist II,II,Scientific/Technical Professional
-territory account manager,Territory Account Manager,,Middle Management
-therapeutic specialist,Therapeutic Specialist,,Associate/Assistant
-toxicologist,Toxicologist,,Other
-vp,VP,,Other
-vp medical affairs,VP Medical Affairs,,C-Suite/Executive
-vp r&d,VP R&D,,C-Suite/Executive
-vp technical development & manufacturing,VP Technical Development & Manufacturing,,C-Suite/Executive
-"vp, transformation","VP, Transformation",,Other
-validation engineer,Validation Engineer,,Scientific/Technical Professional
-validation engineer manager,Validation Engineer Manager,,Middle Management
-validation specialist,Validation Specialist,,Associate/Assistant
-"vice president, business development","Vice President, Business Development",,C-Suite/Executive
+raw_job_title,standardized_job_title
+5,
+hourly,
+"",
+co-op,
+salaried,
+-,
+functional resourcing,
+talent aquisition,
+"prospecting, petroglyphs, ancient symbols,",
+4,
+onsite support,
+account manager,Account Manager
+active ingredient technician,Active Ingredient Technician
+analyst,Analyst
+analytical development scientist i,Analytical Development Scientist I
+analytical operations manager,Analytical Operations Manager
+application specialist,Application Specialist
+archivist,Archivist
+assistant scientist,Assistant Scientist
+assoc analytical development specialist,Associate Analytical Development Specialist
+associate chemist,Associate Chemist
+associate director,Associate Director
+associate director - tech modernization,Associate Director - Tech Modernization
+associate director biostatistics,Associate Director Biostatistics
+ad clinical,Associate Director Clinical
+associate director commercial,Associate Director Commercial
+associate director data engineering,Associate Director Data Engineering
+associate director of bioinformatics,Associate Director Of Bioinformatics
+associate director of data science,Associate Director Of Data Science
+associate director of marketing,Associate Director Of Marketing
+associate director program management hematology,Associate Director Program Management Hematology
+associte director qa,Associate Director QA
+associate director safety lead,Associate Director Safety Lead
+associate director validation,Associate Director Validation
+"associate director, clinical supplies","Associate Director, Clinical Supplies"
+"associate director, computational biology","Associate Director, Computational Biology"
+"associate director, engineering","Associate Director, Engineering"
+"associate director, field medical affairs","Associate Director, Field Medical Affairs"
+"associate director, fp&a","Associate Director, Fp&A"
+"associate director, lab operations","Associate Director, Lab Operations"
+"associate director, lab operations and facilities","Associate Director, Lab Operations And Facilities"
+"associate director, program management","Associate Director, Program Management"
+"associate director, quality","Associate Director, Quality"
+associate engineer,Associate Engineer
+associate manager,Associate Manager
+associate manager ms&t,Associate Manager Ms&T
+associate manager precision medicine,Associate Manager Precision Medicine
+associate principal scientist,Associate Principal Scientist
+associate program manager iii,Associate Program Manager III
+associate research assistant,Associate Research Assistant
+associate research scientist,Associate Research Scientist
+associate scientist,Associate Scientist
+associate scientist i,Associate Scientist I
+associate scientist 2,Associate Scientist II
+associate scientist ii,Associate Scientist II
+"associate scientist, bio-analytics","Associate Scientist, Bio-Analytics"
+"associate scientist, qc microbiology","Associate Scientist, QC Microbiology"
+associate specialist,Associate Specialist
+"associate vp, research compliance","Associate VP, Research Compliance"
+automation engineer,Automation Engineer
+automation engineer i,Automation Engineer I
+automation engineer ii,Automation Engineer II
+automation engineer iii,Automation Engineer III
+biochemist,Biochemist
+bioinformatic scientist,Bioinformatic Scientist
+bioinformatician,Bioinformatician
+bioinformatics analyst ii,Bioinformatics Analyst II
+bioinformatics consultant,Bioinformatics Consultant
+bioinformatics engineer,Bioinformatics Engineer
+bioinformatics engineer i,Bioinformatics Engineer I
+bioinformatics intern,Bioinformatics Intern
+bioinformatics scientist,Bioinformatics Scientist
+bioinformatics scientist customer support,Bioinformatics Scientist Customer Support
+bioinformatics senior associate,Bioinformatics Senior Associate
+bioprocess engineer,Bioprocess Engineer
+biostatistician,Biostatistician
+biotechnologist associate,Biotechnologist Associate
+business analysis manager,Business Analysis Manager
+business development associate,Business Development Associate
+bd manager,Business Development Manager
+car-t operations associate,Car-T Operations Associate
+car-t operator,Car-T Operator
+case analyst,Case Analyst
+category manager,Category Manager
+change qa specialist,Change QA Specialist
+cso,Chief Scientific Officer
+cto,Chief Technology Officer
+clinical data manager,Clinical Data Manager
+clinical data manager i,Clinical Data Manager I
+clinical laboratory scientist ii,Clinical Laboratory Scientist II
+clinical project manager,Clinical Project Manager
+clinical research assistant ii,Clinical Research Assistant II
+cra,Clinical Research Associate
+clinical science director,Clinical Science Director
+clinical scientist,Clinical Scientist
+clinical supply chain manager,Clinical Supply Chain Manager
+clinical supply chain specialist,Clinical Supply Chain Specialist
+community lead,Community Lead
+computational biologist,Computational Biologist
+core facility manager,Core Facility Manager
+corporate counsel,Corporate Counsel
+data integrity manager,Data Integrity Manager
+data scientist ii,Data Scientist II
+data specialist,Data Specialist
+development rotational associate,Development Rotational Associate
+development scientist,Development Scientist
+development scientist ii,Development Scientist II
+digital biomarker scientist / specialist,Digital Biomarker Scientist / Specialist
+director,Director
+director biology,Director Biology
+director consulting,Director Consulting
+director marketing,Director Marketing
+director of bioinformatics,Director Of Bioinformatics
+director of bioprocess,Director Of Bioprocess
+director of business development,Director Of Business Development
+director of commercialization analytics,Director Of Commercialization Analytics
+director of drug development,Director Of Drug Development
+director of epidemiology,Director Of Epidemiology
+director of medical affairs,Director Of Medical Affairs
+director of molecular and cellular pharmacology,Director Of Molecular And Cellular Pharmacology
+director of operational excellence,Director Of Operational Excellence
+director of operations,Director Of Operations
+director of research,Director Of Research
+director of research and development,Director Of Research And Development
+director regulatory,Director Regulatory
+"director, business development","Director, Business Development"
+"director, clinical pharmacology","Director, Clinical Pharmacology"
+"director, clinical science","Director, Clinical Science"
+"director, commercial operations","Director, Commercial Operations"
+"director, data management","Director, Data Management"
+"director, global qa","Director, Global QA"
+"director, head of department","Director, Head Of Department"
+"director, it solutions & governance","Director, IT Solutions & Governance"
+"director, investor relations","Director, Investor Relations"
+"director, pv","Director, PV"
+"director,program project management","Director, Program Project Management"
+"director, r&d it","Director, R&D IT"
+"director, regulatory clinical science","Director, Regulatory Clinical Science"
+"director, study quality & compliance leas","Director, Study Quality & Compliance Lead"
+"director, translational science","Director, Translational Science"
+discovery sourcing operations specialist,Discovery Sourcing Operations Specialist
+doctoral researcher,Doctoral Researcher
+downstream manufacturing associate i,Downstream Manufacturing Associate I
+engineer ii,Engineer II
+engineering manager,Engineering Manager
+entry-level-trainee (elt),Entry-Level-Trainee (ELT)
+ep mapping specialist,Ep Mapping Specialist
+executive director,Executive Director
+executive director clinical development,Executive Director Clinical Development
+"executive director, biometrics","Executive Director, Biometrics"
+"executive director, computational biology","Executive Director, Computational Biology"
+"executive director, global regulatory operations","Executive Director, Global Regulatory Operations"
+executive institutional specialist,Executive Institutional Specialist
+fermentation sr. reseach associate,Fermentation Senior Research Associate
+field application scientist,Field Application Scientist
+field application specialist,Field Application Specialist
+field reimbursement manager,Field Reimbursement Manager
+field service,Field Service
+field service engineer,Field Service Engineer
+finance lead,Finance Lead
+food laboratory specialist 1,Food Laboratory Specialist I
+founding scientist,Founding Scientist
+general counsel,General Counsel
+global product manager,Global Product Manager
+global program leader,Global Program Leader
+graduate,Graduate
+graduate intern,Graduate Intern
+graduate intern (phd),Graduate Intern (PhD)
+graduate scientist,Graduate Scientist
+graduate student - biochemistry,Graduate Student - Biochemistry
+group head patient safety and risk management,Group Head Patient Safety And Risk Management
+"group lead, principal scientist","Group Lead, Principal Scientist"
+hpc engineer,HPC Engineer
+hardware verification specialist,Hardware Verification Specialist
+head of r&d operations,Head Of R&D Operations
+health science administrator,Health Science Administrator
+human resources manager,Human Resources Manager
+industry career advisor,Industry Career Advisor
+infectious disease co-op,Infectious Disease Co-Op
+instruments engineer,Instruments Engineer
+intern,Intern
+junior trainee,Junior Trainee
+lims manager,LIMS Manager
+lab analyst,Lab Analyst
+lab automation engineer,Lab Automation Engineer
+lab manager,Lab Manager
+lab specialist,Lab Specialist
+lab specialist intermediate,Lab Specialist Intermediate
+lab tech,Lab Tech
+lab technician,Lab Technician
+lab technician ii,Lab Technician II
+laboratory engineer ii,Laboratory Engineer II
+laboratory operations manager,Laboratory Operations Manager
+laboratory technician ii,Laboratory Technician II
+lead engineer,Lead Engineer
+lead ops tech,Lead Ops Tech
+life science consultant,Life Science Consultant
+msat engineer ii,MSAT Engineer II
+machine learning lead,Machine Learning Lead
+machine learning scientist,Machine Learning Scientist
+machine learning scientist and engineer,Machine Learning Scientist And Engineer
+"machine learning scientist, head of bioinformatics","Machine Learning Scientist, Head Of Bioinformatics"
+manager,Manager
+manager / principal scientist equivalent,Manager / Principal Scientist Equivalent
+manager biostatistics,Manager Biostatistics
+manager it pmo,Manager IT Pmo
+manager of regulatory ad promo,Manager Of Regulatory Ad Promo
+"manager, clinical qa","Manager, Clinical QA"
+"manager, clinical systems","Manager, Clinical Systems"
+"manager, operations","Manager, Operations"
+"manager, qa","Manager, QA"
+"manager, quality assurance","Manager, Quality Assurance"
+manufacturing associate,Manufacturing Associate
+manufacturing associate ii,Manufacturing Associate II
+manufacturing manager ii,Manufacturing Manager II
+manufacturing senior lead investigator,Manufacturing Senior Lead Investigator
+marketing manager,Marketing Manager
+medical affairs and communications lead,Medical Affairs And Communications Lead
+medical affairs trainee,Medical Affairs Trainee
+"medical director, clinical development","Medical Director, Clinical Development"
+medical science liaison,Medical Science Liaison
+method validation specialist,Method Validation Specialist
+molecular genetics technologist,Molecular Genetics Technologist
+molecular technologist,Molecular Technologist
+necropsy team leader,Necropsy Team Leader
+phd student,PhD Student
+pharmacokineticist,Pharmacokineticist
+post master,Post Master
+post-doctoral research associate,Post-Doctoral Research Associate
+postdoc,Postdoc
+postdoctoral associate,Postdoctoral Associate
+postdoctoral fellow,Postdoctoral Fellow
+principal associate scientist,Principal Associate Scientist
+principal clinical imaging scientist,Principal Clinical Imaging Scientist
+principal computational biologist,Principal Computational Biologist
+principal data scientist,Principal Data Scientist
+principal engineer,Principal Engineer
+principal health economist,Principal Health Economist
+principal machine learning scientist,Principal Machine Learning Scientist
+principal process development engineer,Principal Process Development Engineer
+principal process engineer,Principal Process Engineer
+principal product manager,Principal Product Manager
+principal research associate,Principal Research Associate
+principal research scientist,Principal Research Scientist
+principal research scientist i,Principal Research Scientist I
+principle scientist,Principal Scientist
+principal scientist,Principal Scientist
+principal scientist (translational science lead),Principal Scientist (Translational Science Lead)
+principal scientist process chemistry,Principal Scientist Process Chemistry
+principal software engineer,Principal Software Engineer
+process development associate scientist,Process Development Associate Scientist
+process development engineer ii,Process Development Engineer II
+process development engineer iii,Process Development Engineer III
+process development rotation program (pdrp) associate,Process Development Rotation Program (PDRP) Associate
+process development scientist,Process Development Scientist
+process development senior scientist,Process Development Senior Scientist
+process development sr. associate,Process Development Sr. Associate
+process engineer ii,Process Engineer II
+"process engineer ii, msat","Process Engineer II, MSAT"
+procurement director,Procurement Director
+product applications specialist,Product Applications Specialist
+product launch specialist,Product Launch Specialist
+product manager,Product Manager
+product scientist,Product Scientist
+product support manager,Product Support Manager
+production associate,Production Associate
+production planning manager- clinical manufacturing,Production Planning Manager- Clinical Manufacturing
+production specialist,Production Specialist
+production supervisor,Production Supervisor
+professor,Professor
+program management and alliance manager,Program Management And Alliance Manager
+program management director,Program Management Director
+program manager,Program Manager
+project leader,Project Leader
+project management intern,Project Management Intern
+project manager,Project Manager
+project manager ii,Project Manager II
+proposal manager,Proposal Manager
+qa engineer,QA Engineer
+qa manager,QA Manager
+qc analyst ii,QC Analyst II
+qc development scientist i,QC Development Scientist I
+qc engineer l,QC Engineer I
+qc scientist,QC Scientist
+quality assurance manager,Quality Assurance Manager
+quality assurance senior technician,Quality Assurance Senior Technician
+quality assurance specialist,Quality Assurance Specialist
+quality control manager,Quality Control Manager
+quality control microbiology lead specialist,Quality Control Microbiology Lead Specialist
+quality control supervisor,Quality Control Supervisor
+quality engineering manager,Quality Engineering Manager
+quality regulatory compliance specialist,Quality Regulatory Compliance Specialist
+quality systems lead,Quality Systems Lead
+quality validation manager,Quality Validation Manager
+r&d specialist,R&D Specialist
+r&d strategic projects operations lead,R&D Strategic Projects Operations Lead
+regulatory affairs manager,Regulatory Affairs Manager
+research assistant,Research Assistant
+research assistant (bioinformatician),Research Assistant (Bioinformatician)
+research assistant i,Research Assistant I
+research assistant iii,Research Assistant III
+research associate,Research Associate
+research associate (engineer),Research Associate (Engineer)
+research associate i,Research Associate I
+research associate 2,Research Associate II
+research associate ii,Research Associate II
+research associate iii,Research Associate III
+research lab manager,Research Lab Manager
+research officer,Research Officer
+research professional,Research Professional
+research professional iii,Research Professional III
+research scientist,Research Scientist
+research scientist i,Research Scientist I
+research scientist ii,Research Scientist II
+research scientists i,Research Scientists I
+research support specialist,Research Support Specialist
+research technician,Research Technician
+researcher,Researcher
+researcher iv,Researcher IV
+sma i,SMA I
+safety manager,Safety Manager
+sample management (contractor),Sample Management (Contractor)
+scientific lead,Scientific Lead
+scientific marketing officer,Scientific Marketing Officer
+scientist,Scientist
+scientist i,Scientist I
+scientist 1,Scientist I
+scientist 2,Scientist II
+scientist ll,Scientist II
+scientist ii,Scientist II
+"scientist ii, lead","Scientist II, Lead"
+scientist 3,Scientist III
+scientist iii,Scientist III
+"scientist iii, molecular biology","Scientist III, Molecular Biology"
+"scientist, engineering","Scientist, Engineering"
+"scientist, molecular biology","Scientist, Molecular Biology"
+scientists technical support,Scientists Technical Support
+senior accounting manager,Senior Accounting Manager
+sr analyst,Senior Analyst
+sr analytical engineer,Senior Analytical Engineer
+senior applocations scientist,Senior Applications Scientist
+senior applied research scientist,Senior Applied Research Scientist
+senior associate,Senior Associate
+senior associate scientist,Senior Associate Scientist
+sr. associate scientist,Senior Associate Scientist
+senior associate scientist ii,Senior Associate Scientist II
+"senior associate, qc","Senior Associate, QC"
+senior bioinformatician,Senior Bioinformatician
+senior bioinformatics engineer,Senior Bioinformatics Engineer
+senior bioinformatics scientist,Senior Bioinformatics Scientist
+senior bioinformatics scientist 2,Senior Bioinformatics Scientist II
+senior cmc project manager,Senior CMC Project Manager
+senior csv engineer,Senior CSV Engineer
+sr. cell culture technician,Senior Cell Culture Technician
+sr cheminformatics scientist,Senior Cheminformatics Scientist
+senior chemist,Senior Chemist
+senior clinical laboratory scientist,Senior Clinical Laboratory Scientist
+senior clinical project manager,Senior Clinical Project Manager
+sr clinical scientist,Senior Clinical Scientist
+senior clinical scientist,Senior Clinical Scientist
+senior computational associate,Senior Computational Associate
+senior computational biologist,Senior Computational Biologist
+senior consultant,Senior Consultant
+senior data scientist,Senior Data Scientist
+sr. data scientist,Senior Data Scientist
+senior director,Senior Director
+senior director global market access,Senior Director Global Market Access
+sr. director of antibody engineering,Senior Director Of Antibody Engineering
+senior director of bioinformatics,Senior Director Of Bioinformatics
+senior director program management,Senior Director Program Management
+"senior director, clinical data management","Senior Director, Clinical Data Management"
+"senior director, program management","Senior Director, Program Management"
+senior downstream process technician,Senior Downstream Process Technician
+senior engineer,Senior Engineer
+senior engineer ii,Senior Engineer II
+senior engineering manager,Senior Engineering Manager
+senior field applications scientist,Senior Field Applications Scientist
+senior human resources generalist,Senior Human Resources Generalist
+senior laboratory analyst,Senior Laboratory Analyst
+senior laboratory technician,Senior Laboratory Technician
+senior manager,Senior Manager
+senior manager drug safety & pharmacovigilance operations,Senior Manager Drug Safety & Pharmacovigilance Operations
+senior manager engineering,Senior Manager Engineering
+senior manager medical writing,Senior Manager Medical Writing
+senior manager quality systems,Senior Manager Quality Systems
+sr manager raw supply chain,Senior Manager Raw Supply Chain
+sr. manager tsms,Senior Manager TSMS
+"senior manager, business analytics","Senior Manager, Business Analytics"
+"senior manager, clinical data management","Senior Manager, Clinical Data Management"
+"senior manager, cold chain logistics","Senior Manager, Cold Chain Logistics"
+"sr. manager, ms&t","Senior Manager, Manufacturing Science & Technology"
+"senior manager, operations","Senior Manager, Operations"
+"senior manager, quality systems","Senior Manager, Quality Systems"
+sr. manufacturing associate,Senior Manufacturing Associate
+senior manufacturing associate,Senior Manufacturing Associate
+senior manufacturing scientist,Senior Manufacturing Scientist
+senior manufacturing technology engineer,Senior Manufacturing Technology Engineer
+senior medical director,Senior Medical Director
+sr msl,Senior Medical Science Liaison
+sr. medical science liaison,Senior Medical Science Liaison
+senior oncology specialist,Senior Oncology Specialist
+senior principal scientist,Senior Principal Scientist
+sr. principal scientist,Senior Principal Scientist
+senior principal scientist - msat,Senior Principal Scientist - MSAT
+senior process chemist,Senior Process Chemist
+senior process development associate,Senior Process Development Associate
+senior process engineer,Senior Process Engineer
+senior process engineer iii,Senior Process Engineer III
+senior process maintenance,Senior Process Maintenance
+senior product engineer,Senior Product Engineer
+sr. product marketing manager,Senior Product Marketing Manager
+senior program and alliance manager,Senior Program And Alliance Manager
+sr program manager,Senior Program Manager
+sr qa associate ii,Senior QA Associate II
+sr. qa specialist ops,Senior QA Specialist Ops
+senior quality engineer,Senior Quality Engineer
+sr quantitative pharmacologist,Senior Quantitative Pharmacologist
+senior regulatory affairs associate,Senior Regulatory Affairs Associate
+sr. research associate,Senior Research Associate
+senior research associate,Senior Research Associate
+senior research associate i,Senior Research Associate I
+senior research associate 2,Senior Research Associate II
+"senior research associate, analytical development","Senior Research Associate, Analytical Development"
+"senior research associate, platform development","Senior Research Associate, Platform Development"
+senior research scientist,Senior Research Scientist
+senior research support associate,Senior Research Support Associate
+senior scientific project manager,Senior Scientific Project Manager
+senior scietist,Senior Scientist
+sr. scientist,Senior Scientist
+sr scientist,Senior Scientist
+senior scientist,Senior Scientist
+senior scientist and team lead,Senior Scientist And Team Lead
+senior scientist 1,Senior Scientist I
+sr scientist i,Senior Scientist I
+senior scientist i,Senior Scientist I
+"senior scientist i, medicinal chemistry","Senior Scientist I, Medicinal Chemistry"
+senior scientist ii,Senior Scientist II
+senior scientist ii process development,Senior Scientist II Process Development
+senior scientist in computational biology,Senior Scientist In Computational Biology
+"senior scientist, cadd","Senior Scientist, CADD"
+"senior scientist, computational biology","Senior Scientist, Computational Biology"
+"senior scientist, r&d","Senior Scientist, R&D"
+senior scientist- packaging,Senior Scientist- Packaging
+senior software developer,Senior Software Developer
+senior specialist,Senior Specialist
+sr. specialist,Senior Specialist
+"senior specialist, engineering","Senior Specialist, Engineering"
+senior staff bioinformatics engineer,Senior Staff Bioinformatics Engineer
+sr staff s&op manager,Senior Staff S&Op Manager
+sr. supply chain specialist,Senior Supply Chain Specialist
+senior technician,Senior Technician
+senior toxicologist,Senior Toxicologist
+site specialist,Site Specialist
+software engineer,Software Engineer
+software engineer 3,Software Engineer 3
+specialist engineering,Specialist Engineering
+specialist iii,Specialist III
+"specialist, it security","Specialist, IT Security"
+staff clinical research scientist,Staff Clinical Research Scientist
+staff data scientist,Staff Data Scientist
+staff engineer,Staff Engineer
+"staff engineer, msat","Staff Engineer, MSAT"
+staff process engineer,Staff Process Engineer
+staff scientist,Staff Scientist
+"staff scientist, bioinformatics","Staff Scientist, Bioinformatics"
+student lab assistant,Student Lab Assistant
+study manager,Study Manager
+study physician,Study Physician
+study technician iii,Study Technician III
+"supervisor, manufacturing sciences and technology","Supervisor, Manufacturing Sciences And Technology"
+supply chain manager,Supply Chain Manager
+support manufacturing associate 1,Support Manufacturing Associate I
+systems engineer iii,Systems Engineer III
+team leader,Team Leader
+technical applications scientist 2,Technical Applications Scientist II
+territory account manager,Territory Account Manager
+therapeutic specialist,Therapeutic Specialist
+toxicologist,Toxicologist
+vp,VP
+vp medical affairs,VP Medical Affairs
+vp r&d,VP R&D
+vp technical development & manufacturing,VP Technical Development & Manufacturing
+"vp, transformation","VP, Transformation"
+validation engineer,Validation Engineer
+validation engineer manager,Validation Engineer Manager
+validation specialist,Validation Specialist
+"vice president, business development","Vice President, Business Development"
