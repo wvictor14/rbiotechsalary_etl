@@ -10,8 +10,14 @@ models:
     columns:
       - name: raw_title
         description: "The original, uncleaned job title from the source system."
+        tests:
+          - not_null
+          
       - name: title
         description: "The harmonized title after joining with the job_titles reference table."
+        tests:
+          - not_null
+
       - name: standardized_title
         description: "The official title assigned based on the highest-priority keyword match."
       - name: hierarchy
