@@ -11,35 +11,34 @@ models:
         data_type: string
         description: >
           Generated using `dbt_utils.generate_surrogate_key` with 
-          `job_title_id`, `job_level`, `job_group`, and `job_hierarchy`
+          `title_id`, `job_level`, `job_group`, and `job_hierarchy`
         tests:
           - not_null
           - unique
-
-      - name: job_title_id
+          
+      - name: title_id
         data_type: string
         description: "Foreign key to dim_job_titles table"
         tests:
           - not_null
           - relationships:
-              to: ref('dim_job_titles')
-              field: job_title_id
+              arguments:
+                to: ref('dim_job_titles')
+                field: title_id
 
-      - name: job_title
+      - name: standardized_title
         data_type: string
         description: "Standardized job title"
-        tests:
-          - not_null
 
-      - name: job_level
+      - name: priority
         data_type: string
-        description: "Job level (I, II, III, IV, V) extracted from standardized job title"
+        description: Order of standardized titles for a given raw title, with 1 being the highest priority (most common mapping)
 
-      - name: job_group
+      - name: department
         data_type: string
         description: "Functional group or department (e.g., Research, Operations, Commercial)"
 
-      - name: job_hierarchy
+      - name: hierarchy
         data_type: string
         description: >
           Hierarchical categorization of jobs:

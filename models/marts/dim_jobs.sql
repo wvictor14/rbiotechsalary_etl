@@ -1,32 +1,29 @@
 with
     dim_job_titles as (select * from {{ ref('dim_job_titles') }}),
     int_jobs as (select * from {{ ref('int_jobs') }}),
-    
+
     -- First get distinct combinations of all job attributes
     distinct_job_combos as (
-        select distinct 
-            job_title,
-            job_level,
-            job_group,
-            job_hierarchy
+        select distinct title, standardized_title, hierarchy, department, priority
         from int_jobs
     ),
-    
+
     final as (
-        select 
+        select
             -- Generate a surrogate key for the job based on all relevant attributes
-            {{ dbt_utils.generate_surrogate_key(['l.job_title_id', 'r.job_level', 'r.job_group', 'r.job_hierarchy']) }} as job_id,
-            l.job_title_id,
-            l.job_title,
-            r.job_level,
-            r.job_group,
-            r.job_hierarchy
+            {{ dbt_utils.generate_surrogate_key(['l.title_id', 'r.department', 'r.hierarchy', 'r.priority']) }}
+            as job_id,
+            l.title_id,
+            l.title,
+            r.standardized_title,
+            r.department,
+            r.hierarchy,
+            r.priority
         from dim_job_titles as l
-        left join distinct_job_combos as r
-            on l.job_title = r.job_title
+        left join distinct_job_combos as r on l.title = r.title
     )
 
 select *
 from final
-order by job_hierarchy, job_title, job_level, job_group
+order by hierarchy, title, department
 ;
