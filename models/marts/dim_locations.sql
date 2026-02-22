@@ -5,5 +5,5 @@ select distinct
     country,
     subdivision,
     city,
-    location_name
+    concat_ws(', ', city, subdivision, country) as location_name
 from {{ ref("int_locations") }}

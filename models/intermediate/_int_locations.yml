@@ -46,9 +46,3 @@ models:
       - name: subdivision
         data_type: string
         description: "Coalesced from `us_state` and `ca_province`. Null for non-US/Canada locations."
-
-      - name: location_name
-        data_type: string
-        description: "Human-readable location label (e.g. 'Boston, Massachusetts, United States')."
-        tests:
-          - not_null

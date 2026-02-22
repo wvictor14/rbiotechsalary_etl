@@ -32,17 +32,10 @@ with
 
     final as (
         select distinct
-            raw_country,
-            raw_city,
-            country,
-            city,
-            us_state,
-            ca_province,
-            subdivision,
-            concat_ws(', ', city, subdivision, country) as location_name
+            raw_country, raw_city, country, city, us_state, ca_province, subdivision
         from cleaned
     )
 
-select *
+select raw_country, raw_city, country, city, us_state, ca_province, subdivision
 from final
 ;
