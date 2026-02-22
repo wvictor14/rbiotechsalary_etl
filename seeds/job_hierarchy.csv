@@ -1,8 +1,8 @@
 keyword,standardized_title,hierarchy,priority
-cso,Chief Scientific Officer,C-Suite/Executive,1
-cto,Chief Technology Officer,C-Suite/Executive,1
-cmo,Chief Medical Officer,C-Suite/Executive,1
-avp,Associate VP,C-Suite/Executive,2
+chief scientific officer,Chief Scientific Officer,C-Suite/Executive,1
+chief technology officer,Chief Technology Officer,C-Suite/Executive,1
+chief medical officer,Chief Medical Officer,C-Suite/Executive,1
+associate vp,Associate VP,C-Suite/Executive,2
 associate vp,Associate VP,C-Suite/Executive,2
 executive director,Executive Director,C-Suite/Executive,3
 vp,Vice President,C-Suite/Executive,4
@@ -23,14 +23,15 @@ principal,Principal Professional,Senior Individual Contributor,15
 scientist,Scientist,Scientific Professional,18
 engineer,Engineer,Scientific Professional,18
 analyst,Analyst,Professional,18
-specialist,Specialist,Professional,18
 biostatistician,Biostatistician,Scientific Professional,18
-# Capture all bioinformatics variations
+machine learning scientist,Machine Learning Scientist,Scientific Professional,18
+ml scientist,Machine Learning Scientist,Scientific Professional,18
+ai scientist,AI Scientist,Scientific Professional,18
+data scientist,Data Scientist,Scientific Professional,18
 bioinformatician,Bioinformatician,Scientific Professional,18
 bioinformatics,Bioinformatician,Scientific Professional,18
 computational biologist,Computational Biologist,Scientific Professional,18
-# captures "Archivist", "Biochemist", "Pharmacokineticist", "Toxicologist"
-ist,Specialist,Professional,18
+specialist,Specialist,Professional,19
 manufacturing associate,Manufacturing Associate,Associate/Assistant,20
 research associate,Research Associate,Associate/Assistant,20
 research assistant,Research Assistant,Associate/Assistant,20
