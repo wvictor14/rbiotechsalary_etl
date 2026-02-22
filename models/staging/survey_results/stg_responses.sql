@@ -8,9 +8,9 @@ with
             email_address,
 
             -- jobs
-            what_is_your_official_job_title as job_title,
+            what_is_your_official_job_title as raw_job_title,
             which_department_best_describes_your_role_if_you_cant_find_one_that_fits_your_specific_role_select_other_and_describe
-            as job_group,
+            as raw_department,
 
             how_many_days_on_average_per_week_do_you_work_from_home,
             briefly_describe_your_position_and_responsibilities,

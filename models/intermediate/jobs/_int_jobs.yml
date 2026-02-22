@@ -8,11 +8,22 @@ models:
 
       See {{ doc('jobs') }} for overall jobs modelling strategy.
     columns:
-      - name: raw_title
+      - name: raw_job_title
         description: "The original, uncleaned job title from the source system."
         tests:
-          - not_null
-          
+          - relationships:
+              arguments:
+                to: ref('stg_responses')
+                field: raw_job_title
+
+      - name: raw_department
+        description: "The original, uncleaned department from the source system."
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_responses')
+                field: raw_department
+                
       - name: title
         description: "The harmonized title after joining with the job_titles reference table."
         tests:
