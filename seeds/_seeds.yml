@@ -20,4 +20,14 @@ seeds:
       - name: priority
         description: >
           The ranking value used to resolve overlapping matches when a raw job title contains multiple keywords.
-          A lower number indicates a higher priority (e.g., 1 is the highest priority). This allows for consistent assignment of standardized titles when multiple matches are possible.    
+          A lower number indicates a higher priority (e.g., 1 is the highest priority). This allows for consistent assignment of standardized titles when multiple matches are possible.
+
+  - name: city_names
+    description: >
+      Mapping of raw city names to cleaned/standardized city names.
+      Handles typos, diacritics, embedded info, and non-city values.
+    columns:
+      - name: raw_city
+        description: "The original city value as it appears in the survey data."
+      - name: clean_city
+        description: "The standardized city name. Empty/null means the value should be treated as no city."
