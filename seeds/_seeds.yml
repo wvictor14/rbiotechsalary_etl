@@ -1,0 +1,23 @@
+version: 2
+
+seeds:
+  - name: job_hierarchy
+    description: >
+      This seed file contains the mapping of raw job titles to standardized titles, along with their associated departments, hierarchies, and priority rankings. 
+      The `keyword` column is used for matching against raw job titles in the source data, while `standardized_title`, `department`, and `hierarchy` provide the necessary information for categorizing and analyzing job positions.
+    columns:
+      - name: keyword
+        description: "The keyword used for matching against raw job titles. This should be a lowercased version of the job title or a relevant substring."
+      - name: standardized_title
+        description: "The standardized job title that corresponds to the keyword. This is the official title assigned based on the highest-priority keyword match."
+      - name: department
+        description: "The functional area or job group associated with the response (e.g., Research, Operations, Commercial)."
+      - name: hierarchy
+        description: >
+          The categorical level of the job title, which can be used for hierarchical analysis.
+          Possible values include: C-Suite/Executive, Senior Management, Middle Management,
+          Senior Individual Contributor, Scientific/Technical Professional, Associate/Assistant, Entry Level/Training, Specialized Role, Other.
+      - name: priority
+        description: >
+          The ranking value used to resolve overlapping matches when a raw job title contains multiple keywords.
+          A lower number indicates a higher priority (e.g., 1 is the highest priority). This allows for consistent assignment of standardized titles when multiple matches are possible.    

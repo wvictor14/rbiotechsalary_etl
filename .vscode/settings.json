@@ -1,6 +1,7 @@
 {
-    "dbt.dbtIntegration": "core",
-    "dbt.enableNewLineagePanel": true,
-    "dbt.lineage.defaultExpansion": 2,
-    "dbt.perspectiveTheme": "Vintage"
+  "dbt.dbtIntegration": "core",
+  "dbt.enableNewLineagePanel": true,
+  "dbt.lineage.defaultExpansion": 2,
+  "dbt.perspectiveTheme": "Vintage",
+  "dbt.queryLimit": 600
 }

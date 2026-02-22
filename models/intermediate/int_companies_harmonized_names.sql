@@ -1,7 +1,11 @@
 with
     -- first we apply distinc to columns of interest
     distinct_companies as (
-        select distinct company_name, company_size, sector, company_is_private_or_public
+        select distinct
+            trim(company_name) as company_name,
+            company_size,
+            sector,
+            company_is_private_or_public
         from {{ ref('stg_responses') }}
     ),
     -- then join on company names mapping seed to get harmonized company names

@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: dim_jobs
+    description: >
+      Contains job information at the level of job_title + job_level + job_group + job_hierarchy.
+      This table allows granular analysis of job positions across different dimensions.
+      See {{ doc('jobs') }} for jobs modelling strategy.
+    tests:
+      - dbt_expectations.expect_compound_columns_to_be_unique:
+          arguments:
+            column_list: ["title_id", "department", "hierarchy", "priority"]
+    columns:
+      - name: job_id
+        data_type: string
+        description: >
+          Generated using `dbt_utils.generate_surrogate_key` with 
+          `title_id`, `job_level`, `job_group`, and `job_hierarchy`
+        tests:
+          - not_null
+          - unique
+          
+      - name: title_id
+        data_type: string
+        description: "Foreign key to dim_job_titles table"
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_job_titles')
+                field: title_id
+
+      - name: standardized_title
+        data_type: string
+        description: "Standardized job title"
+
+      - name: priority
+        data_type: string
+        description: Order of standardized titles for a given raw title, with 1 being the highest priority (most common mapping)
+      
+      - name: department
+        data_type: string
+        description: "Functional group or department (e.g., Research, Operations, Commercial)"
+
+      - name: hierarchy
+        data_type: string
+        description: >
+          Hierarchical categorization of jobs:
+          C-Suite/Executive, Senior Management, Middle Management,
+          Senior Individual Contributor, Scientific/Technical Professional,
+          Associate/Assistant, Entry Level/Training, Specialized Role, Other

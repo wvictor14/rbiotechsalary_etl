@@ -54,12 +54,12 @@ One row per submitted survey response.
 
 Key fields:
 - `response_id`
+- `company_id`
+- `job_id`
 - `timestamp`
 - `salary_amount`
 - `years_experience`
-- `company_id`
 - `location_id`
-- `job_id`
 
 ### Grains 
 
@@ -94,15 +94,32 @@ Key fields:
 - `state_province`
 - `country`
 
-#### `dim_jobs`
+#### `dim_job_titles`
 
-Job-related attributes associated with submissions.
+1 row per title
 
 Key fields:
-- `job_id`
-- `job_title`
-- `department`
-- `work_modality` (remote / hybrid / on-site)
+
+- `job_title_id` A hash based on job_title
+- `job_title` e.g. Director of Commercial Operations, "Scientist"
+
+What did people call their job?
+
+How many distinct titles exist?
+
+#### `dim_jobs`
+
+Grain is one row per job_title * job_group * job_level
+
+- `job_id` A hash based on job_title_id, job_group, and job_level
+- `job_title_id`
+- `job_level` e.g. RA / Scientist / Manager / Director / VP
+- `job_group` e.g. Research / Operations / Commercial
+
+
+How many Scientists?
+
+How do RAs from different groups differ in salary?
 
 ---
 

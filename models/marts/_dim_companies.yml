@@ -20,7 +20,7 @@ models:
 
       - name: company_name
         data_type: string
-        description: {{ doc('company_name') }}
+        description: "{{ doc('company_name') }}"
         tests:
           - not_null
           - unique

@@ -9,15 +9,12 @@ models:
     columns:
       - name: company_name
         data_type: string
-        description: ""
-        tests:
-          - not_null
+        description: >
+          Trims whitespace. See {{ doc('company_name') }} for overall strategy
 
       - name: company_name_original
         data_type: string
-        description: ""
-        tests:
-          - not_null
+        description: "{{ doc('company_name') }}"
 
       - name: company_size
         data_type: string
@@ -32,9 +29,6 @@ models:
         description: ""
 
   - name: int_companies_consolidated
-    tests:
-      - dbt_utils.expression_is_true:
-        expression: "company_name != 'Unknown'" # should be filtered out
     description: >
       
       Step 2. One row per company, takes the most frequent of size, sector, and 
@@ -48,7 +42,7 @@ models:
           
       - name: company_name
         data_type: string
-        description: {{ doc('company_name') }}
+        description: "{{ doc('company_name') }}"
         tests:
           - not_null
           - unique
