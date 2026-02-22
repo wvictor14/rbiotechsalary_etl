@@ -10,11 +10,21 @@ models:
         data_type: number
         description: >
           The base salary amount, cleaned up to be a numeric value. This is the primary measure of compensation.
+        tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 15000
 
       - name: bonus_pct
         data_type: number
         description: >
           The bonus percentage, cleaned up to be a numeric value. This is used to compute the bonus amount and total compensation.
+        tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 100
+                inclusive: true
 
   - name: int_salaries_computed
     description: >
