@@ -2,6 +2,8 @@ version: 2
 models:
   - name: int_salaries_cleaned
     description: >
+      Runs the clean_numeric macro on base salary and bonus percentage fields to produce numeric values for analysis.
+
       {{ doc('salaries') }}
     columns:
       - name: base_salary
@@ -16,7 +18,7 @@ models:
 
   - name: int_salaries_computed
     description: >
-      Computes bonus amount and total compensation.
+      Computes bonus amount and total compensation from base salary and bonus percentage.
 
       See {{ doc('salaries') }} for salaries modelling strategy.
     columns:
