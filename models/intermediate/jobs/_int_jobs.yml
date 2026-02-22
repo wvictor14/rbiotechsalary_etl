@@ -35,5 +35,3 @@ models:
         description: "The categorical level (e.g., C-Suite, Senior Management, Scientific Professional)."
       - name: priority
         description: "The ranking value from the seed file used to resolve overlapping matches."
-      - name: department
-        description: "The functional area or job group associated with the response."
