@@ -2,8 +2,8 @@ with
     -- first we apply distinc to columns of interest
     distinct_companies as (
         select distinct
-            company_name as raw_company_name,
-            trim(company_name) as company_name,
+            raw_company_name,
+            trim(raw_company_name) as company_name,
             company_size,
             sector,
             company_is_private_or_public
@@ -14,7 +14,6 @@ with
         select
             l.raw_company_name,
             r.harmonized_company_name as company_name,
-            l.company_name as company_name_original,
             l.company_size,
             l.sector,
             l.company_is_private_or_public
