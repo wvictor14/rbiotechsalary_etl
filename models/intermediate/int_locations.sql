@@ -1,16 +1,18 @@
 with
     -- seeds
-    countries as (select * from {{ ref('countries') }}),
-    city_mapping as (select * from {{ ref('city_names') }}),
+    countries as (select * from {{ ref("countries") }}),
+    city_mapping as (select * from {{ ref("city_names") }}),
 
     raw_locations as (
         select
-            trim(country) as country,
-            nullif(trim(city), '') as city,
+            trim(raw_country) as country,
+            nullif(trim(raw_city), '') as city,
             nullif(trim(us_state), '') as us_state,
             nullif(trim(ca_province), '') as ca_province
-        from {{ ref('stg_responses') }}
-        where country is not null and country in (select country from countries)
+        from {{ ref("stg_responses") }}
+        where
+            raw_country is not null
+            and trim(raw_country) in (select country from countries)
     ),
 
     cleaned as (

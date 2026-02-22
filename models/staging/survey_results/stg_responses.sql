@@ -1,5 +1,5 @@
 with
-    source as (select * from {{ source('survey_results', 'src_responses') }}),
+    source as (select * from {{ source("survey_results", "src_responses") }}),
 
     renamed as (
 
@@ -16,13 +16,13 @@ with
             briefly_describe_your_position_and_responsibilities,
             do_you_work_inperson_remote_or_hybrid,
 
-            which_country_do_you_work_in as country,
-            what_city_do_you_work_in as city,
+            which_country_do_you_work_in as raw_country,
+            what_city_do_you_work_in as raw_city,
             which_us_state_do_you_work_in as us_state,
             which_canadian_province_do_you_work_in as ca_province,
 
             -- companies
-            company_or_institution_name as company_name,
+            company_or_institution_name as raw_company_name,
             which_of_the_following_best_describes_your_company
             as company_is_private_or_public,
             biotech_sub_industry as sector,
