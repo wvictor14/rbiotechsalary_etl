@@ -16,10 +16,10 @@ with
             briefly_describe_your_position_and_responsibilities,
             do_you_work_inperson_remote_or_hybrid,
 
-            which_country_do_you_work_in,
-            what_city_do_you_work_in,
-            which_us_state_do_you_work_in,
-            which_canadian_province_do_you_work_in,
+            which_country_do_you_work_in as country,
+            what_city_do_you_work_in as city,
+            which_us_state_do_you_work_in as us_state,
+            which_canadian_province_do_you_work_in as ca_province,
 
             -- companies
             company_or_institution_name as company_name,

@@ -91,7 +91,7 @@ Geographic attributes associated with submissions.
 Key fields:
 - `location_id`
 - `city`
-- `state_province`
+- `subdivision` State, province, or a country subregion
 - `country`
 
 #### `dim_job_titles`
