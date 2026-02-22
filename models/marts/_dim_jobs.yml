@@ -20,6 +20,15 @@ models:
           - not_null
           - unique
           
+      - name: title
+        data_type: string
+        description: "Job title as entered by respondent; included for reference. Sourced from dim_job_titles."
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_job_titles')
+                field: title
+
       - name: title_id
         data_type: string
         description: "Foreign key to dim_job_titles table"
