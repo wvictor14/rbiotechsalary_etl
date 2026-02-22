@@ -1,0 +1,45 @@
+version: 2
+models:
+  - name: int_salaries_cleaned
+    description: >
+      Runs the clean_numeric macro on base salary and bonus percentage fields to produce numeric values for analysis.
+
+      Filters out records with base salary less than $15,000 and bonus percentage greater than 100%, as these are likely data entry issues.
+
+      {{ doc('salaries') }}
+    columns:
+      - name: base_salary
+        data_type: number
+        description: >
+          The base salary amount, cleaned up to be a numeric value. This is the primary measure of compensation.
+        tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 15000
+
+      - name: bonus_pct
+        data_type: number
+        description: >
+          The bonus percentage, cleaned up to be a numeric value. This is used to compute the bonus amount and total compensation.
+        tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 100
+                inclusive: true
+
+  - name: int_salaries_computed
+    description: >
+      Computes bonus amount and total compensation from base salary and bonus percentage.
+
+      See {{ doc('salaries') }} for salaries modelling strategy.
+    columns:
+      - name: bonus_amount
+        data_type: number
+        description: >
+          The amount of the bonus, computed as base salary multiplied by bonus percentage.
+
+      - name: total_compensation
+        data_type: number
+        description: >
+          The total compensation, computed as base salary plus bonus amount.

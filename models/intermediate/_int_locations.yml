@@ -10,6 +10,19 @@ models:
 
       See {{ doc('locations') }} for locations modelling strategy.
     columns:
+
+      - name: raw_country
+        data_type: string
+        description: The original country name as provided by the respondent. 
+          This is used for joins harmonization and is not intended for analysis.
+          harmonization and is not intended for analysis.
+
+      - name: raw_city
+        data_type: string
+        description: The original city name as provided by the respondent. 
+          This is used for joins harmonization and is not intended for analysis. 
+          Null for US/Canada entries that only specify state/province.
+          
       - name: country
         data_type: string
         description: "Country name, validated against the `countries` seed."
@@ -33,10 +46,3 @@ models:
       - name: subdivision
         data_type: string
         description: "Coalesced from `us_state` and `ca_province`. Null for non-US/Canada locations."
-
-      - name: location_name
-        data_type: string
-        description: "Human-readable location label (e.g. 'Boston, Massachusetts, United States')."
-        tests:
-          - not_null
-          - unique

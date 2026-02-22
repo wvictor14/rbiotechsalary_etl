@@ -15,7 +15,7 @@ models:
         data_type: string
         description: >
           Generated using `dbt_utils.generate_surrogate_key` with 
-          `title_id`, `job_level`, `job_group`, and `job_hierarchy`
+          `title_id`, `department`, `hierarchy`, and `priority`
         tests:
           - not_null
           - unique
