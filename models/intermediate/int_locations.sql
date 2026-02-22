@@ -1,6 +1,7 @@
 with
-    -- seed
+    -- seeds
     countries as (select * from {{ ref('countries') }}),
+    city_mapping as (select * from {{ ref('city_names') }}),
 
     raw_locations as (
         select
@@ -12,15 +13,26 @@ with
         where country is not null and country in (select country from countries)
     ),
 
+    cleaned as (
+        select
+            country,
+            nullif(coalesce(cm.clean_city, r.city), '') as city,
+            us_state,
+            ca_province,
+            coalesce(us_state, ca_province) as subdivision
+        from raw_locations r
+        left join city_mapping cm on r.city = cm.raw_city
+    ),
+
     final as (
         select distinct
             country,
             city,
             us_state,
             ca_province,
-            coalesce(us_state, ca_province) as subdivision,
+            subdivision,
             concat_ws(', ', city, subdivision, country) as location_name
-        from raw_locations
+        from cleaned
     )
 
 select *
