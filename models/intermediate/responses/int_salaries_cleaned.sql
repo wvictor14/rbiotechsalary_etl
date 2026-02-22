@@ -18,7 +18,6 @@ with
             ) as bonus_pct_str
         from raw_data
     ),
-
     final_numeric as (
         select
             timestamp,
@@ -26,7 +25,11 @@ with
             cast(nullif(base_str, '') as double) as base_salary,
             cast(nullif(bonus_pct_str, '') as double) as bonus_pct
         from scrubbed
+    ),
+
+    filtered as (
+        select * from final_numeric where base_salary >= 15000 and bonus_pct <= 100
     )
 
 select *
-from final_numeric
+from filtered

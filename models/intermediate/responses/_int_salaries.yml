@@ -4,6 +4,8 @@ models:
     description: >
       Runs the clean_numeric macro on base salary and bonus percentage fields to produce numeric values for analysis.
 
+      Filters out records with base salary less than $15,000 and bonus percentage greater than 100%, as these are likely data entry issues.
+
       {{ doc('salaries') }}
     columns:
       - name: base_salary
