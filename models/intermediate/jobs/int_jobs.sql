@@ -39,21 +39,15 @@ with
             l.department,
             r.hierarchy,
             r.priority,
-
             -- we need to capture all the matches and rank them by priority
             row_number() over (
-                partition by l.raw_title
-                order by
-                    r.priority asc,
-
-                    -- longer keywords more specific should be tie-breaker
-                    length(r.keyword) desc
+                partition by l.raw_title order by r.priority asc, length(r.keyword) desc  -- if matches have same priority, take the one with the longest keyword (most specific match)
             ) as match_rank
         from removed_nulls as l
         left join
             job_levels as r
             on (
-                -- Using TRIM and LOWER on both sides to be safe
+                -- try really to match the title.
                 trim(lower(l.title_to_match_on)) = trim(lower(r.keyword))
                 or trim(lower(l.title_to_match_on)) like trim(lower(r.keyword)) || ' %'
                 or trim(lower(l.title_to_match_on)) like '% ' || trim(lower(r.keyword))
@@ -64,6 +58,5 @@ with
     -- take the highest rank (1) 
     job_hierarchy_distinct as (select * from job_hierarchy_mapped where match_rank = 1)
 
-select raw_title, title, standardized_title, hierarchy, priority, department
+select raw_title, title, standardized_title, hierarchy, department, priority
 from job_hierarchy_distinct
-;
