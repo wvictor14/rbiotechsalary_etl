@@ -48,14 +48,11 @@ source/raw -> staging -> intermediate -> marts
 
 ### Fact Tables
 
-`fct_responses`
+`fct_salaries`
 
-One row per submitted survey response.
+One row per submitted survey response + salaries. 
 
 Key fields:
-- `response_id`
-- `company_id`
-- `job_id`
 - `timestamp`
 - `salary_amount`
 - `years_experience`
@@ -63,10 +60,11 @@ Key fields:
 
 ### Grains 
 
-- **`fact_submissions`**: One row per survey response
+- **`fct_salaries`**: One row per survey response
 - **`dim_companies`**: One row per unique company
 - **`dim_locations`**: One row per unique location
 - **`dim_jobs`**: One row per unique job profile
+- **`dim_job_titles`**: One row per unique job title
 
 ---
 
