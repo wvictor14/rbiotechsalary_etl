@@ -91,7 +91,7 @@ Geographic attributes associated with submissions.
 Key fields:
 - `location_id`
 - `city`
-- `state_province`
+- `subdivision` State, province, or a country subregion
 - `country`
 
 #### `dim_job_titles`
@@ -100,8 +100,8 @@ Key fields:
 
 Key fields:
 
-- `job_title_id` A hash based on job_title
-- `job_title` e.g. Director of Commercial Operations, "Scientist"
+- `title_id` A hash based on `title`
+- `title` A cleaned up version of respondent's input: "Director of Commercial Operations", "Bioinformatics Scientist"
 
 What did people call their job?
 
@@ -112,14 +112,19 @@ How many distinct titles exist?
 Grain is one row per job_title * job_group * job_level
 
 - `job_id` A hash based on job_title_id, job_group, and job_level
-- `job_title_id`
-- `job_level` e.g. RA / Scientist / Manager / Director / VP
-- `job_group` e.g. Research / Operations / Commercial
+- `title_id` (fk to `dim_job_titles`)
+- `title`
+- `standardized_title` A generic standard title e.g. RA / Scientist / Manager / Director / VP
+- `department` e.g. Research / Operations / Commercial
+- `hierarchy an organizaton by relative seniority
+
+title and department are derived from respondent input, but then standardized and consolidated based on rules and heuristics. See `models/jobs.md` for detailed job modeling and consolidation logic.
 
 
-How many Scientists?
+Questions that can be answered with this model
 
-How do RAs from different groups differ in salary?
+- How many distinct jobs exist?
+- How do jobs propagate across levels and departments? E.g. how many distinct job titles are there in research vs commercial? How many distinct job titles are there at each level of the hierarchy?
 
 ---
 

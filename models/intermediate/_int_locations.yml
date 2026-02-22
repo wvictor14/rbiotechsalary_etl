@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: int_locations
+    description: >
+      Cleans and deduplicates location data from survey responses.
+      Filters to valid countries using the `countries` seed, standardizes
+      city names using the `city_names` seed, and produces one row per
+      unique location combination.
+
+      See {{ doc('locations') }} for locations modelling strategy.
+    columns:
+      - name: country
+        data_type: string
+        description: "Country name, validated against the `countries` seed."
+        tests:
+          - not_null
+
+      - name: city
+        data_type: string
+        description: >
+          City name, cleaned via the `city_names` seed.
+          Null for US/Canada entries that only specify state/province.
+
+      - name: us_state
+        data_type: string
+        description: "US state name. Null for non-US locations."
+
+      - name: ca_province
+        data_type: string
+        description: "Canadian province name. Null for non-Canadian locations."
+
+      - name: subdivision
+        data_type: string
+        description: "Coalesced from `us_state` and `ca_province`. Null for non-US/Canada locations."
+
+      - name: location_name
+        data_type: string
+        description: "Human-readable location label (e.g. 'Boston, Massachusetts, United States')."
+        tests:
+          - not_null
+          - unique
