@@ -5,6 +5,8 @@ with
 
     raw_locations as (
         select
+            raw_country,
+            raw_city,
             trim(raw_country) as country,
             nullif(trim(raw_city), '') as city,
             nullif(trim(us_state), '') as us_state,
@@ -17,6 +19,8 @@ with
 
     cleaned as (
         select
+            r.raw_country,
+            r.raw_city,
             country,
             nullif(coalesce(cm.clean_city, r.city), '') as city,
             us_state,
@@ -28,6 +32,8 @@ with
 
     final as (
         select distinct
+            raw_country,
+            raw_city,
             country,
             city,
             us_state,
