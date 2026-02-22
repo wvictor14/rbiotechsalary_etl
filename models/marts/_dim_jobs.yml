@@ -6,6 +6,10 @@ models:
       Contains job information at the level of job_title + job_level + job_group + job_hierarchy.
       This table allows granular analysis of job positions across different dimensions.
       See {{ doc('jobs') }} for jobs modelling strategy.
+    tests:
+      - dbt_expectations.expect_compound_columns_to_be_unique:
+          arguments:
+            column_list: ["title_id", "department", "hierarchy", "priority"]
     columns:
       - name: job_id
         data_type: string
@@ -33,7 +37,7 @@ models:
       - name: priority
         data_type: string
         description: Order of standardized titles for a given raw title, with 1 being the highest priority (most common mapping)
-
+      
       - name: department
         data_type: string
         description: "Functional group or department (e.g., Research, Operations, Commercial)"
