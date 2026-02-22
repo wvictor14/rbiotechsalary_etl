@@ -7,14 +7,16 @@ models:
 
       See {{ doc('companies') }} for companies modelling strategy.
     columns:
+    
+      - name: raw_company_name
+        data_type: string
+        description: The original company name as provided by the respondent. This  is used for joins 
+          harmonization and is not intended for analysis.
+
       - name: company_name
         data_type: string
         description: >
           Trims whitespace. See {{ doc('company_name') }} for overall strategy
-
-      - name: company_name_original
-        data_type: string
-        description: "{{ doc('company_name') }}"
 
       - name: company_size
         data_type: string
