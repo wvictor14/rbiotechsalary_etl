@@ -1,0 +1,31 @@
+version: 2
+models:
+  - name: int_salaries_cleaned
+    description: >
+      {{ doc('salaries') }}
+    columns:
+      - name: base_salary
+        data_type: number
+        description: >
+          The base salary amount, cleaned up to be a numeric value. This is the primary measure of compensation.
+
+      - name: bonus_pct
+        data_type: number
+        description: >
+          The bonus percentage, cleaned up to be a numeric value. This is used to compute the bonus amount and total compensation.
+
+  - name: int_salaries_computed
+    description: >
+      Computes bonus amount and total compensation.
+
+      See {{ doc('salaries') }} for salaries modelling strategy.
+    columns:
+      - name: bonus_amount
+        data_type: number
+        description: >
+          The amount of the bonus, computed as base salary multiplied by bonus percentage.
+
+      - name: total_compensation
+        data_type: number
+        description: >
+          The total compensation, computed as base salary plus bonus amount.

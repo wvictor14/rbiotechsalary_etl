@@ -11,4 +11,4 @@ select
 
     -- joining on company
     raw_company_name
-from {{ ref("stg_responses") }}
+from {{ ref("int_salaries_cleaned") }}
