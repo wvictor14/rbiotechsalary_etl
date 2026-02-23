@@ -8,6 +8,14 @@ models:
 
       See {{ doc('jobs') }} for overall jobs modelling strategy.
     columns:
+      - name: response_id
+        description: See {{ doc('response_id') }} for details.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_responses')
+                field: response_id
+      
       - name: raw_job_title
         description: "The original, uncleaned job title from the source system."
         tests:
@@ -16,7 +24,7 @@ models:
                 to: ref('stg_responses')
                 field: raw_job_title
 
-      - name: raw_department
+      - name: department
         description: "The original, uncleaned department from the source system."
         tests:
           - relationships:

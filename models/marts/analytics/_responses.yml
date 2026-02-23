@@ -1,0 +1,69 @@
+version: 2
+
+models:
+  - name: responses
+    description: >
+      Final responses table containing enriched survey data. This table consolidates information
+      about respondents, including their job titles, locations, and company details.
+
+      See {{ doc('responses') }} for the overall strategy and details.
+    columns:
+      - name: response_id
+        description: >
+          Unique identifier for each survey response. This is a surrogate key generated
+          from the `timestamp` column in the source data.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_responses')
+                field: response_id
+
+      - name: title
+        description: >
+          The raw job title provided by the respondent in the survey.
+
+      - name: standardized_title
+        description: >
+          The cleaned and standardized version of the job title, mapped using the `job_hierarchy` seed.
+
+      - name: department
+        description: >
+          The functional area or job group associated with the respondent's job title (e.g., Research, Operations, Commercial).
+
+      - name: hierarchy
+        description: >
+          The hierarchical level of the respondent's job title, categorized for analysis.
+          Possible values include: C-Suite/Executive, Senior Management, Middle Management,
+          Senior Individual Contributor, Scientific/Technical Professional, Associate/Assistant, Entry Level/Training, Specialized Role, Other.
+
+      - name: location_name
+        description: >
+          Human-readable location label (e.g., 'Boston, Massachusetts, United States').
+
+      - name: country
+        description: >
+          The country of the respondent, validated against the `countries` seed.
+
+      - name: subdivision
+        description: >
+          The subdivision (e.g., US state or Canadian province) of the respondent. Null for other countries.
+
+      - name: city
+        description: >
+          The city of the respondent, cleaned via the `city_names` seed. Null for entries that only specify state/province.
+
+      - name: company_name
+        description: >
+          The cleaned and harmonized name of the respondent's company, mapped using the `company_names` seed.
+
+      - name: company_size
+        description: >
+          The size of the respondent's company (e.g., Small, Medium, Large).
+
+      - name: sector
+        description: >
+          The sector or industry of the respondent's company (e.g., Biotechnology, Pharmaceuticals).
+
+      - name: company_is_private_or_public
+        description: >
+          Indicates whether the respondent's company is private or public.

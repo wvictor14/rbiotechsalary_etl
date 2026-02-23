@@ -10,6 +10,13 @@ models:
 
       See {{ doc('locations') }} for locations modelling strategy.
     columns:
+      - name: response_id
+        description: See {{ doc('response_id') }} for details.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_responses')
+                field: response_id
 
       - name: raw_country
         data_type: string
@@ -22,7 +29,15 @@ models:
         description: The original city name as provided by the respondent. 
           This is used for joins harmonization and is not intended for analysis. 
           Null for US/Canada entries that only specify state/province.
-          
+
+      - name: location_id
+        data_type: string
+        description: >
+          Surrogate key generated using `dbt_utils.generate_surrogate_key`
+          with `country`, `city`, and `subdivision`.
+        tests:
+          - not_null
+
       - name: country
         data_type: string
         description: "Country name, validated against the `countries` seed."
@@ -46,3 +61,9 @@ models:
       - name: subdivision
         data_type: string
         description: "Coalesced from `us_state` and `ca_province`. Null for non-US/Canada locations."
+
+      - name: location_name
+        data_type: string
+        description: "Human-readable location label (e.g. 'Boston, Massachusetts, United States')."
+        tests:
+          - not_null

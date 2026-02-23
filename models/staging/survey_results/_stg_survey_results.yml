@@ -4,9 +4,19 @@ models:
   - name: stg_responses
     description: ""
     columns:
+      - name: response_id
+        data_type: string
+        description: "Copy of timestamp, serves as primary key for all models"
+        tests:
+          - unique
+          - not_null
+          
       - name: timestamp
         data_type: string
-        description: ""
+        description: "Unique for each response"
+        tests:
+          - unique
+          - not_null
 
       - name: email_address
         data_type: string

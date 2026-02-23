@@ -3,11 +3,21 @@ version: 2
 models:
   - name: int_companies_harmonized_names
     description: >
-      Step 1. Harmonizes company names using name-mapping seed.
+      Step 1. Harmonizes company names using name-mapping seed. Filters out missing company names and trims whitespace.
+
+      This table still contains `response_id`, which allows us to join back to the original responses table and retain all company-level information provided by respondents, even those that did not provide a company name or provided a company name that we were not able to harmonize.
 
       See {{ doc('companies') }} for companies modelling strategy.
     columns:
     
+      - name: response_id
+        description: See {{ doc('response_id') }} for details.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_responses')
+                field: response_id
+                
       - name: raw_company_name
         data_type: string
         description: The original company name as provided by the respondent. This  is used for joins 

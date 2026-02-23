@@ -1,17 +1,19 @@
 with
-    -- first we apply distinc to columns of interest
-    distinct_jobs as (
-        select distinct
+    -- select and basic trim
+    jobs as (
+        select
+            response_id,
             raw_job_title,
             lower(trim(raw_job_title)) as title_lower,  -- to join on
             raw_department
-        from {{ ref('stg_responses') }}
+        from {{ ref("stg_responses") }}
     ),
 
     -- map original titles to harmonized titles and job hierarchies
     job_titles_mapping as (select * from {{ ref("job_titles") }}),
     standard_titles as (
         select
+            l.response_id,
             l.raw_job_title,
             l.raw_department,
             nullif(r.clean_job_title, 'Unknown') as title,
@@ -21,7 +23,7 @@ with
                 nullif(r.clean_job_title, 'Unknown'), '[,/]', ' '
             ) as title_to_match_on
 
-        from distinct_jobs as l
+        from jobs as l
         left join job_titles_mapping as r on l.title_lower = r.raw_job_title
     ),
 
@@ -35,6 +37,7 @@ with
     -- USE A FUZZY JOIN, THE RAW KEYWORD IS A PATTERN TO JOIN ON
     job_hierarchy_mapped as (
         select
+            l.response_id,
             l.raw_job_title,
             l.raw_department,
             l.title,
@@ -59,7 +62,41 @@ with
             )
     ),
     -- take the highest rank (1) 
-    job_hierarchy_distinct as (select * from job_hierarchy_mapped where match_rank = 1)
+    job_hierarchy_distinct as (select * from job_hierarchy_mapped where match_rank = 1),
 
-select raw_job_title, raw_department, title, standardized_title, hierarchy, priority
-from job_hierarchy_distinct
+    with_title_ids as (
+        select
+            -- Generate a surrogate key for the job based on all relevant attributes
+            ({{ dbt_utils.generate_surrogate_key(["title"]) }}) as title_id, *
+        from job_hierarchy_distinct
+
+    ),
+    final as (
+        select
+            response_id,
+            raw_job_title,
+            raw_department,
+            -- Generate a surrogate key for the job based on all relevant attributes
+            (
+                {{
+                    dbt_utils.generate_surrogate_key(
+                        [
+                            "title_id",
+                            "raw_department",
+                            "hierarchy",
+                            "priority",
+                        ]
+                    )
+                }}
+            ) as job_id,
+            title_id,
+            title,
+            standardized_title,
+            raw_department as department,
+            hierarchy,
+            priority
+        from with_title_ids
+    )
+
+select *
+from final

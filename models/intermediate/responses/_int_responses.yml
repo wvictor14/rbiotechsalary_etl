@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: int_responses
+    description: >
+      The central fact table that brings together all the cleaned and transformed data from the intermediate models.
+
+      This model joins the base staging responses with the dimension tables for companies, jobs, locations, and salaries to create a comprehensive dataset for analysis.
+
+      See {{ doc('responses') }} for responses modelling strategy.
+    columns:
+      - name: response_id
+        description: See {{ doc('response_id') }} for details.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_responses')
+                field: response_id
+
+      - name: company_name
+        data_type: string
+        description: The cleaned company name from the `int_companies` model.
+
+      - name: job_id
+        data_type: string
+        description: The surrogate key for the job role from the `int_jobs` model.
+
+      - name: location_id
+        data_type: string
+        description: The surrogate key for the location from the `int_locations` model.
+
+      - name: base_salary
+        data_type: double
+        description: The base salary amount from the `int_salaries_computed` model.
+
+      - name: bonus_pct
+        data_type: double
+        description: The bonus percentage from the `int_salaries_cleaned` model.
+
+      - name: bonus_amount
+        data_type: double
+        description: The computed bonus amount from the `int_salaries_computed` model.
+
+      - name: total_compensation
+        data_type: double
+        description: The computed total compensation from the `int_salaries_computed` model.
+  - name: int_responses_enriched
+    description: >
+      An enriched version of `int_responses` that includes additional descriptive fields from the dimension tables for easier analysis.
+
+      This model denormalizes the data by bringing in human-readable labels for company, job, and location, as well as any other relevant attributes from the dimension tables.
+
+      See {{ doc('responses') }} for responses modelling strategy.
+    columns:
+      - name: response_id
+        description: See {{ doc('response_id') }} for details.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_responses')
+                field: response_id

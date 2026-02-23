@@ -25,15 +25,17 @@ source/raw -> staging -> intermediate -> marts
 
 **Staging models (`stg_*`)**
 
+- `timestamp` is the unique identifier for each survey response, and serves as the primary key for all models, there we create a copy of it called `response_id`.
 - One-to-one with source tables
 - Minimal transformations
 - Renaming and type casting only
 
 **Intermediate models (`int_*`)**
 
-- Resolve many-to-many relationships
 - Cleaning and transforms
 - Apply business logic
+- Develop primary keys for dims and facts
+- Resolve many-to-many relationships
 - Not intended for direct consumption
 
 **Mart models**
