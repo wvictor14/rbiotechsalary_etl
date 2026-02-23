@@ -7,6 +7,7 @@ models:
       Filters out records with base salary less than $15,000 and bonus percentage greater than 100%, as these are likely data entry issues.
 
       {{ doc('salaries') }}
+      
     columns:
       - name: base_salary
         data_type: double
