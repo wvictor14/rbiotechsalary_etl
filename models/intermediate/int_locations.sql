@@ -5,6 +5,7 @@ with
 
     raw_locations as (
         select
+            response_id,
             raw_country,
             raw_city,
             trim(raw_country) as country,
@@ -19,6 +20,7 @@ with
 
     cleaned as (
         select
+            r.response_id,
             r.raw_country,
             r.raw_city,
             country,
@@ -31,11 +33,30 @@ with
     ),
 
     final as (
-        select distinct
-            raw_country, raw_city, country, city, us_state, ca_province, subdivision
+        select
+            response_id,
+            raw_country,
+            raw_city,
+            {{ dbt_utils.generate_surrogate_key(["country", "city", "subdivision"]) }}
+            as location_id,
+            country,
+            city,
+            us_state,
+            ca_province,
+            subdivision
         from cleaned
     )
 
-select raw_country, raw_city, country, city, us_state, ca_province, subdivision
+select
+    response_id,
+    raw_country,
+    raw_city,
+    location_id,
+    concat_ws(', ', city, subdivision, country) as location_name,
+    country,
+    city,
+    us_state,
+    ca_province,
+    subdivision
 from final
 ;
