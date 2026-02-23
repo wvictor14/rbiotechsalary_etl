@@ -48,3 +48,5 @@ with
         left join jobs as j on r.job_id = j.job_id
         left join locations as l on r.location_id = l.location_id
     )
+select *
+from final
