@@ -1,5 +1,5 @@
 select
-    timestamp,
+    response_id,
     job_title,
     raw_department,
     country,
