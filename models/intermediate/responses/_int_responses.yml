@@ -44,3 +44,46 @@ models:
       - name: total_compensation
         data_type: double
         description: The computed total compensation from the `int_salaries_computed` model.
+  - name: int_responses_enriched
+    description: >
+      An enriched version of `int_responses` that includes additional descriptive fields from the dimension tables for easier analysis.
+
+      This model denormalizes the data by bringing in human-readable labels for company, job, and location, as well as any other relevant attributes.
+
+      See {{ doc('responses') }} for responses modelling strategy.
+    columns:
+      - name: response_id
+        description: See {{ doc('response_id') }} for details.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_responses')
+                field: response_id
+
+      - name: company_name
+        data_type: string
+        description: The cleaned company name from the `int_companies` model.
+
+      - name: job_title
+        data_type: string
+        description: The human-readable job title from the `int_jobs` model.
+
+      - name: location_name
+        data_type: string
+        description: The human-readable location label from the `int_locations` model.
+
+      - name: base_salary
+        data_type: double
+        description: The base salary amount from the `int_salaries_computed` model.
+
+      - name: bonus_pct
+        data_type: double
+        description: The bonus percentage from the `int_salaries_cleaned` model.
+
+      - name: bonus_amount
+        data_type: double
+        description: The computed bonus amount from the `int_salaries_computed` model.
+
+      - name: total_compensation
+        data_type: double
+        description: The computed total compensation from the `int_salaries_computed` model.
