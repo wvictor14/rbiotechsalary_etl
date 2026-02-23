@@ -44,7 +44,7 @@ models:
         description: "Standardized job title"
 
       - name: priority
-        data_type: string
+        data_type: bigint
         description: Order of standardized titles for a given raw title, with 1 being the highest priority (most common mapping)
       
       - name: department
