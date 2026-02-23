@@ -4,6 +4,7 @@ with
     renamed as (
 
         select
+            timestamp as response_id,
             timestamp,
             email_address,
 
