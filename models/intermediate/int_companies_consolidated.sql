@@ -1,7 +1,5 @@
 with
-    companies as (
-        select * from {{ ref("int_companies_harmonized_names") }} order by company_name
-    ),
+    companies as (select * from {{ ref("int_companies_harmonized_names") }}),
     -- pivot so that we can count by company_name, var_name, var_value
     unpivoted as (
         select company_name, var_name, var_value
