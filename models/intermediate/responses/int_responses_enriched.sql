@@ -40,8 +40,7 @@ with
             l.location_name,
             l.country,
             l.subdivision,
-            l.city,
-            l.location_name
+            l.city
 
         from int_responses as r
         left join companies as c on r.company_name = c.company_name
