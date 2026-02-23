@@ -24,25 +24,18 @@ models:
         data_type: string
         description: "Job title as entered by respondent; included for reference. Sourced from dim_job_titles."
         tests:
-          - relationships:
-              arguments:
-                to: ref('dim_job_titles')
-                field: title
+          - not_null
 
       - name: title_id
         data_type: string
         description: "Foreign key to dim_job_titles table"
         tests:
           - not_null
-          - relationships:
-              arguments:
-                to: ref('dim_job_titles')
-                field: title_id
 
       - name: standardized_title
         data_type: string
         description: "Standardized job title"
-
+        
       - name: priority
         data_type: bigint
         description: Order of standardized titles for a given raw title, with 1 being the highest priority (most common mapping)

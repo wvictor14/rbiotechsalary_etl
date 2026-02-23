@@ -9,6 +9,7 @@ with
 
     salaries as (select * from {{ ref("int_salaries_computed") }}),
 
+    -- join the foreign keys from other int tables
     joined as (
         select s.response_id, c.company_name
         from stg as s

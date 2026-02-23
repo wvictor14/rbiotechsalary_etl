@@ -10,6 +10,14 @@ models:
       See {{ doc('companies') }} for companies modelling strategy.
     columns:
     
+      - name: response_id
+        description: See {{ doc('response_id') }} for details.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_responses')
+                field: response_id
+                
       - name: raw_company_name
         data_type: string
         description: The original company name as provided by the respondent. This  is used for joins 
