@@ -1,13 +1,8 @@
 with
     companies as (
-        select *
-        from {{ ref('int_companies_harmonized_names') }}
-
-        -- for unknown we don't care so remove
-        where company_name != 'Unknown'
-        order by company_name
+        select * from {{ ref("int_companies_harmonized_names") }} order by company_name
     ),
-    -- pivot
+    -- pivot so that we can count by company_name, var_name, var_value
     unpivoted as (
         select company_name, var_name, var_value
         from
@@ -28,6 +23,7 @@ with
         group by company_name, var_name, var_value
         order by company_name, var_name, rank
     ),
+    -- for each company take the top
     top_ranked as (
         select company_name, var_name, var_value from counted where rank = 1
     ),
