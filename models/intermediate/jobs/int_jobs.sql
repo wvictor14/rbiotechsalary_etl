@@ -4,13 +4,32 @@ with
         select
             response_id,
             raw_job_title,
-            lower(trim(raw_job_title)) as title_lower,  -- to join on
+            -- normalized key: collapses systematic variants (sr->senior,
+            -- arabic->roman levels) onto seed conventions before matching
+            {{ normalize_job_title("raw_job_title") }} as title_key,
             raw_department
         from {{ ref("stg_responses") }}
     ),
 
-    -- map original titles to harmonized titles and job hierarchies
-    job_titles_mapping as (select * from {{ ref("job_titles") }}),
+    -- map original titles to harmonized titles and job hierarchies.
+    -- Normalize the seed key the SAME way so "sr analyst" (seed) and
+    -- "Sr. Analyst" (response) both collapse to "senior analyst" and match.
+    job_titles_mapping as (
+        select title_key, clean_job_title
+        from (
+            select
+                {{ normalize_job_title("raw_job_title") }} as title_key,
+                clean_job_title,
+                -- if two seed rows collapse to the same key, keep one
+                -- deterministically (prefer non-Unknown, then alphabetical)
+                row_number() over (
+                    partition by {{ normalize_job_title("raw_job_title") }}
+                    order by (clean_job_title = 'Unknown'), clean_job_title
+                ) as rn
+            from {{ ref("job_titles") }}
+        )
+        where rn = 1
+    ),
     standard_titles as (
         select
             l.response_id,
@@ -24,7 +43,7 @@ with
             ) as title_to_match_on
 
         from jobs as l
-        left join job_titles_mapping as r on l.title_lower = r.raw_job_title
+        left join job_titles_mapping as r on l.title_key = r.title_key
     ),
 
     removed_nulls as (
