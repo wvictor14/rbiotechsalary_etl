@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export dbt marts from DuckDB to Parquet files for GitHub Pages."""
+"""Export dbt marts from DuckDB to CSV files for GitHub Pages."""
 
 import duckdb
 import os
@@ -9,7 +9,7 @@ DB_PATH = "dev.duckdb"
 OUTPUT_DIR = "docs/data"
 
 def export_marts():
-    """Export all tables from the main schema as Parquet files."""
+    """Export all tables from the main schema as CSV files."""
     con = duckdb.connect(DB_PATH, read_only=True)
 
     Path(OUTPUT_DIR).mkdir(exist_ok=True)
@@ -21,15 +21,15 @@ def export_marts():
 
     for (table_name,) in tables:
         try:
-            output_file = f"{OUTPUT_DIR}/{table_name}.parquet"
-            con.execute(f"COPY {table_name} TO '{output_file}' (FORMAT PARQUET);")
-            size_mb = os.path.getsize(output_file) / 1024 / 1024
-            print(f"✓ {table_name} → {output_file} ({size_mb:.1f} MB)")
+            output_file = f"{OUTPUT_DIR}/{table_name}.csv"
+            con.execute(f"COPY {table_name} TO '{output_file}' (FORMAT CSV, HEADER);")
+            size_kb = os.path.getsize(output_file) / 1024
+            print(f"OK {table_name} -> {output_file} ({size_kb:.1f} KB)")
         except Exception as e:
-            print(f"⚠ {table_name} → skipped ({str(e)[:50]}...)")
+            print(f"SKIP {table_name} ({str(e)[:50]}...)")
 
     con.close()
-    print(f"\nExported to {OUTPUT_DIR}/")
+    print(f"\nExported {len(tables)} tables to {OUTPUT_DIR}/")
 
 if __name__ == "__main__":
     export_marts()
