@@ -1,4 +1,4 @@
-name: Export Parquet Marts
+name: Export CSV Data
 on:
   schedule:
     - cron: '0 2 * * 0'  # Every Sunday at 2 AM UTC
@@ -40,7 +40,7 @@ jobs:
       - name: Run dbt build
         run: dbt build
 
-      - name: Export to Parquet
+      - name: Export to CSV
         run: python export_parquet.py
 
       - name: Deploy to GitHub Pages
