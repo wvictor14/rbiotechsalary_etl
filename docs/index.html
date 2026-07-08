@@ -195,38 +195,29 @@
     </footer>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@duckdb/wasm@1.28.0/dist/duckdb-mvp.wasm.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@duckdb/wasm@1.28.0/dist/duckdb-eh.wasm.js"></script>
+  <!-- DuckDB Wasm from NPM -->
+  <script src="https://cdn.jsdelivr.net/npm/@duckdb/wasm"></script>
   <script>
     let db = null;
     let connection = null;
-    let isInitializing = false;
-    let initPromise = null;
 
     async function initDB() {
       if (connection) return;
-      if (isInitializing) return initPromise;
 
-      isInitializing = true;
-      initPromise = (async () => {
-        try {
-          const JSDELIVR_BUNDLES = await duckdb.getBundles();
-          await duckdb.instantiate(JSDELIVR_BUNDLES.mvp);
-          db = new duckdb.Database();
-          connection = await db.connect();
-        } catch (err) {
-          isInitializing = false;
-          console.error('DuckDB init error:', err);
-          throw new Error(`DuckDB init failed: ${err.message}`);
-        }
-      })();
-
-      return initPromise;
+      try {
+        const JSDELIVR_BUNDLES = duckdb.getJsDelivrBundles();
+        const bundle = await duckdb.instantiate(JSDELIVR_BUNDLES.mvp);
+        db = new bundle.Database();
+        connection = await db.connect();
+        console.log('✓ DuckDB initialized');
+      } catch (err) {
+        console.error('DuckDB init failed:', err);
+        throw err;
+      }
     }
 
     async function runQuery() {
       const table = document.getElementById('tableSelect').value;
-      const search = document.getElementById('searchInput').value;
       const limit = document.getElementById('limitInput').value || '100';
 
       if (!table) {
@@ -235,15 +226,14 @@
       }
 
       const container = document.getElementById('resultsContainer');
-      container.innerHTML = '<div class="loading"><span class="spinner"></span> Initializing DuckDB...</div>';
+      container.innerHTML = '<div class="loading"><span class="spinner"></span> Loading data...</div>';
 
       try {
         await initDB();
 
-        container.innerHTML = '<div class="loading"><span class="spinner"></span> Loading data...</div>';
-
         const parquetUrl = `./data/${table}.parquet`;
-        let sql = `SELECT * FROM '${parquetUrl}' LIMIT ${limit}`;
+        const sql = `SELECT * FROM '${parquetUrl}' LIMIT ${limit}`;
+        console.log('Running:', sql);
 
         const result = await connection.query(sql);
         const rows = result.toArray();
@@ -301,7 +291,13 @@
 
     // Initialize on page load
     window.addEventListener('load', async () => {
-      await initDB();
+      try {
+        await initDB();
+        console.log('Page ready for queries');
+      } catch (err) {
+        document.getElementById('resultsContainer').innerHTML =
+          `<div class="error">Failed to initialize DuckDB: ${escapeHtml(err.message)}</div>`;
+      }
     });
 
     // Allow Enter to trigger query
