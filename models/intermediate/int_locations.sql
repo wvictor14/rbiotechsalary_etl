@@ -52,11 +52,10 @@ select
     raw_country,
     raw_city,
     location_id,
-    concat_ws(', ', city, subdivision, country) as location_name,
+    trim(concat_ws(', ', city, subdivision, country)) as location_name,
     country,
     city,
     us_state,
     ca_province,
     subdivision
 from final
-;

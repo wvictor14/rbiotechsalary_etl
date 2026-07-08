@@ -37,4 +37,3 @@ select
     bonus_amount,
     total_compensation
 from joined
-;

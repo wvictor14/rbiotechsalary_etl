@@ -36,4 +36,3 @@ with
     )
 select *
 from pivoted
-;

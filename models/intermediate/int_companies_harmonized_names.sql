@@ -5,7 +5,7 @@ with
         select
             response_id,
             raw_company_name,
-            trim(replace(raw_company_name, '’', "'")) as company_name,
+            trim(replace(raw_company_name, chr(8217), chr(39))) as company_name,
             company_size,
             sector,
             company_is_private_or_public
@@ -35,4 +35,3 @@ with
     )
 select *
 from final
-;
