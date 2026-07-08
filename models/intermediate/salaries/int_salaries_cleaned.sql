@@ -1,34 +1,43 @@
 with
     raw_data as (
-        select response_id, annual_base_salary, annual_target_bonus_in_percentage
+        select
+            response_id,
+            survey_year,
+            annual_base_salary,
+            annual_target_bonus_in_percentage,
+            annual_target_bonus_amount
         from {{ ref("stg_responses") }}
         where annual_base_salary is not null
     ),
 
-    scrubbed as (
-        select
-            *,
-            -- Step 1: Just remove everything that isn't a digit or decimal
-            regexp_replace(
-                cast(annual_base_salary as string), '[^0-9.]', ''
-            ) as base_str,
-            regexp_replace(
-                cast(annual_target_bonus_in_percentage as string), '[^0-9.]', ''
-            ) as bonus_pct_str
-        from raw_data
-    ),
-    final_numeric as (
+    -- parse_first_number takes the first numeric token, so range answers
+    -- like "110,000 - 120,000" become the lower bound instead of garbage
+    parsed as (
         select
             response_id,
-            -- Step 2: Safe cast to double (Spark's version of float)
-            cast(nullif(base_str, '') as double) as base_salary,
-            cast(nullif(bonus_pct_str, '') as double) as bonus_pct
-        from scrubbed
+            survey_year,
+            {{ parse_first_number("annual_base_salary") }} as base_salary,
+            {{ parse_first_number("annual_target_bonus_in_percentage") }}
+            as bonus_pct_raw,
+            {{ parse_first_number("annual_target_bonus_amount") }}
+            as bonus_amount_raw
+        from raw_data
     ),
 
-    filtered as (
-        select * from final_numeric where base_salary >= 15000 and bonus_pct <= 100
+    -- null out implausible bonus values instead of dropping the response:
+    -- the base salary is still usable
+    validated as (
+        select
+            response_id,
+            survey_year,
+            base_salary,
+            case when bonus_pct_raw <= 100 then bonus_pct_raw end as bonus_pct,
+            case
+                when bonus_amount_raw <= base_salary then bonus_amount_raw
+            end as bonus_amount_reported
+        from parsed
+        where base_salary >= 15000
     )
 
 select *
-from filtered
+from validated

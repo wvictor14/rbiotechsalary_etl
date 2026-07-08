@@ -1,5 +1,8 @@
 select
     response_id,
+    survey_year,
+    currency_code,
+    currency_source,
 
     title,
     standardized_title,

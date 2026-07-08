@@ -1,10 +1,17 @@
 version: 2
 sources:
   - name: survey_results
-
-    # override profiles.yml to point to project wide sources folder
-    # (because dev points to dev_vyuan and prod points to main)
-    # (but sources will be shared between dev/prod)
-    schema: sources
+    description: >
+      Raw survey responses from the public r/biotech salary Google Sheet,
+      one tab per survey year. Extracted to data/raw/ CSVs by
+      `uv run python scripts/extract.py`. Sources read those CSVs directly
+      via duckdb read_csv (no manual load step). all_varchar keeps typing
+      uniform across years; casting happens downstream.
+    meta:
+      external_location: "read_csv('data/raw/{name}.csv', header=true, all_varchar=true)"
     tables:
-      - name: src_responses
+      - name: src_responses_2022
+      - name: src_responses_2023
+      - name: src_responses_2024
+      - name: src_responses_2025
+      - name: src_responses_2026

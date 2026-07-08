@@ -1,0 +1,43 @@
+raw_region,country,currency_code
+"new england (ma, ct, ri, nh, vt, me)",United States,USD
+west coast (california & pacific northwest),United States,USD
+"pharma central (ny, nj, pa)",United States,USD
+"midwest (from oh to ks, north to nd)",United States,USD
+"carolinas & southeast (from nc to ar, south fl and la)",United States,USD
+"dc metro area (dc, va, md, de)",United States,USD
+"south & mountain west (tx to az, north to mt)",United States,USD
+"other us location (hi, ak, pr, etc.)",United States,USD
+remote - us,United States,USD
+boston,United States,USD
+san diego,United States,USD
+"san diego, ca",United States,USD
+"research triangle park, nc",United States,USD
+central va,United States,USD
+"elkton, virginia",United States,USD
+tennessee,United States,USD
+co,United States,USD
+canada,Canada,CAD
+united kingdom and ireland,United Kingdom,GBP
+germany,Germany,EUR
+france,France,EUR
+belgium,Belgium,EUR
+netherlands,Netherlands,EUR
+nl,Netherlands,EUR
+benelux,,EUR
+eu,,EUR
+austria,Austria,EUR
+spain,Spain,EUR
+spain (barcelona),Spain,EUR
+finland,Finland,EUR
+denmark,Denmark,DKK
+sweden,Sweden,SEK
+switzerland,Switzerland,CHF
+poland,Poland,PLN
+russia,Russia,RUB
+india,India,INR
+singapore,Singapore,SGD
+australia,Australia,AUD
+chile,Chile,CLP
+argentine,Argentina,ARS
+kenya,Kenya,KES
+iraq,Iraq,IQD

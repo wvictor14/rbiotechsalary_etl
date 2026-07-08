@@ -2,13 +2,16 @@ with
     int_responses as (
         select
             response_id,
+            survey_year,
             company_name,
             job_id,
             location_id,
             base_salary,
             bonus_pct,
             bonus_amount,
-            total_compensation
+            total_compensation,
+            currency_code,
+            currency_source
         from {{ ref("int_responses") }}
     ),
     jobs as (select * from {{ ref("dim_jobs") }}),
@@ -17,6 +20,7 @@ with
     final as (
         select
             r.response_id,
+            r.survey_year,
             r.company_name,
             c.company_id,
             c.company_size,
@@ -35,6 +39,8 @@ with
             r.bonus_pct,
             r.bonus_amount,
             r.total_compensation,
+            r.currency_code,
+            r.currency_source,
 
             r.location_id,
             l.location_name,

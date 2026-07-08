@@ -2,178 +2,189 @@ version: 2
 
 models:
   - name: stg_responses
-    description: ""
+    description: >
+      All survey years (2022-2026) mapped onto one canonical schema and
+      unioned. Column semantics differ across survey revisions; see the
+      per-year stg_responses_<year> models for the exact mappings. All
+      values are varchar except response_id/survey_year; numeric parsing
+      happens in intermediate models.
     columns:
       - name: response_id
         data_type: string
-        description: "Copy of timestamp, serves as primary key for all models"
+        description: "Surrogate key of (survey_year, timestamp)"
         tests:
           - unique
           - not_null
-          
+
+      - name: survey_year
+        data_type: integer
+        description: "Which survey tab (year) the response came from"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [2022, 2023, 2024, 2025, 2026]
+              quote: false
+
       - name: timestamp
         data_type: string
-        description: "Unique for each response"
+        description: "Submission timestamp; unique within a year but not guaranteed across years"
         tests:
-          - unique
           - not_null
 
       - name: email_address
         data_type: string
-        description: ""
+        description: "2025 only"
 
-      - name: which_country_do_you_work_in
+      - name: raw_job_title
         data_type: string
-        description: ""
 
-      - name: what_city_do_you_work_in
+      - name: raw_department
         data_type: string
-        description: ""
+        description: "2025+ only; older surveys did not ask for department"
 
-      - name: which_us_state_do_you_work_in
+      - name: position_description
         data_type: string
-        description: ""
 
-      - name: which_canadian_province_do_you_work_in
+      - name: work_arrangement
         data_type: string
-        description: ""
+        description: "In-person / remote / hybrid; 2025+ only"
 
-      - name: company_or_institution_name
+      - name: wfh_days_per_week
         data_type: string
-        description: ""
+        description: "2025+ only"
 
-      - name: which_of_the_following_best_describes_your_company
+      - name: raw_country
         data_type: string
-        description: ""
 
-      - name: biotech_sub_industry
+      - name: raw_city
         data_type: string
-        description: ""
+        description: "2025+: city question; 2022-2024: closest major city or hub"
 
-      - name: company_detail_approximate_company_size
+      - name: raw_region
         data_type: string
-        description: ""
+        description: "2024 only: multi-state region buckets (e.g. 'New England (MA, CT, ...)')"
 
-      - name: provide_a_review_and_rate_your_companyinstitution_and_experience
+      - name: us_state
         data_type: string
-        description: ""
+        description: "2025+ only"
 
-      - name: work_life_balance_on_average_how_many_hours_do_you_work_per_week
+      - name: ca_province
         data_type: string
-        description: ""
+        description: "2025+ only"
 
-      - name: what_is_your_official_job_title
+      - name: raw_company_name
         data_type: string
-        description: ""
 
-      - name: which_department_best_describes_your_role_if_you_cant_find_one_that_fits_your_specific_role_select_other_and_describe
+      - name: company_is_private_or_public
         data_type: string
-        description: ""
 
-      - name: briefly_describe_your_position_and_responsibilities
+      - name: sector
         data_type: string
-        description: ""
 
-      - name: do_you_work_inperson_remote_or_hybrid
+      - name: company_size
         data_type: string
-        description: ""
 
-      - name: how_many_days_on_average_per_week_do_you_work_from_home
-        data_type: double
-        description: ""
-
-      - name: what_degrees_do_you_have
+      - name: company_review
         data_type: string
-        description: ""
 
-      - name: how_many_total_years_of_experience_in_postdocs_do_you_have
-        data_type: bigint
-        description: ""
-
-      - name: list_other_relevant_and_recognized_certifications
+      - name: hours_worked_per_week
         data_type: string
-        description: ""
+        description: "2024+ only"
 
-      - name: please_enter_your_total_years_of_experience_in_the_field
-        data_type: bigint
-        description: ""
-
-      - name: what_currency_will_you_be_answering_these_questions_in
+      - name: degrees
         data_type: string
-        description: ""
+        description: "2024-2025 multi-select degrees question"
 
-      - name: are_you_a_salaried_or_hourly_employee
+      - name: highest_education
         data_type: string
-        description: ""
+        description: "2022-2023 and 2025+; phrasing changed across revisions"
 
-      - name: if_you_are_an_hourly_employee_how_many_hours_per_week_do_you_work
+      - name: postdoc_years
         data_type: string
-        description: ""
+        description: "2025+ only"
+
+      - name: did_postdoc
+        data_type: string
+        description: "2022 only (yes/no)"
+
+      - name: certifications
+        data_type: string
+
+      - name: years_of_experience
+        data_type: string
+
+      - name: years_at_current_position
+        data_type: string
+        description: "2025+ only"
+
+      - name: currency
+        data_type: string
+        description: "2025+ only; older surveys assumed local currency"
+
+      - name: salaried_or_hourly
+        data_type: string
+        description: "2025+ only"
+
+      - name: hourly_hours_per_week
+        data_type: string
+        description: "2025+ only"
 
       - name: annual_base_salary
-        data_type: double
-        description: ""
+        data_type: string
 
       - name: overtime_pay
         data_type: string
-        description: ""
 
       - name: annual_target_bonus_in_percentage
-        data_type: double
-        description: ""
+        data_type: string
+        description: >
+          Target bonus as a percent. Native for 2025+; for 2022-2024 derived
+          from the mixed-unit bonus column when the value was <= 100
+          (values <= 1 treated as decimal fractions and scaled by 100).
+
+      - name: annual_target_bonus_amount
+        data_type: string
+        description: >
+          Target bonus in dollars. 2022-2024 only, from the mixed-unit bonus
+          column when the value was > 100.
+
+      - name: other_annual_bonus
+        data_type: string
+        description: "2025+ only"
+
+      - name: bonus_received_last_cycle
+        data_type: string
+        description: "2025+ only"
 
       - name: commission
         data_type: string
-        description: ""
+        description: "2025+ only"
 
-      - name: annual_equitystock_option
-        data_type: double
-        description: ""
+      - name: annual_equity
+        data_type: string
 
       - name: most_recent_annual_yearly_raise
         data_type: string
-        description: ""
 
-      - name: bonus_value
-        data_type: bigint
-        description: ""
-
-      - name: stockequity_options
+      - name: signon_bonus_value
         data_type: string
-        description: ""
 
-      - name: relocation_assistance_total_value
-        data_type: bigint
-        description: ""
+      - name: signon_stock_options
+        data_type: string
+
+      - name: relocation_assistance_value
+        data_type: string
 
       - name: retirement_benefits
         data_type: string
-        description: ""
+
+      - name: retirement_percent_match
+        data_type: string
+        description: "2024 only"
 
       - name: healthcare_benefits
         data_type: string
-        description: ""
-
-      - name: select_the_highest_level_of_education_that_you_have_thats_relevant_to_your_occupation_if_you_have_multiple_please_select_other_and_describe
-        data_type: string
-        description: ""
-
-      - name: how_many_years_have_you_been_working_at_this_current_position
-        data_type: string
-        description: ""
-
-      - name: what_currency_will_you_be_answering_these_quesitons_in
-        data_type: string
-        description: ""
 
       - name: survey_feedback
         data_type: string
-        description: ""
-
-      - name: any_other_type_of_annual_bonus_please_describe
-        data_type: string
-        description: ""
-
-      - name: how_much_of_your_bonus_did_you_receive_in_the_last_cycle
-        data_type: string
-        description: ""
+        description: "2024+ only"

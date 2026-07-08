@@ -7,3 +7,4 @@ logs/
 *.duckdb
 dbt_internal_packages/
 store
+__pycache__/

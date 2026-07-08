@@ -1,0 +1,65 @@
+country,currency_code
+United States,USD
+Canada,CAD
+United Kingdom,GBP
+Ireland,EUR
+Germany,EUR
+France,EUR
+Belgium,EUR
+Netherlands,EUR
+Luxembourg,EUR
+Spain,EUR
+Portugal,EUR
+Italy,EUR
+Greece,EUR
+Austria,EUR
+Finland,EUR
+Lithuania,EUR
+Latvia,EUR
+Estonia,EUR
+Slovakia,EUR
+Slovenia,EUR
+Croatia,EUR
+Czech Republic,CZK
+Poland,PLN
+Hungary,HUF
+Romania,RON
+Bulgaria,BGN
+Switzerland,CHF
+Denmark,DKK
+Sweden,SEK
+Norway,NOK
+Iceland,ISK
+Russia,RUB
+Ukraine,UAH
+Turkey,TRY
+Israel,ILS
+Saudi Arabia,SAR
+United Arab Emirates,AED
+Egypt,EGP
+Kenya,KES
+Nigeria,NGN
+South Africa,ZAR
+Iraq,IQD
+India,INR
+Pakistan,PKR
+Bangladesh,BDT
+China,CNY
+Hong Kong,HKD
+Taiwan,TWD
+Japan,JPY
+South Korea,KRW
+Singapore,SGD
+Malaysia,MYR
+Thailand,THB
+Vietnam,VND
+Indonesia,IDR
+Philippines,PHP
+Australia,AUD
+New Zealand,NZD
+Mexico,MXN
+Brazil,BRL
+Argentina,ARS
+Chile,CLP
+Colombia,COP
+Peru,PEN

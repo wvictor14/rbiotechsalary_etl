@@ -31,3 +31,47 @@ seeds:
         description: "The original city value as it appears in the survey data."
       - name: clean_city
         description: "The standardized city name. Empty/null means the value should be treated as no city."
+  - name: currency_names
+    description: >
+      Mapping of raw free-text currency answers (2025+ surveys) to ISO 4217
+      currency codes. Join key is lowercased and trimmed.
+    columns:
+      - name: raw_currency
+        description: "Lowercased raw currency answer as it appears in the survey data."
+      - name: currency_code
+        description: "ISO 4217 currency code (USD, CAD, EUR, ...)."
+
+  - name: country_names
+    description: >
+      Mapping of raw country name variants (USA, US, u.s.a., England, ...) to
+      standardized country names matching the countries seed. Join key is
+      lowercased and trimmed.
+    columns:
+      - name: raw_country
+        description: "Lowercased raw country value as it appears in the survey data."
+      - name: clean_country
+        description: "Standardized country name, matches countries.country."
+
+  - name: country_currencies
+    description: >
+      Standard currency for each country, used to infer response currency for
+      survey years (pre-2025) that did not ask which currency answers were in.
+    columns:
+      - name: country
+        description: "Standardized country name, matches countries.country."
+      - name: currency_code
+        description: "ISO 4217 currency code of the country's primary currency."
+
+  - name: region_countries
+    description: >
+      Mapping of the 2024 survey's region buckets (e.g. "New England (MA, CT,
+      RI, NH, VT, ME)") to a country and currency. Country is empty for
+      ambiguous multi-country regions (EU, Benelux) where only the currency is
+      determinable. Join key is lowercased and trimmed.
+    columns:
+      - name: raw_region
+        description: "Lowercased raw region value as it appears in the 2024 survey."
+      - name: country
+        description: "Standardized country name; empty when the region spans countries."
+      - name: currency_code
+        description: "ISO 4217 currency code implied by the region."

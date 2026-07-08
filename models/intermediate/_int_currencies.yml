@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: int_currencies
+    description: >
+      One row per response with the resolved currency. Reported currency
+      (2025+) wins; older years are inferred from country, then from the 2024
+      region bucket, then assumed USD. currency_source records which rule
+      applied, so analyses can filter to reported-only or USD-only data.
+    columns:
+      - name: response_id
+        description: "Foreign key to stg_responses"
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('stg_responses')
+              field: response_id
+
+      - name: currency_code
+        description: "ISO 4217 currency code the response's compensation answers are (assumed to be) in"
+        tests:
+          - not_null
+
+      - name: currency_source
+        description: "How the currency was determined"
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - reported
+                - inferred_from_country
+                - inferred_from_region
+                - assumed_usd
