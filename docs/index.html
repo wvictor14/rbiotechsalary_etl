@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RBiotech Salary Data Explorer</title>
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -29,6 +28,14 @@
     }
     h1 { font-size: 2.5em; margin-bottom: 8px; }
     .subtitle { font-size: 1.1em; opacity: 0.9; }
+    .status-bar {
+      padding: 8px 20px;
+      background: #fffbe6;
+      border-bottom: 1px solid #e0e0e0;
+      color: #666;
+      font-size: 0.85em;
+    }
+    .status-bar.ready { background: #e6ffed; }
     .controls {
       padding: 20px;
       background: #f8f9fa;
@@ -38,14 +45,20 @@
       flex-wrap: wrap;
       align-items: center;
     }
-    input, select {
+    select, textarea, input {
       padding: 10px 12px;
       border: 1px solid #ddd;
       border-radius: 4px;
       font-size: 0.95em;
       font-family: inherit;
     }
-    input:focus, select:focus {
+    textarea {
+      width: 100%;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.9em;
+      resize: vertical;
+    }
+    select:focus, textarea:focus, input:focus {
       outline: none;
       border-color: #667eea;
       box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -61,11 +74,9 @@
       transition: background 0.2s;
     }
     button:hover { background: #5568d3; }
-    .loading {
-      padding: 40px;
-      text-align: center;
-      color: #666;
-    }
+    button:disabled { background: #aaa; cursor: not-allowed; }
+    .sql-row { padding: 0 20px 20px; background: #f8f9fa; border-bottom: 1px solid #e0e0e0; }
+    .loading { padding: 40px; text-align: center; color: #666; }
     .spinner {
       display: inline-block;
       width: 20px;
@@ -81,35 +92,19 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    .results {
-      padding: 20px;
-      overflow-x: auto;
-    }
-    .results-header {
-      margin-bottom: 16px;
-      color: #666;
-      font-size: 0.95em;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
+    .results { padding: 20px; overflow-x: auto; }
+    .results-header { margin-bottom: 16px; color: #666; font-size: 0.95em; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
     th {
       background: #f0f0f0;
-      padding: 12px;
+      padding: 10px 12px;
       text-align: left;
       font-weight: 600;
       color: #333;
       border-bottom: 2px solid #ddd;
-      position: sticky;
-      top: 0;
       white-space: nowrap;
     }
-    td {
-      padding: 12px;
-      border-bottom: 1px solid #eee;
-    }
+    td { padding: 10px 12px; border-bottom: 1px solid #eee; }
     tr:hover { background: #f9f9f9; }
     .error {
       padding: 20px;
@@ -117,12 +112,11 @@
       color: #c33;
       border-radius: 4px;
       margin: 20px;
+      white-space: pre-wrap;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.85em;
     }
-    .empty {
-      padding: 40px;
-      text-align: center;
-      color: #999;
-    }
+    .empty { padding: 40px; text-align: center; color: #999; }
     footer {
       padding: 16px 20px;
       background: #f8f9fa;
@@ -140,95 +134,137 @@
       <p class="subtitle">Explore salary data across companies and roles</p>
     </header>
 
+    <div class="status-bar" id="statusBar">Initializing DuckDB Wasm…</div>
+
     <div class="controls">
       <select id="tableSelect">
-        <option value="">Select a table...</option>
+        <option value="">Select a table…</option>
         <option value="fct_salaries">Salary Facts</option>
         <option value="dim_companies">Companies</option>
-        <option value="dim_jobs">Job Titles</option>
+        <option value="dim_jobs">Jobs</option>
+        <option value="dim_job_titles">Job Titles</option>
         <option value="dim_locations">Locations</option>
       </select>
       <input type="number" id="limitInput" placeholder="Limit (default: 100)" min="1" max="10000">
-      <button onclick="runQuery()">Query</button>
+      <button id="queryBtn" onclick="runTableQuery()" disabled>Query</button>
       <button onclick="clearResults()">Clear</button>
+    </div>
+
+    <div class="sql-row">
+      <textarea id="sqlInput" rows="3" placeholder="Or write SQL directly, e.g.  SELECT survey_year, COUNT(*) n, ROUND(AVG(base_salary)) avg_base FROM fct_salaries GROUP BY 1 ORDER BY 1"></textarea>
+      <button id="sqlBtn" onclick="runSql()" disabled style="margin-top: 8px;">Run SQL</button>
     </div>
 
     <div id="resultsContainer"></div>
 
     <footer>
-      Updated monthly via dbt. Powered by CSV.
+      Updated via dbt + GitHub Actions. Queries run entirely in your browser with DuckDB Wasm.
     </footer>
   </div>
 
-  <script>
-    async function runQuery() {
-      const table = document.getElementById('tableSelect').value;
-      const limit = parseInt(document.getElementById('limitInput').value) || 100;
+  <script type="module">
+    import * as duckdb from 'https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.29.0/+esm';
 
-      if (!table) {
-        alert('Please select a table');
+    const statusBar = document.getElementById('statusBar');
+    const TABLES = ['fct_salaries', 'dim_companies', 'dim_jobs', 'dim_job_titles', 'dim_locations'];
+    let conn = null;
+
+    async function initDB() {
+      const bundles = duckdb.getJsDelivrBundles();
+      const bundle = await duckdb.selectBundle(bundles);
+
+      const workerUrl = URL.createObjectURL(
+        new Blob([`importScripts("${bundle.mainWorker}");`], { type: 'text/javascript' })
+      );
+      const worker = new Worker(workerUrl);
+      const logger = new duckdb.ConsoleLogger(duckdb.LogLevel.WARNING);
+      const db = new duckdb.AsyncDuckDB(logger, worker);
+      await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
+      URL.revokeObjectURL(workerUrl);
+
+      conn = await db.connect();
+
+      // Register each parquet file under its table name as an absolute URL
+      for (const t of TABLES) {
+        const url = new URL(`data/${t}.parquet`, window.location.href).href;
+        await db.registerFileURL(`${t}.parquet`, url, duckdb.DuckDBDataProtocol.HTTP, false);
+        await conn.query(`CREATE VIEW ${t} AS SELECT * FROM read_parquet('${t}.parquet')`);
+      }
+
+      statusBar.textContent = '✓ DuckDB ready — views: ' + TABLES.join(', ');
+      statusBar.classList.add('ready');
+      document.getElementById('queryBtn').disabled = false;
+      document.getElementById('sqlBtn').disabled = false;
+    }
+
+    function renderResult(result, label) {
+      const container = document.getElementById('resultsContainer');
+      const rows = result.toArray().map(r => r.toJSON());
+
+      if (rows.length === 0) {
+        container.innerHTML = '<div class="empty">No results.</div>';
         return;
       }
 
-      const container = document.getElementById('resultsContainer');
-      container.innerHTML = '<div class="loading"><span class="spinner"></span> Loading data...</div>';
-
-      try {
-        const csvUrl = `./data/${table}.csv`;
-        const response = await fetch(csvUrl);
-        if (!response.ok) throw new Error(`Failed to load ${table}.csv`);
-
-        const csv = await response.text();
-        const result = Papa.parse(csv, { header: true, skipEmptyLines: true });
-
-        if (result.errors.length > 0) {
-          throw new Error(`CSV parse error: ${result.errors[0].message}`);
-        }
-
-        const rows = result.data.slice(0, limit);
-
-        if (rows.length === 0) {
-          container.innerHTML = '<div class="empty">No results found.</div>';
-          return;
-        }
-
-        const columns = Object.keys(rows[0]);
-        let html = `
-          <div class="results">
-            <div class="results-header">${rows.length} rows from <strong>${table}</strong></div>
-            <table>
-              <thead>
-                <tr>
-                  ${columns.map(col => `<th>${escapeHtml(col)}</th>`).join('')}
-                </tr>
-              </thead>
-              <tbody>
-                ${rows.map(row => `
-                  <tr>
-                    ${columns.map(col => {
-                      let val = row[col];
-                      if (!val) val = '—';
-                      return `<td>${escapeHtml(String(val).substring(0, 100))}</td>`;
-                    }).join('')}
-                  </tr>
-                `).join('')}
-              </tbody>
-            </table>
-          </div>
-        `;
-
-        container.innerHTML = html;
-      } catch (err) {
-        container.innerHTML = `<div class="error"><strong>Error:</strong> ${escapeHtml(err.message)}</div>`;
-        console.error(err);
-      }
+      const columns = result.schema.fields.map(f => f.name);
+      container.innerHTML = `
+        <div class="results">
+          <div class="results-header">${rows.length} rows — <strong>${escapeHtml(label)}</strong></div>
+          <table>
+            <thead><tr>${columns.map(c => `<th>${escapeHtml(c)}</th>`).join('')}</tr></thead>
+            <tbody>
+              ${rows.map(row => `<tr>${columns.map(c => {
+                let v = row[c];
+                if (v === null || v === undefined) v = '—';
+                else if (typeof v === 'bigint') v = v.toString();
+                else v = String(v);
+                return `<td>${escapeHtml(v.substring(0, 120))}</td>`;
+              }).join('')}</tr>`).join('')}
+            </tbody>
+          </table>
+        </div>`;
     }
 
-    function clearResults() {
+    function showLoading() {
+      document.getElementById('resultsContainer').innerHTML =
+        '<div class="loading"><span class="spinner"></span> Running query…</div>';
+    }
+
+    function showError(err) {
+      document.getElementById('resultsContainer').innerHTML =
+        `<div class="error">Error: ${escapeHtml(err.message || String(err))}</div>`;
+      console.error(err);
+    }
+
+    window.runTableQuery = async function() {
+      const table = document.getElementById('tableSelect').value;
+      const limit = parseInt(document.getElementById('limitInput').value) || 100;
+      if (!table) { alert('Please select a table'); return; }
+
+      showLoading();
+      try {
+        const result = await conn.query(`SELECT * FROM ${table} LIMIT ${limit}`);
+        renderResult(result, table);
+      } catch (err) { showError(err); }
+    };
+
+    window.runSql = async function() {
+      const sql = document.getElementById('sqlInput').value.trim();
+      if (!sql) { alert('Please enter a SQL query'); return; }
+
+      showLoading();
+      try {
+        const result = await conn.query(sql);
+        renderResult(result, 'custom SQL');
+      } catch (err) { showError(err); }
+    };
+
+    window.clearResults = function() {
       document.getElementById('resultsContainer').innerHTML = '';
       document.getElementById('tableSelect').value = '';
       document.getElementById('limitInput').value = '';
-    }
+      document.getElementById('sqlInput').value = '';
+    };
 
     function escapeHtml(text) {
       const div = document.createElement('div');
@@ -236,9 +272,10 @@
       return div.innerHTML;
     }
 
-    // Allow Enter to trigger query
-    document.getElementById('limitInput').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') runQuery();
+    initDB().catch(err => {
+      statusBar.textContent = '✗ DuckDB init failed: ' + err.message;
+      statusBar.style.background = '#fee';
+      showError(err);
     });
   </script>
 </body>
