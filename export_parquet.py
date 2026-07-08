@@ -19,7 +19,9 @@ def export_marts():
         """
         SELECT table_name FROM information_schema.tables
         WHERE table_schema = 'main'
-          AND (table_name LIKE 'dim_%' OR table_name LIKE 'fct_%')
+          AND (table_name = 'responses'
+               OR table_name LIKE 'dim_%'
+               OR table_name LIKE 'fct_%')
         """
     ).fetchall()
 

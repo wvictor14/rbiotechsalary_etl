@@ -45,9 +45,11 @@ with
             r.hierarchy,
             r.priority,
             -- we need to capture all the matches and rank them by priority
+            -- one best match per RESPONSE (partitioning by title would keep one
+            -- arbitrary response per title and drop the rest)
             row_number() over (
-                partition by l.raw_job_title
-                order by r.priority asc, length(r.keyword) desc  -- if matches have same priority, take the one with the longest keyword (most specific match)
+                partition by l.response_id
+                order by r.priority asc, length(r.keyword) desc, r.keyword  -- prefer priority, then most specific (longest) keyword; keyword as deterministic tiebreak
             ) as match_rank
         from removed_nulls as l
         left join

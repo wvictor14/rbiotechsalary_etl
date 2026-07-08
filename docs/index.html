@@ -139,6 +139,7 @@
     <div class="controls">
       <select id="tableSelect">
         <option value="">Select a table…</option>
+        <option value="responses">Responses (main analytical table)</option>
         <option value="fct_salaries">Salary Facts</option>
         <option value="dim_companies">Companies</option>
         <option value="dim_jobs">Jobs</option>
@@ -151,7 +152,7 @@
     </div>
 
     <div class="sql-row">
-      <textarea id="sqlInput" rows="3" placeholder="Or write SQL directly, e.g.  SELECT survey_year, COUNT(*) n, ROUND(AVG(base_salary)) avg_base FROM fct_salaries GROUP BY 1 ORDER BY 1"></textarea>
+      <textarea id="sqlInput" rows="3" placeholder="Or write SQL directly, e.g.  SELECT standardized_title, COUNT(*) n, ROUND(AVG(total_compensation)) avg_tc FROM responses WHERE currency_code = 'USD' GROUP BY 1 ORDER BY avg_tc DESC"></textarea>
       <button id="sqlBtn" onclick="runSql()" disabled style="margin-top: 8px;">Run SQL</button>
     </div>
 
@@ -166,7 +167,7 @@
     import * as duckdb from 'https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.29.0/+esm';
 
     const statusBar = document.getElementById('statusBar');
-    const TABLES = ['fct_salaries', 'dim_companies', 'dim_jobs', 'dim_job_titles', 'dim_locations'];
+    const TABLES = ['responses', 'fct_salaries', 'dim_companies', 'dim_jobs', 'dim_job_titles', 'dim_locations'];
     let conn = null;
 
     async function initDB() {

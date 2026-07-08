@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: fct_salaries
+    description: >
+      Salary fact table, one row per survey response. Carries foreign keys to
+      dim_companies, dim_jobs, and dim_locations plus compensation measures.
+    columns:
+      - name: response_id
+        description: Unique identifier for each survey response.
+        tests:
+          - unique
+          - not_null
+
+      - name: company_id
+        description: Foreign key to dim_companies. Null when company was not reported or not matched.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_companies')
+                field: company_id
+
+      - name: job_id
+        description: Foreign key to dim_jobs. Null when title was not reported.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_jobs')
+                field: job_id
+
+      - name: location_id
+        description: Foreign key to dim_locations. Null when location was not reported.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_locations')
+                field: location_id
+
+      - name: base_salary
+        description: Annual base salary as reported, cleaned and parsed to a number.
+
+      - name: bonus_pct
+        description: Bonus as a fraction of base salary, where derivable. Nullable.
+
+      - name: bonus_amount
+        description: Bonus amount in currency units. Nullable.
+
+      - name: total_compensation
+        description: Base salary plus bonus amount, in the response's currency.
+
+      - name: currency_code
+        description: ISO currency code resolved per response (reported > country > region > assumed USD).
+
+      - name: currency_source
+        description: How currency_code was resolved (reported, country, region_2024, assumed_usd).

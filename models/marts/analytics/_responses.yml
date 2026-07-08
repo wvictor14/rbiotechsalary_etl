@@ -18,6 +18,22 @@ models:
                 to: ref('stg_responses')
                 field: response_id
 
+      - name: base_salary
+        description: >
+          Annual base salary as reported, cleaned and parsed to a number.
+
+      - name: bonus_pct
+        description: >
+          Bonus as a fraction of base salary, where derivable. Nullable.
+
+      - name: bonus_amount
+        description: >
+          Bonus amount in currency units. Derived from bonus_pct and base_salary when only one was reported. Nullable.
+
+      - name: total_compensation
+        description: >
+          Base salary plus bonus amount, in the response's currency.
+
       - name: title
         description: >
           The raw job title provided by the respondent in the survey.

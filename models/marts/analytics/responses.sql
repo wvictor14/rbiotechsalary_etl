@@ -1,6 +1,11 @@
 select
     response_id,
     survey_year,
+
+    base_salary,
+    bonus_pct,
+    bonus_amount,
+    total_compensation,
     currency_code,
     currency_source,
 
