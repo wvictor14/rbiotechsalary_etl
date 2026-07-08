@@ -20,6 +20,20 @@ jobs:
         run: |
           pip install dbt-core dbt-duckdb duckdb
 
+      - name: Create profiles.yml
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml <<EOF
+          rbiotechsalary_etl:
+            outputs:
+              dev:
+                type: duckdb
+                path: dev.duckdb
+                schema: main
+                threads: 4
+            target: dev
+          EOF
+
       - name: Run dbt build
         run: dbt build
 
