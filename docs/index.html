@@ -195,8 +195,10 @@
     </footer>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@duckdb/wasm@latest/dist/duckdb-mvp.wasm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@duckdb/wasm@1.28.0/dist/duckdb-mvp.wasm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@duckdb/wasm@1.28.0/dist/duckdb-eh.wasm.js"></script>
   <script>
+    let db = null;
     let connection = null;
     let isInitializing = false;
     let initPromise = null;
@@ -208,12 +210,13 @@
       isInitializing = true;
       initPromise = (async () => {
         try {
-          const bundles = await duckdb.bundles.getJsDelivrBundles();
-          await duckdb.instantiate(bundles.mvp, bundles.wasm);
-          const db = new duckdb.Database();
+          const JSDELIVR_BUNDLES = await duckdb.getBundles();
+          await duckdb.instantiate(JSDELIVR_BUNDLES.mvp);
+          db = new duckdb.Database();
           connection = await db.connect();
         } catch (err) {
           isInitializing = false;
+          console.error('DuckDB init error:', err);
           throw new Error(`DuckDB init failed: ${err.message}`);
         }
       })();
