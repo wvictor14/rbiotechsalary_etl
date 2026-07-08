@@ -195,17 +195,30 @@
     </footer>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@duckdb/wasm"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@duckdb/wasm@latest/dist/duckdb-mvp.wasm.js"></script>
   <script>
-    let db;
-    let connection;
+    let connection = null;
+    let isInitializing = false;
+    let initPromise = null;
 
     async function initDB() {
-      const JSDELIVR_BUNDLES = duckdb.getJsDelivrBundles();
-      await duckdb.initializeBundle(JSDELIVR_BUNDLES);
+      if (connection) return;
+      if (isInitializing) return initPromise;
 
-      db = new duckdb.Database();
-      connection = await db.connect();
+      isInitializing = true;
+      initPromise = (async () => {
+        try {
+          const bundles = await duckdb.bundles.getJsDelivrBundles();
+          await duckdb.instantiate(bundles.mvp, bundles.wasm);
+          const db = new duckdb.Database();
+          connection = await db.connect();
+        } catch (err) {
+          isInitializing = false;
+          throw new Error(`DuckDB init failed: ${err.message}`);
+        }
+      })();
+
+      return initPromise;
     }
 
     async function runQuery() {
@@ -219,17 +232,15 @@
       }
 
       const container = document.getElementById('resultsContainer');
-      container.innerHTML = '<div class="loading"><span class="spinner"></span> Loading data...</div>';
+      container.innerHTML = '<div class="loading"><span class="spinner"></span> Initializing DuckDB...</div>';
 
       try {
-        const parquetUrl = `./data/${table}.parquet`;
+        await initDB();
 
-        let sql = `SELECT * FROM '${parquetUrl}'`;
-        if (search) {
-          sql += ` LIMIT ${limit}`;
-        } else {
-          sql += ` LIMIT ${limit}`;
-        }
+        container.innerHTML = '<div class="loading"><span class="spinner"></span> Loading data...</div>';
+
+        const parquetUrl = `./data/${table}.parquet`;
+        let sql = `SELECT * FROM '${parquetUrl}' LIMIT ${limit}`;
 
         const result = await connection.query(sql);
         const rows = result.toArray();
