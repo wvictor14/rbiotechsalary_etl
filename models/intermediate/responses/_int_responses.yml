@@ -17,6 +17,10 @@ models:
                 to: ref('stg_responses')
                 field: response_id
 
+      - name: submitted_at
+        data_type: timestamp
+        description: "Submission timestamp from the raw Google Form"
+
       - name: company_name
         data_type: string
         description: The cleaned company name from the `int_companies` model.
@@ -59,3 +63,7 @@ models:
               arguments:
                 to: ref('stg_responses')
                 field: response_id
+
+      - name: submitted_at
+        data_type: timestamp
+        description: "Submission timestamp from the raw Google Form"

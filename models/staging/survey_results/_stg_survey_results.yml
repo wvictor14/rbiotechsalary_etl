@@ -6,12 +6,12 @@ models:
       All survey years (2022-2026) mapped onto one canonical schema and
       unioned. Column semantics differ across survey revisions; see the
       per-year stg_responses_<year> models for the exact mappings. All
-      values are varchar except response_id/survey_year; numeric parsing
+      values are varchar except response_id/survey_year/submitted_at; numeric parsing
       happens in intermediate models.
     columns:
       - name: response_id
         data_type: string
-        description: "Surrogate key of (survey_year, timestamp)"
+        description: "Surrogate key of (survey_year, submitted_at)"
         tests:
           - unique
           - not_null
@@ -25,9 +25,9 @@ models:
               values: [2022, 2023, 2024, 2025, 2026]
               quote: false
 
-      - name: timestamp
-        data_type: string
-        description: "Submission timestamp; unique within a year but not guaranteed across years"
+      - name: submitted_at
+        data_type: timestamp
+        description: "Submission timestamp from the raw Google Form; unique within a year but not guaranteed across years"
         tests:
           - not_null
 

@@ -1,6 +1,9 @@
 select
     response_id,
-    survey_year,
+    submitted_at,
+    date_part('year', submitted_at) as year,
+    date_part('month', submitted_at) as month,
+    date_part('day', submitted_at) as day,
 
     company_id,
     job_id,
