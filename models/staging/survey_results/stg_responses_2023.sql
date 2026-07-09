@@ -21,7 +21,7 @@ with
             {{ dbt_utils.generate_surrogate_key(["'2023'", "timestamp"]) }}
             as response_id,
             2023 as survey_year,
-            timestamp,
+            cast(timestamp as timestamp) as submitted_at,
             cast(null as varchar) as email_address,
 
             -- jobs

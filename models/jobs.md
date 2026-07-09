@@ -16,7 +16,11 @@
 
 - `job_id` (pk)
 - `title_id` (fk)
-- `hierarchy`
+- `job_function`
+- `seniority`
+- `seniority_rank`
+- `track`
+- `title_status`
 - `department`
 
 ## Modelling Strategy
@@ -32,13 +36,16 @@ This table allows us to easily track the different job titles that exist in the 
 
 ### `dim_jobs`
 
-The `dim_jobs` table takes the job title information from `dim_job_titles` and combines it with additional attributes like `hierarchy` and `department`. 
+The `dim_jobs` table takes the job title information from `dim_job_titles` and combines it with a **two-axis classification model**:
+- **Job Function**: Primary role (Data Scientist, Engineer, Analyst, etc.)
+- **Seniority**: Level and career track (Senior/Mid, IC/Management/Executive/Training)
 
-The grain of this table is one row per unique combination of `title_id`, `hierarchy`, and `department`. This allows us to analyze the data at a more granular level, answering questions like:
+The grain of this table is one row per unique combination of `title_id`, `job_function`, `seniority`, `track`, and `title_status`. This allows granular analysis:
 
-- How many people have the "Scientist" job title, and how do their salaries vary by hierarchy and department?
-- What are the most common title + hierarchy + department combinations in the data?
+- How do salaries vary by job_function and seniority_rank?
+- What job_function/seniority combinations are most common?
+- How many unmatched vs. matched job titles do we have?
 
-The motivation for splitting job information into these two tables is to have a central reference for unique job titles, while also allowing more detailed analysis of jobs based on the additional attributes.
+The motivation for this two-axis model is to separate **what people do** (function) from **how senior they are** (seniority), enabling independent analysis of both dimensions.
 
 {% enddocs %}

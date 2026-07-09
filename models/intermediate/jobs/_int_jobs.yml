@@ -33,13 +33,28 @@ models:
                 field: raw_department
                 
       - name: title
-        description: "The harmonized title after joining with the job_titles reference table."
+        description: "The harmonized title after joining with the job_titles reference table. Null when the raw title has no clean mapping (title_status is then 'unmatched' or 'missing')."
         tests:
-          - not_null
+          - not_null:
+              config:
+                where: "title_status = 'matched'"
 
       - name: standardized_title
-        description: "The official title assigned based on the highest-priority keyword match."
-      - name: hierarchy
-        description: "The categorical level (e.g., C-Suite, Senior Management, Scientific Professional)."
-      - name: priority
-        description: "The ranking value from the seed file used to resolve overlapping matches."
+        description: "Derived title combining job function and seniority. Null if raw_job_title is null. Uses logic that avoids redundancy (e.g., 'Research Associate' if seniority='Associate')."
+
+      - name: job_function
+        description: "The primary job function matched from job_functions seed (e.g., Data Scientist, Engineer, Analyst). Null if no match."
+
+      - name: seniority
+        description: "The seniority level matched from seniority_levels seed (e.g., Senior, Mid, Principal). Defaults to 'Mid' if job_function matched but no seniority found."
+
+      - name: seniority_rank
+        description: "Numeric rank for seniority (1-14, higher = more senior). Defaults to 5 (Mid) if job_function matched but no seniority found."
+
+      - name: track
+        description: "Career track from seniority_levels seed. Values: IC (Individual Contributor), Management, Executive, Training. Defaults to 'IC' if job_function matched but no seniority found."
+
+      - name: title_status
+        description: >
+          Classification of match success: 'missing' if raw_job_title is null/empty, 'unmatched' if no job_function and no seniority matched,
+          'matched' otherwise. Reflects whether the title mapping succeeded.

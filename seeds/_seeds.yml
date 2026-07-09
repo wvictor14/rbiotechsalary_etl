@@ -1,26 +1,35 @@
 version: 2
 
 seeds:
-  - name: job_hierarchy
+  - name: job_functions
     description: >
-      This seed file contains the mapping of raw job titles to standardized titles, along with their associated departments, hierarchies, and priority rankings. 
-      The `keyword` column is used for matching against raw job titles in the source data, while `standardized_title`, `department`, and `hierarchy` provide the necessary information for categorizing and analyzing job positions.
+      Seed file mapping keywords to job functions in the two-axis job classification model.
+      Keywords are matched against job titles using word-boundary fuzzy matching (exact, starts-with, ends-with, surrounded-by-spaces).
+      Lower priority values indicate higher priority; longest keyword wins ties.
     columns:
       - name: keyword
-        description: "The keyword used for matching against raw job titles. This should be a lowercased version of the job title or a relevant substring."
-      - name: standardized_title
-        description: "The standardized job title that corresponds to the keyword. This is the official title assigned based on the highest-priority keyword match."
-      - name: department
-        description: "The functional area or job group associated with the response (e.g., Research, Operations, Commercial)."
-      - name: hierarchy
-        description: >
-          The categorical level of the job title, which can be used for hierarchical analysis.
-          Possible values include: C-Suite/Executive, Senior Management, Middle Management,
-          Senior Individual Contributor, Scientific/Technical Professional, Associate/Assistant, Entry Level/Training, Specialized Role, Other.
+        description: "The keyword to match against normalized job titles. Lowercase, no punctuation."
+      - name: job_function
+        description: "The primary job function (e.g., Data Scientist, Engineer, Analyst)."
       - name: priority
-        description: >
-          The ranking value used to resolve overlapping matches when a raw job title contains multiple keywords.
-          A lower number indicates a higher priority (e.g., 1 is the highest priority). This allows for consistent assignment of standardized titles when multiple matches are possible.
+        description: "Priority for resolving multiple matches (lower = higher priority). Longest keyword breaks ties."
+
+  - name: seniority_levels
+    description: >
+      Seed file mapping keywords to seniority levels, track, and rank in the two-axis job classification model.
+      Keywords are matched against job titles using word-boundary fuzzy matching (exact, starts-with, ends-with, surrounded-by-spaces).
+      Lower priority values indicate higher priority; longest keyword wins ties.
+    columns:
+      - name: keyword
+        description: "The keyword to match against normalized job titles. Lowercase, no punctuation."
+      - name: seniority
+        description: "The seniority level (e.g., Mid, Senior, Principal, Manager)."
+      - name: track
+        description: "The career track (IC = Individual Contributor, Management, Executive, or Training)."
+      - name: seniority_rank
+        description: "Numeric rank for seniority level (1-14, higher = more senior). Used for ordering."
+      - name: priority
+        description: "Priority for resolving multiple matches (lower = higher priority). Longest keyword breaks ties."
 
   - name: city_names
     description: >

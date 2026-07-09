@@ -6,6 +6,7 @@ analytical development scientist i,Analytical Development Scientist I
 analytical operations manager,Analytical Operations Manager
 application specialist,Application Specialist
 archivist,Archivist
+as2,Associate II
 assistant scientist,Assistant Scientist
 assoc analytical development specialist,Associate Analytical Development Specialist
 associate chemist,Associate Chemist
@@ -157,6 +158,7 @@ graduate,Graduate
 graduate intern,Graduate Intern
 graduate intern (phd),Graduate Intern (PhD)
 graduate scientist,Graduate Scientist
+gsr,Graduate Student Researcher
 graduate student - biochemistry,Graduate Student - Biochemistry
 group head patient safety and risk management,Group Head Patient Safety And Risk Management
 "group lead, principal scientist","Group Lead, Principal Scientist"
@@ -306,7 +308,7 @@ research support specialist,Research Support Specialist
 research technician,Research Technician
 researcher,Researcher
 researcher iv,Researcher IV
-sma i,SMA I
+sma i,Senior Manufacturing Associate I
 safety manager,Safety Manager
 sample management (contractor),Sample Management (Contractor)
 scientific lead,Scientific Lead
@@ -324,6 +326,7 @@ scientist iii,Scientist III
 "scientist, engineering","Scientist, Engineering"
 "scientist, molecular biology","Scientist, Molecular Biology"
 scientists technical support,Scientists Technical Support
+science ii,Scientist II
 senior accounting manager,Senior Accounting Manager
 sr analyst,Senior Analyst
 sr analytical engineer,Senior Analytical Engineer
@@ -563,7 +566,7 @@ microbiologist,Microbiologist
 sr project manager,Senior Project Manager
 computational associate ii,Computational Associate II
 director of engineering,Director of Engineering
-assoc dir,Assoc Dir
+assoc dir,Associate Director
 quality control analyst,Quality Control Analyst
 assistant director,Assistant Director
 "senior expert i, data science","Senior Expert I, Data Science"
@@ -581,14 +584,14 @@ principal,Principal
 lead,Lead
 process development engineer,Process Development Engineer
 systems engineer,Systems Engineer
-post-doc,Post-Doc
+post-doc,Postdoctoral Researcher
 manufacturing specialist,Manufacturing Specialist
 engineer iii,Engineer III
 cqv engineer,CQV Engineer
 technician,Technician
 qc analyst i,QC Analyst I
 lab supervisor,Lab Supervisor
-qa,QA
+qa,Quality Assurance
 ra ii,Research Associate II
 systems test engineer i,Systems Test Engineer I
 audit manager,Audit Manager
@@ -790,7 +793,7 @@ clinical lab tech,Clinical Lab Tech
 qc manager,QC Manager
 principal statistician,Principal Statistician
 sr. qc associate,Senior QC Associate
-qc,QC
+qc,Quality Control
 lab technician i,Lab Technician I
 market development manager,Market Development Manager
 upstream process engineer,Upstream Process Engineer
@@ -902,10 +905,10 @@ artificial intelligence engineer,Artificial Intelligence Engineer
 asset exec,Asset Exec
 "associate specialist, engineering","Associate Specialist, Engineering"
 quality management lead,Quality Management Lead
-sci 1,Sci I
+sci 1,Scientist I
 mfg supervisor,Mfg Supervisor
 sr director biometrics,Senior Director Biometrics
-qc 2,QC II
+qc 2,Quality Control II
 associate biologist,Associate Biologist
 msat process expert,Msat Process Expert
 regulatory affairs specialist,Regulatory Affairs Specialist
@@ -1021,7 +1024,7 @@ biotechnician,Biotechnician
 "associate director, commercial","Associate Director, Commercial"
 senior clinical research associate i,Senior Clinical Research Associate I
 director clinical science,Director Clinical Science
-msat,Msat
+msat,Manufacturing Science And Technology
 technical research / designer,Technical Research / Designer
 senior research chemist,Senior Research Chemist
 advisor (engineering r5),Advisor (Engineering R5)
@@ -1072,7 +1075,7 @@ research tech ii,Research Tech II
 research assistant 2,Research Assistant II
 qc analyst 1,QC Analyst I
 training specialist 1,Training Specialist I
-post doc,Post Doc
+post doc,Postdoctoral Researcher
 "associate medical director, medical affairs","Associate Medical Director, Medical Affairs"
 systems engineer 2,Systems Engineer II
 sr director clinical operations,Senior Director Clinical Operations
@@ -1232,6 +1235,7 @@ associate clinical trial scientist,Associate Clinical Trial Scientist
 pd engineer ii,Process Development Engineer II
 machine learning scientist ii,Machine Learning Scientist II
 sra 1,Senior Research Associate I
+sra2,Senior Research Associate II
 "vice president, head of cmc","Vice President, Head of CMC"
 field applications scientist iii,Field Applications Scientist III
 associate director clinical opey,Associate Director Clinical Opey
@@ -1250,7 +1254,7 @@ process technician,Process Technician
 senior finance director,Senior Finance Director
 "senior director, clinical development","Senior Director, Clinical Development"
 primary production technician,Primary Production Technician
-cmo,CMO
+cmo,Chief Medical Officer
 global executive director,Global Executive Director
 group leader,Group Leader
 associate engineer ll,Associate Engineer Ll

@@ -1,44 +1,45 @@
 {% docs jobs_hierarchy %}
 
-## Job Hierarchy Mapping
+## Job Hierarchy Mapping (Two-Axis Model)
 
 ### 1. Approach Overview
 
-This model uses a Priority-Based Fuzzy Heuristic to map messy, free-text job titles to a structured corporate hierarchy. It solves the "partial match" problem (e.g., distinguishing between an "Associate" and an "Associate VP") by ranking potential matches based on specificity and importance.
+This model maps messy, free-text job titles to a **two-dimensional classification**:
+- **Job Function**: Primary role category (e.g., Data Scientist, Engineer, Analyst, Manager)
+- **Seniority**: Level and track (Senior/Mid/Junior, plus track: IC / Management / Executive / Training)
+
+This replaces the single-axis hierarchy, allowing more nuanced analysis of job roles across two independent dimensions.
 
 ### 2. Logical Steps
 
-- Normalization: Deduplicates raw titles and joins with job_titles to get a "Clean Title."
+1. **Normalization**: Raw titles are normalized and joined with the job_titles seed to produce a clean "title" for matching.
 
-- Sanitization: Strips commas and slashes in title_to_match_on to prevent punctuation from breaking the word-boundary search.
+2. **Sanitization**: Commas and slashes in title_to_match_on are stripped to prevent punctuation from breaking word-boundary matches.
 
-- The Fuzzy Join: Matches keywords using a 4-point check (Exact, Starts-with, Ends-with, or Surrounded-by-spaces). This ensures keywords aren't matched in the middle of other words (e.g., "Analyst" won't match "Psychoanalyst").
+3. **Dual Fuzzy Joins**: Two parallel matches are performed:
+   - **job_functions_seed**: Keywords matched against normalized title → job_function
+   - **seniority_levels_seed**: Keywords matched against normalized title → seniority, track, seniority_rank
 
-- Conflict Resolution (match_rank): * Priority: Matches are sorted by the priority column (1 = Highest).
+4. **Keyword Matching**: Both seeds use the same 4-point word-boundary check (exact, starts-with, ends-with, surrounded-by-spaces) to prevent false positives (e.g., "Analyst" won't match "Psychoanalyst").
 
-- Specificity: If priorities tie, the longer keyword wins (e.g., "Senior Scientist" wins over "Scientist").
+5. **Conflict Resolution**: Both matches rank by priority (1 = highest), with longest keyword as tiebreaker. One best match per response_id.
+
+6. **Defaults**:
+   - If job_function matched but no seniority: seniority='Mid', seniority_rank=5, track='IC'
+
+7. **Derivation**:
+   - **standardized_title**: Combines job_function and seniority intelligently (avoids redundancy; e.g., "Research Associate" when seniority="Associate")
+   - **title_status**: 'missing' (null raw_job_title) | 'unmatched' (no job_function AND no seniority) | 'matched' (at least one match)
 
 ### 3. Maintenance: Adding New Jobs
 
-1. When a title returns NULL or maps incorrectly, update the job_hierarchy.csv seed:
-2. To fix a NULL: Add a unique "stem" word from the title (e.g., toxicologist) as a new keyword.
-3. To fix a Misclassification: Adjust the priority. Specific roles (e.g., Associate VP) must have a lower number (higher priority) than generic modifiers (e.g., Associate).
+1. **To add a new job function**: Update `seeds/job_functions.csv` with a unique keyword and assign a job_function name and priority.
 
-#### Formatting Rules: 
+2. **To add a new seniority level**: Update `seeds/seniority_levels.csv` with a keyword, seniority, track, seniority_rank, and priority.
 
-1.  Keywords must be lowercase.
-2.  Keywords must not contain punctuation.
-3.  Avoid trailing spaces in the CSV.
-4. Key Hierarchy Levels
-
-| Hierarchy | PriorityRange | Roles | x | x | x |
-|---|---|---|---|---|---|
-|  C-Suite/Executive  |  1 – 4  |  "CSO  |   CTO  |   VP  |   Executive Director"  |
-|  Management  |  5 – 12  |  "Director  |   Senior Manager  |   Manager"  |    |
-|  Professional  |  15 – 18  |  "Scientists  |   Engineers  |   MSLs  |   Analysts"  |
-|  Associate/Support  |  20 – 21  |  "Research Associates  |   Manufacturing Associates  |   Techs"  |    |
-|  Training  |  25 – 27  |  "Postdocs  |   Interns  |   Ph.D. Students"  |    |
-
-
+3. **Formatting Rules**:
+   - Keywords must be lowercase and contain no punctuation.
+   - Avoid trailing/leading spaces in CSV.
+   - Priorities should be unique where roles are specific vs. generic (specific = lower number = higher priority).
 
 {% enddocs %}

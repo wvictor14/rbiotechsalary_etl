@@ -3,28 +3,30 @@ version: 2
 models:
   - name: dim_jobs
     description: >
-      Contains job information at the level of job_title + job_level + job_group + job_hierarchy.
-      This table allows granular analysis of job positions across different dimensions.
+      Contains job information at the level of job_title + job_function + seniority + track + status.
+      This table allows granular analysis of job positions across multiple dimensions (function and seniority).
       See {{ doc('jobs') }} for jobs modelling strategy.
     tests:
       - dbt_expectations.expect_compound_columns_to_be_unique:
           arguments:
-            column_list: ["title_id", "department", "hierarchy", "priority"]
+            column_list: ["title_id", "department", "job_function", "seniority", "track", "title_status"]
     columns:
       - name: job_id
         data_type: string
         description: >
-          Generated using `dbt_utils.generate_surrogate_key` with 
-          `title_id`, `department`, `hierarchy`, and `priority`
+          Generated using `dbt_utils.generate_surrogate_key` with
+          `title_id`, `department`, `job_function`, `seniority`, `track`, and `title_status`
         tests:
           - not_null
           - unique
-          
+
       - name: title
         data_type: string
-        description: "Job title as entered by respondent; included for reference. Sourced from dim_job_titles."
+        description: "Job title as entered by respondent; included for reference. Sourced from dim_job_titles. Null when title_status is 'unmatched' or 'missing'."
         tests:
-          - not_null
+          - not_null:
+              config:
+                where: "title_status = 'matched'"
 
       - name: title_id
         data_type: string
@@ -34,20 +36,34 @@ models:
 
       - name: standardized_title
         data_type: string
-        description: "Standardized job title"
-        
-      - name: priority
-        data_type: bigint
-        description: Order of standardized titles for a given raw title, with 1 being the highest priority (most common mapping)
-      
+        description: "Standardized job title derived from job_function and seniority."
+
       - name: department
         data_type: string
-        description: "Functional group or department (e.g., Research, Operations, Commercial)"
+        description: "Functional group or department (raw_department from source)."
 
-      - name: hierarchy
+      - name: job_function
         data_type: string
-        description: >
-          Hierarchical categorization of jobs:
-          C-Suite/Executive, Senior Management, Middle Management,
-          Senior Individual Contributor, Scientific/Technical Professional,
-          Associate/Assistant, Entry Level/Training, Specialized Role, Other
+        description: "Primary job function matched from job_functions seed (e.g., Data Scientist, Engineer)."
+
+      - name: seniority
+        data_type: string
+        description: "Seniority level matched from seniority_levels seed (e.g., Senior, Mid). Defaults to Mid if job_function matched with no seniority match."
+
+      - name: seniority_rank
+        data_type: integer
+        description: "Numeric rank for seniority (1-14, higher = more senior). Defaults to 5 (Mid) if job_function matched with no seniority match."
+
+      - name: track
+        data_type: string
+        description: "Career track (IC, Management, Executive, or Training). Defaults to IC if job_function matched with no seniority match."
+        tests:
+          - accepted_values:
+              values: ["IC", "Management", "Executive", "Training"]
+
+      - name: title_status
+        data_type: string
+        description: "Classification of match success: 'missing' (null raw_job_title), 'unmatched' (no matches), or 'matched'."
+        tests:
+          - accepted_values:
+              values: ["missing", "unmatched", "matched"]

@@ -1,0 +1,62 @@
+keyword,job_function,priority
+machine learning scientist,Machine Learning Scientist,1
+ml scientist,Machine Learning Scientist,1
+ai scientist,AI Scientist,1
+data scientist,Data Scientist,1
+computational biologist,Computational Biologist,1
+bioinformatician,Bioinformatician,1
+bioinformatics,Bioinformatician,1
+biostatistician,Biostatistician,1
+biostatistics,Biostatistician,1
+statistician,Biostatistician,2
+medical science liaison,Medical Science Liaison,1
+msl,Medical Science Liaison,1
+clinical research associate,Clinical Research Associate,1
+research associate,Research Associate,2
+research assistant,Research Assistant,2
+manufacturing associate,Manufacturing Associate,2
+program manager,Program Management,2
+project manager,Project Management,2
+business development,Business Development,2
+scientist,Scientist,3
+engineer,Engineer,3
+analyst,Analyst,3
+specialist,Specialist,3
+technician,Technician,3
+tech,Technician,4
+manufacturing,Manufacturing,4
+quality,Quality,4
+regulatory,Regulatory Affairs,4
+clinical,Clinical,4
+research,Research,5
+biochemist,Scientist,3
+biologist,Scientist,3
+chemist,Scientist,3
+microbiologist,Scientist,3
+pharmacologist,Scientist,3
+toxicologist,Scientist,3
+pharmacokineticist,Scientist,3
+investigator,Research,5
+researcher,Research,5
+medical writer,Medical Writing,2
+medical writing,Medical Writing,2
+writer,Medical Writing,4
+general counsel,Legal,2
+counsel,Legal,4
+attorney,Legal,4
+legal,Legal,4
+paralegal,Legal,4
+marketing,Commercial,4
+sales,Commercial,4
+commercial,Commercial,4
+consultant,Consulting,4
+accountant,Finance,4
+finance,Finance,4
+human resources,HR,4
+hr,HR,4
+recruiter,HR,4
+professor,Research,5
+faculty,Research,5
+technologist,Technician,3
+advisor,Specialist,4
+expert,Specialist,4

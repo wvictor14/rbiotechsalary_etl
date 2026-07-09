@@ -15,7 +15,7 @@ with
     joined as (
         select
             s.response_id,
-            s.survey_year,
+            s.submitted_at,
             c.company_name,
             j.job_id,
             l.location_id,
@@ -35,7 +35,7 @@ with
 
 select
     response_id,
-    survey_year,
+    submitted_at,
     company_name,
     job_id,
     location_id,

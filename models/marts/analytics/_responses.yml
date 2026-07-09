@@ -18,6 +18,30 @@ models:
                 to: ref('stg_responses')
                 field: response_id
 
+      - name: submitted_at
+        data_type: timestamp
+        description: "Submission timestamp from the raw Google Form"
+        tests:
+          - not_null
+
+      - name: year
+        data_type: integer
+        description: "Year extracted from submitted_at"
+        tests:
+          - not_null
+
+      - name: month
+        data_type: integer
+        description: "Month extracted from submitted_at"
+        tests:
+          - not_null
+
+      - name: day
+        data_type: integer
+        description: "Day of month extracted from submitted_at"
+        tests:
+          - not_null
+
       - name: base_salary
         description: >
           Annual base salary as reported, cleaned and parsed to a number.
@@ -44,13 +68,37 @@ models:
 
       - name: department
         description: >
-          The functional area or job group associated with the respondent's job title (e.g., Research, Operations, Commercial).
+          The functional area or job group associated with the respondent's job title (raw_department from source).
 
-      - name: hierarchy
+      - name: job_function
         description: >
-          The hierarchical level of the respondent's job title, categorized for analysis.
-          Possible values include: C-Suite/Executive, Senior Management, Middle Management,
-          Senior Individual Contributor, Scientific/Technical Professional, Associate/Assistant, Entry Level/Training, Specialized Role, Other.
+          The primary job function from the two-axis model (e.g., Data Scientist, Engineer, Analyst).
+
+      - name: seniority
+        description: >
+          The seniority level from the two-axis model (e.g., Senior, Mid, Principal).
+          Defaults to 'Mid' if job_function matched but no seniority match found.
+
+      - name: seniority_rank
+        description: >
+          Numeric rank for seniority (1-14, higher = more senior).
+          Defaults to 5 (Mid) if job_function matched but no seniority match found.
+
+      - name: track
+        description: >
+          Career track from the two-axis model: IC (Individual Contributor), Management, Executive, or Training.
+          Defaults to 'IC' if job_function matched but no seniority match found.
+        tests:
+          - accepted_values:
+              values: ["IC", "Management", "Executive", "Training"]
+
+      - name: title_status
+        description: >
+          Classification of title mapping success: 'missing' (null raw_job_title), 'unmatched' (no keyword matches),
+          or 'matched' (at least one keyword matched).
+        tests:
+          - accepted_values:
+              values: ["missing", "unmatched", "matched"]
 
       - name: location_name
         description: >

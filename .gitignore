@@ -8,3 +8,6 @@ logs/
 dbt_internal_packages/
 store
 __pycache__/
+
+# parquet artifacts - publish via GitHub Pages instead
+docs/data/

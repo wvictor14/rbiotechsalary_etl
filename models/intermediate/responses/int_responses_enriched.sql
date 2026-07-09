@@ -2,7 +2,7 @@ with
     int_responses as (
         select
             response_id,
-            survey_year,
+            submitted_at,
             company_name,
             job_id,
             location_id,
@@ -20,7 +20,7 @@ with
     final as (
         select
             r.response_id,
-            r.survey_year,
+            r.submitted_at,
             r.company_name,
             c.company_id,
             c.company_size,
@@ -32,8 +32,11 @@ with
             j.title,
             j.standardized_title,
             j.department,
-            j.hierarchy,
-            j.priority,
+            j.job_function,
+            j.seniority,
+            j.seniority_rank,
+            j.track,
+            j.title_status,
 
             r.base_salary,
             r.bonus_pct,

@@ -12,6 +12,30 @@ models:
           - unique
           - not_null
 
+      - name: submitted_at
+        data_type: timestamp
+        description: "Submission timestamp from the raw Google Form"
+        tests:
+          - not_null
+
+      - name: year
+        data_type: integer
+        description: "Year extracted from submitted_at"
+        tests:
+          - not_null
+
+      - name: month
+        data_type: integer
+        description: "Month extracted from submitted_at"
+        tests:
+          - not_null
+
+      - name: day
+        data_type: integer
+        description: "Day of month extracted from submitted_at"
+        tests:
+          - not_null
+
       - name: company_id
         description: Foreign key to dim_companies. Null when company was not reported or not matched.
         tests:
