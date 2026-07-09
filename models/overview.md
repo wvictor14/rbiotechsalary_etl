@@ -109,22 +109,27 @@ How many distinct titles exist?
 
 #### `dim_jobs`
 
-Grain is one row per job_title * job_group * job_level
+Grain is one row per job_title * job_function * seniority * track * status
 
-- `job_id` A hash based on job_title_id, job_group, and job_level
+- `job_id` A hash based on job_title_id, job_function, seniority, track, and title_status
 - `title_id` (fk to `dim_job_titles`)
 - `title`
-- `standardized_title` A generic standard title e.g. RA / Scientist / Manager / Director / VP
-- `department` e.g. Research / Operations / Commercial
-- `hierarchy an organizaton by relative seniority
+- `standardized_title` A derived title combining job_function and seniority
+- `job_function` Primary role (e.g., Data Scientist, Engineer, Analyst)
+- `seniority` Level (Senior, Mid, Junior, etc.) within the career track
+- `seniority_rank` Numeric rank (1-14) for ordering by seniority
+- `track` Career track (IC, Management, Executive, Training)
+- `title_status` Mapping success (missing, unmatched, matched)
+- `department` Raw department from source
 
-title and department are derived from respondent input, but then standardized and consolidated based on rules and heuristics. See `models/jobs.md` for detailed job modeling and consolidation logic.
-
+Title and department are derived from respondent input; job_function and seniority are standardized via fuzzy keyword matching on the job_functions and seniority_levels seeds. See `models/jobs.md` for detailed job modeling and consolidation logic.
 
 Questions that can be answered with this model
 
-- How many distinct jobs exist?
-- How do jobs propagate across levels and departments? E.g. how many distinct job titles are there in research vs commercial? How many distinct job titles are there at each level of the hierarchy?
+- How many distinct job function/seniority combinations exist?
+- How do salaries vary by job_function, independent of seniority?
+- How do salaries vary by seniority_rank, independent of job_function?
+- What is the distribution of unmatched vs. matched titles?
 
 ---
 

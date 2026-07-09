@@ -1,0 +1,38 @@
+keyword,seniority,track,seniority_rank,priority
+chief,C-Suite,Executive,14,1
+senior vice president,SVP,Executive,14,2
+svp,SVP,Executive,14,2
+associate vice president,Associate VP,Executive,13,3
+associate vp,Associate VP,Executive,13,3
+avp,Associate VP,Executive,13,3
+vice president,VP,Executive,13,4
+vp,VP,Executive,13,4
+executive director,Executive Director,Management,12,5
+senior director,Senior Director,Management,11,6
+associate director,Associate Director,Management,9,7
+director,Director,Management,10,8
+head of,Director,Management,10,8
+senior manager,Senior Manager,Management,8,10
+team leader,Team Lead,Management,7,10
+team lead,Team Lead,Management,7,10
+supervisor,Manager,Management,7,11
+manager,Manager,Management,7,11
+intern,Intern,Training,1,12
+graduate,Graduate Student,Training,2,12
+phd student,Graduate Student,Training,2,12
+doctoral researcher,Graduate Student,Training,2,12
+postdoc,Postdoc,Training,3,12
+postdoctoral,Postdoc,Training,3,12
+principal,Principal,IC,7,13
+staff,Staff,IC,7,13
+fellow,Fellow,IC,7,13
+senior,Senior,IC,6,15
+lead,Lead,IC,6,15
+leader,Lead,IC,6,15
+head,Director,Management,10,9
+junior,Junior,IC,4,16
+associate,Associate,IC,4,17
+ceo,C-Suite,Executive,14,1
+cfo,C-Suite,Executive,14,1
+coo,C-Suite,Executive,14,1
+chief executive officer,C-Suite,Executive,14,1
