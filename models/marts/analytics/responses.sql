@@ -29,6 +29,8 @@ select
     company_name,
     company_size,
     sector,
-    company_is_private_or_public
+    company_is_private_or_public,
+
+    survey_feedback as feedback
 
 from {{ ref("int_responses_enriched") }}

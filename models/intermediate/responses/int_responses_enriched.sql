@@ -11,7 +11,8 @@ with
             bonus_amount,
             total_compensation,
             currency_code,
-            currency_source
+            currency_source,
+            survey_feedback
         from {{ ref("int_responses") }}
     ),
     jobs as (select * from {{ ref("dim_jobs") }}),
@@ -44,6 +45,8 @@ with
             r.total_compensation,
             r.currency_code,
             r.currency_source,
+
+            r.survey_feedback,
 
             r.location_id,
             l.location_name,

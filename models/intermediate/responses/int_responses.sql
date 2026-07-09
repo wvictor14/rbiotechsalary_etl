@@ -24,7 +24,8 @@ with
             sa.bonus_amount,
             sa.total_compensation,
             cur.currency_code,
-            cur.currency_source
+            cur.currency_source,
+            s.survey_feedback
         from stg as s
         left join companies as c on s.response_id = c.response_id
         left join jobs as j on s.response_id = j.response_id
@@ -44,5 +45,6 @@ select
     bonus_amount,
     total_compensation,
     currency_code,
-    currency_source
+    currency_source,
+    survey_feedback
 from joined

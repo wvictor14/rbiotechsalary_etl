@@ -131,3 +131,7 @@ models:
       - name: company_is_private_or_public
         description: >
           Indicates whether the respondent's company is private or public.
+
+      - name: feedback
+        description: >
+          Free-text feedback on the survey itself, provided by the respondent. 2024+ only.
